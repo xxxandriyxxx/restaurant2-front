@@ -7,7 +7,9 @@ import {SigninPageComponent} from './signin/signin-page/signin-page.component';
 
 const routes: Routes = [
   {path: 'sign-up', component: SignupPageComponent},
-  {path: 'sign-in', component: SigninPageComponent}
+  {path: 'sign-in', component: SigninPageComponent},
+  {path: 'restaurant', loadChildren: './restaurant/restaurant.module#RestaurantModule'}
+
 ];
 
 
@@ -17,7 +19,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
 export class MainRoutingModule {
 }
