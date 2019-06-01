@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {SignupPageComponent} from './signup/signup-page/signup-page.component';
-import {SigninPageComponent} from './signin/signin-page/signin-page.component';
+import {SignupPageComponent} from './modules/signup/signup-page/signup-page.component';
+import {SigninPageComponent} from './modules/signin/signin-page/signin-page.component';
 
 
 const routes: Routes = [
   {path: 'sign-up', component: SignupPageComponent},
   {path: 'sign-in', component: SigninPageComponent},
-  {path: 'restaurant', loadChildren: './restaurant/restaurant.module#RestaurantModule'}
+  {path: 'restaurant', loadChildren: './modules/restaurant/restaurant.module#RestaurantModule'}
 
 ];
 

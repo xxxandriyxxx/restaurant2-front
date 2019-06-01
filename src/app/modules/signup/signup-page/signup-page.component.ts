@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-signup-page',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPageComponent implements OnInit {
 
-  constructor() { }
+  formObj = {
+    username: '',
+    password: '',
+    email: ''
+  };
+
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
 
 }
