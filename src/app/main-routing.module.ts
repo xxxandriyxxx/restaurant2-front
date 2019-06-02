@@ -8,7 +8,8 @@ import {SigninPageComponent} from './modules/signin/signin-page/signin-page.comp
 const routes: Routes = [
   {path: 'sign-up', component: SignupPageComponent},
   {path: 'sign-in', component: SigninPageComponent},
-  {path: 'restaurant', loadChildren: './modules/restaurant/restaurant.module#RestaurantModule'}
+  {path: 'restaurant', loadChildren: './modules/restaurant/restaurant.module#RestaurantModule'},
+  {path: 'activation/:jwt', loadChildren: './modules/activation/activation.module#ActivationModule'}
 
 ];
 

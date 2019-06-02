@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {MainService} from '../../../services/main.service';
 import {Client} from '../../../models/Client';
 import {Owner} from '../../../models/Owner';
-import {ResponseMessage} from '../../../models/ResponseMessage';
 
 @Component({
   selector: 'app-signup-page',
@@ -17,7 +15,6 @@ export class SignupPageComponent implements OnInit {
     password: '',
     email: ''
   };
-
   client: Client = new Client();
   owner: Owner = new Owner();
 
@@ -27,8 +24,7 @@ export class SignupPageComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  saveUser(form, isClient, isOwner) {
+  saveUser(form, isClient: boolean, isOwner: boolean) {
     console.log(this.regForm, isClient, isOwner);
     if (isClient) {
       this.client.username = this.regForm.username;
@@ -36,8 +32,8 @@ export class SignupPageComponent implements OnInit {
       this.client.email = this.regForm.email;
       this.mainService.saveClient(this.client)
         .subscribe((res) => {
-          console.log(res);
-        });
+        console.log(res);
+      });
     } else if (isOwner) {
       this.owner.username = this.regForm.username;
       this.owner.password = this.regForm.password;
@@ -46,11 +42,8 @@ export class SignupPageComponent implements OnInit {
         .subscribe((res) => {
           console.log(res);
         });
-
     } else {
       console.log('ERROR of saveUser function');
     }
-
-
   }
 }

@@ -33,18 +33,17 @@
       name="password"></label><br>
   <label>Email:<br>
     <input
-      type="email"
       [(ngModel)]="regForm.email"
       [ngStyle]="{border: emailInp.invalid && emailInp.dirty? '2px solid red' : '2px solid green'}"
       #emailInp='ngModel'
       required
       email
       size="20"
+      type="email"
       name="email"></label><br><br>
   <button
     [disabled]="signUpForm.invalid"
     (click)="saveUser(signUpForm , clientRadio.checked, ownerRadio.checked)"
-  >save user
-  </button>
+  >SIGN UP</button>
 </form>
 
