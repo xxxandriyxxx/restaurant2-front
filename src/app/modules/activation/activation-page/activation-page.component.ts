@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MainService} from '../../../services/main.service';
 
@@ -14,7 +14,8 @@ export class ActivationPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private mainService: MainService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     console.log(this.activatedRoute.snapshot.params.jwt);
@@ -22,9 +23,10 @@ export class ActivationPageComponent implements OnInit {
     this.mainService.activation(this.activatedRoute.snapshot.params.jwt)
       .subscribe((res) => {
         console.log(res);
+        if (res.message.indexOf('SUCCESS') > -1) {
+          this.activated = true;
+        }
       });
-
-    // this.mainService.activation(typeof this.activatedRoute.snapshot.params);
   }
 
 }

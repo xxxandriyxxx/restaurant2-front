@@ -5,7 +5,12 @@ export class User {
     public username: string = '',
     public password: string = '',
     public email: string = '',
-    public avatar: string = ''
+    public avatar: string = '',
+    // public role: string = null, // !!!!!!!!
+    // public isAccountNonExpired: boolean = false,
+    // public isAccountNonLocked: boolean = false,
+    // public isCredentialsNonExpired: boolean = false,
+    // public isEnabled: boolean = false
   ) {
   }
 }

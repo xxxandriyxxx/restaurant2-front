@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
@@ -13,9 +13,6 @@ export class AppComponent {
   constructor(private http: HttpClient) {
 
   }
-
-
-
 
 
   // login() {

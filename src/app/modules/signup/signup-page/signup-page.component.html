@@ -1,4 +1,4 @@
-<h1>SIG UP</h1>
+<h2>SIG UP</h2>
 
 
 <label>Type of user:<br>
@@ -9,41 +9,41 @@
 </label>
 
 
-
 <form #signUpForm='ngForm'>
   <label>Login:<br>
     <input
       [(ngModel)]="regForm.username"
       [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty ? '2px solid red' : '2px solid green'}"
       #usernameInp='ngModel'
-      required minlength="3" maxlength="20"
-      placeholder="3-20 symbols"
-      size="20"
+      required pattern="{{passLoginRegexp.source}}"
+      placeholder="3-20 latin letters/numbers"
+      size="25"
       type="text"
       name="username"></label><br>
-  <label>Password:<br>
-    <input
-      [(ngModel)]="regForm.password"
-      [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
-      #passwordInp='ngModel'
-      required minlength="3" maxlength="10"
-      placeholder="3-10 symbols"
-      size="20"
-      type="password"
-      name="password"></label><br>
   <label>Email:<br>
     <input
       [(ngModel)]="regForm.email"
       [ngStyle]="{border: emailInp.invalid && emailInp.dirty? '2px solid red' : '2px solid green'}"
       #emailInp='ngModel'
-      required
-      email
-      size="20"
-      type="email"
-      name="email"></label><br><br>
+      required pattern="{{emailRegexp.source}}"
+      placeholder="email"
+      size="25"
+      type="text"
+      name="email"></label><br>
+  <label>Password:<br>
+    <input
+      [(ngModel)]="regForm.password"
+      [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
+      #passwordInp='ngModel'
+      required pattern="{{passLoginRegexp.source}}"
+      placeholder="3-20 latin letters/numbers"
+      size="25"
+      type="password"
+      name="password"></label><br><br>
   <button
     [disabled]="signUpForm.invalid"
     (click)="saveUser(signUpForm , clientRadio.checked, ownerRadio.checked)"
-  >SIGN UP</button>
+  >SIGN UP
+  </button>
 </form>
 
