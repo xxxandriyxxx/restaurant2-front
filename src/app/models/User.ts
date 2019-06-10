@@ -6,7 +6,7 @@ export class User {
     public password: string = '',
     public email: string = '',
     public avatar: string = '',
-    // public role: string = null, // !!!!!!!!
+    // public role: string = '', // !!!!!!!!
     // public isAccountNonExpired: boolean = false,
     // public isAccountNonLocked: boolean = false,
     // public isCredentialsNonExpired: boolean = false,

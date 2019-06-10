@@ -49,12 +49,23 @@ export class MainService {
     return this.http.post<TransferMessage>(this.url + '/activation', new TransferMessage(jwt));
   }
 
-  login(loginData: LoginData) {this.http.post(this.url + '/tryLogin', loginData)
-      .subscribe((res) => {
-        console.log(res);
-      });
+  login(loginData: LoginData) {
+    return this.http.post(this.url + '/tryLogin', loginData,
+      {observe: 'response', responseType: 'text'});
   }
 
+
+  // login() {
+  //   this.http.post('http://localhost:8080/login',
+  //     JSON.stringify({username: 'admin', password: 'admin'}),
+  //     {observe: 'response'}).subscribe(value => {
+  //     const token = value.headers.get('Authorization');
+  //     console.log(token);
+  //     console.log(value);
+  //
+  //     localStorage.setItem('_token', token);
+  //   });
+  // }
 
 
   // login(logiData: Object): Observable<any> {

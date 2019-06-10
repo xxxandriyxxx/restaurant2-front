@@ -11,6 +11,7 @@ export class ActivationPageComponent implements OnInit {
 
   private activated = false;
 
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private mainService: MainService
@@ -18,15 +19,18 @@ export class ActivationPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.params.jwt);
-
-    this.mainService.activation(this.activatedRoute.snapshot.params.jwt)
-      .subscribe((res) => {
-        console.log(res);
-        if (res.message.indexOf('SUCCESS') > -1) {
-          this.activated = true;
-        }
-      });
+    // const jwt = this.activatedRoute.snapshot.params.jwt;
+    this.activatedRoute.params.subscribe((params) => {
+      const jwt = params.jwt;
+      console.log(jwt);
+      this.mainService.activation(jwt)
+        .subscribe((res) => {
+          console.log(res);
+          if (res.message.indexOf('SUCCESS') > -1) {
+            this.activated = true;
+          }
+        });
+    });
   }
 
 }

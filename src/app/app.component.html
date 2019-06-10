@@ -1,22 +1,25 @@
-
-
-
-
-<h2>home page</h2>
+<h2 xmlns="http://www.w3.org/1999/html">home page</h2>
 
 <div>
   <button routerLink="/">HOME</button>
+</div><br><br><br>
+
+
+<div *ngIf="logged;else otherD">
+  <div>
+    <button *ngIf="userClass =='Client'" (click)="goToClientAccount()">{{accountName}}</button>
+    <button *ngIf="userClass =='Owner'" (click)="goToOwnerAccount()">{{accountName}}</button>
+    <button *ngIf="userClass =='AdminInMemory'" (click)="goToAdminAccount()">{{accountName}}</button>
+  </div>
 </div>
 
+<ng-template #otherD>
+  <div>
+    <button routerLink="/sign-up">Sign up</button>
+    <button routerLink="/sign-in">Sign in</button>
+  </div>
+</ng-template>
 
-<ul>
-  <li>
-    <a routerLink="/sign-up">Sign up</a>
-  </li>
-  <li>
-    <a routerLink="/sign-in">Sign in</a>
-  </li>
-</ul>
 
 <ul>
   <li>
