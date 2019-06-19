@@ -4,3 +4,19 @@
 <div>
   <button (click)="logout()">Logout</button>
 </div>
+
+
+<ul>
+  <li>
+    <a routerLink="myProfile">My profile</a>
+  </li>
+  <li>
+    <a routerLink="myRestaurants">My restaurants</a>
+  </li>
+  <li>
+    <a routerLink="orders">Orders</a>
+  </li>
+</ul>
+
+<hr>
+<router-outlet></router-outlet>

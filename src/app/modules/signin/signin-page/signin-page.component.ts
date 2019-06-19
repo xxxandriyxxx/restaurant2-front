@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MainService} from '../../../services/main.service';
-import {LoginData} from '../../../models/LoginData';
+import {BasicData} from '../../../models/BasicData';
 import {HttpResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/User';
@@ -20,20 +20,9 @@ export class SigninPageComponent implements OnInit {
     // byEmail: false
   };
 
+  basicData: BasicData = new BasicData();
 
-  // loginData = {
-  //   username: ' ',
-  //   email: ' ',
-  //   password: ' '
-  // };
-
-  loginData: LoginData = new LoginData();
-
-  passLoginRegexp = new RegExp('^[a-zA-Z0-9]{3,20}$');
-  emailRegexp = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
-  // passRegexp = new RegExp('^[a-zA-Z0-9]+$');
-
-  error = 'aaa';
+  error = '';
   showError = false;
 
   token = '';
@@ -43,7 +32,7 @@ export class SigninPageComponent implements OnInit {
 
 
   constructor(private mainService: MainService,
-              // private dataService: DataService,
+              private dataService: DataService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
@@ -53,17 +42,17 @@ export class SigninPageComponent implements OnInit {
   }
 
 
-  login(form) {
+  login() {
     console.log('LogForm:', this.logForm);
-    if (this.emailRegexp.test(this.logForm.loginEmail)) {
-      this.loginData.email = this.logForm.loginEmail;
-      this.loginData.username = '';
+    if (this.dataService.emailRegExp.test(this.logForm.loginEmail)) {
+      this.basicData.email = this.logForm.loginEmail;
+      this.basicData.username = '';
     } else {
-      this.loginData.username = this.logForm.loginEmail;
-      this.loginData.email = '';
+      this.basicData.username = this.logForm.loginEmail;
+      this.basicData.email = '';
     }
-    this.loginData.password = this.logForm.password;
-    this.mainService.login(this.loginData)
+    this.basicData.password = this.logForm.password;
+    this.mainService.login(this.basicData)
       .subscribe((value) => {
           const token = value.headers.get('Authorization');
           const userClass = value.headers.get('UserClass');
@@ -74,23 +63,21 @@ export class SigninPageComponent implements OnInit {
           console.log('userId: ' + userId);
           console.log('loginStatusCode: ' + loginStatusCode);
           console.log(value.body);
-          localStorage.setItem('_token', token);
-          localStorage.setItem('_userClass', userClass);
-          localStorage.setItem('_userId', userId);
-          if (!(loginStatusCode >= 200 && loginStatusCode < 400)) {
+
+          if (loginStatusCode >= 200 && loginStatusCode < 400) {
+            localStorage.setItem('_token', token);
+            localStorage.setItem('_userClass', userClass);
+            localStorage.setItem('_userId', userId);
+            this.router.navigate(['/']);
+          } else {
             this.error = value.body;
             this.showError = true;
             this.router.navigate(['sign-in']);
-          } else {
-            this.router.navigate(['/']);
           }
-
         },
         error => {
           console.log(error);
         });
-
-
   }
 
 

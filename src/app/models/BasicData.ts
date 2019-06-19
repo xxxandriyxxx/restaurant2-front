@@ -1,4 +1,4 @@
-export class LoginData {
+export class BasicData {
 
   constructor(
     public username: string = '',

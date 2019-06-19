@@ -15,7 +15,7 @@
       [(ngModel)]="regForm.username"
       [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty ? '2px solid red' : '2px solid green'}"
       #usernameInp='ngModel'
-      required pattern="{{passLoginRegexp.source}}"
+      required pattern="{{dataService.passLoginRegExp.source}}"
       placeholder="3-20 latin letters/numbers"
       size="25"
       type="text"
@@ -25,7 +25,7 @@
       [(ngModel)]="regForm.email"
       [ngStyle]="{border: emailInp.invalid && emailInp.dirty? '2px solid red' : '2px solid green'}"
       #emailInp='ngModel'
-      required pattern="{{emailRegexp.source}}"
+      required pattern="{{dataService.emailRegExp.source}}"
       placeholder="email"
       size="25"
       type="text"
@@ -35,14 +35,14 @@
       [(ngModel)]="regForm.password"
       [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
       #passwordInp='ngModel'
-      required pattern="{{passLoginRegexp.source}}"
+      required pattern="{{dataService.passLoginRegExp.source}}"
       placeholder="3-20 latin letters/numbers"
       size="25"
       type="password"
       name="password"></label><br><br>
   <button
     [disabled]="signUpForm.invalid"
-    (click)="saveUser(signUpForm , clientRadio.checked, ownerRadio.checked)"
+    (click)="saveUser(clientRadio.checked, ownerRadio.checked)"
   >SIGN UP
   </button>
 </form>

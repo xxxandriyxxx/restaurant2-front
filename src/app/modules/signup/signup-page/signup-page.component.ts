@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MainService} from '../../../services/main.service';
 import {Client} from '../../../models/Client';
 import {Owner} from '../../../models/Owner';
+import {DataService} from '../../../services/data.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -19,18 +20,19 @@ export class SignupPageComponent implements OnInit {
   client: Client = new Client();
   owner: Owner = new Owner();
 
-  passLoginRegexp = new RegExp('^[a-zA-Z0-9]{3,20}$');
-  emailRegexp = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
+  // passLoginRegexp = new RegExp('^[a-zA-Z0-9]{3,20}$');
+  // emailRegexp = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
   // passRegexp = new RegExp('^[a-zA-Z0-9]+$');
 
-  constructor(private mainService: MainService) {
+  constructor(private mainService: MainService,
+              private dataService: DataService) {
   }
 
   ngOnInit() {
 
   }
 
-  saveUser(form, isClient: boolean, isOwner: boolean) {
+  saveUser(isClient: boolean, isOwner: boolean) {
     console.log('regForm:', this.regForm, 'isClient:', isClient, 'isOwner:', isOwner);
     if (isClient) {
       this.client.username = this.regForm.username;

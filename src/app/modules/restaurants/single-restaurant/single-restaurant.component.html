@@ -1,0 +1,104 @@
+<p>
+  single-restaurant works!
+</p>
+
+<button (click)="openDialog()">Open dialog</button>
+<div *ngIf="showAddSection;else otherD">
+
+  <form #addSectionForm='ngForm'>
+    <label>Name:<br>
+      <input
+        [(ngModel)]="newMenuSection.name"
+        [ngStyle]="{border: sectNameInp.invalid && sectNameInp.dirty ? '2px solid red' : '2px solid green'}"
+        #sectNameInp='ngModel'
+        required maxlength="50"
+        placeholder="menu section's name"
+        size="50"
+        type="text"
+        name="sectName"
+      ></label><br><br>
+    <button (click)="showAddSection=false">Cancel</button>
+    <button
+      [disabled]="addSectionForm.invalid"
+      (click)="addMenuSection()"
+    >Add
+    </button>
+  </form>
+
+</div>
+
+<ng-template #otherD>
+
+  <button (click)="showAddSection = true">Add menu section</button>
+  <br><br>
+
+
+<div *ngFor="let sect of sections">{{sect.name}}
+  <button>add dish</button>
+  <button>delete</button>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Change</th>
+    </tr>
+    <tr *ngFor="let dish of sect.dishes">
+      <td>{{dish.name}}</td>
+      <td>{{dish.description}}</td>
+      <td>{{dish.price}}</td>
+      <td>
+
+      </td>
+    </tr>
+  </table>
+</div>
+
+    <!--</th>-->
+    <!--<button (click)="showAddDish[sect.id] = true">add dish</button>-->
+    <!--<div *ngIf="showAddDish[sect.id]"> add dish</div>-->
+    <!--<table border="1"> <caption></caption>-->
+
+    <!--<tr></tr>-->
+    <!--<tr *ngFor="let dish of sect.dishes">-->
+    <!--<td>{{dish.name}}</td><td>{{dish.description}}</td><td>{{dish.price}}</td>-->
+    <!--</tr>-->
+    <!--</table>-->
+
+
+
+  <!--<ul>-->
+    <!--<li *ngFor="let sect of sections">-->
+      <!--SECTION: {{sect.name}}-->
+      <!--<button>change</button>-->
+      <!--<button (click)="showAddDish[sect.id] = true">add dish</button>-->
+      <!--<div *ngIf="showAddDish[sect.id]"> add dish</div>-->
+      <!--<ul>-->
+        <!--<li *ngFor="let dish of sect.dishes">{{dish.name}}</li>-->
+      <!--</ul>-->
+    <!--</li>-->
+  <!--</ul>-->
+
+
+  <!--<ul>-->
+  <!--<li *ngFor="let sect of sections">-->
+  <!--SECTION: {{sect.name}}-->
+  <!--<button>change</button>-->
+  <!--<button (click)="showAddDish[sect.id] = true">add dish</button>-->
+  <!--<div *ngIf="showAddDish[sect.id]"> add dish</div>-->
+  <!--<ul>-->
+  <!--<li *ngFor="let dish of sect.dishes">{{dish.name}}</li>-->
+  <!--</ul>-->
+  <!--</li>-->
+  <!--</ul>-->
+
+
+  <!--<div *ngFor="let sect of sections">SECTION: {{sect.name}}-->
+  <!--<input value="{{sect.name}}" disabled>-->
+  <!--<button>change</button>-->
+  <!--<button>add dish</button>-->
+  <!--&lt;!&ndash;<a [routerLink]="sect.id">{{sect.name}}</a><br>&ndash;&gt;-->
+  <!--<div *ngFor="let dish of sect.dishes"> {{dish.name}}</div>-->
+  <!--</div>-->
+
+</ng-template>

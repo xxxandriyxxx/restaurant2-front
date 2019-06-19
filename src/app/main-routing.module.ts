@@ -11,9 +11,23 @@ const routes: Routes = [
   {path: 'sign-up', component: SignupPageComponent},
   {path: 'sign-in', component: SigninPageComponent},
   {path: 'client', loadChildren: './modules/client/client.module#ClientModule'},
-  {path: 'owner', loadChildren: './modules/owner/owner.module#OwnerModule'},
+  {
+    path: 'owner', loadChildren: './modules/owner/owner.module#OwnerModule'
+    // , children:
+    //   [
+    //     {path: 'profile', component: ProfileComponent},
+    //     {path: 'clientsOrders', component: ClientsOredersComponent},
+    //     {path: 'myOrders', component: MyOredersComponent},
+    //     {
+    //       path: 'restaurants', component: RestaurantsComponent, children:
+    //         [
+    //           {path: 'addRestaurant', component: AddRestaurantComponent}
+    //         ]
+    //     }
+    //
+    //   ]
+  },
   {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'},
-  {path: 'restaurant', loadChildren: './modules/restaurant/restaurant.module#RestaurantModule'},
   {path: 'activation/:jwt', loadChildren: './modules/activation/activation.module#ActivationModule'}
 
 ];

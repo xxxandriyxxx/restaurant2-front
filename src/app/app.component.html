@@ -4,7 +4,6 @@
   <button routerLink="/">HOME</button>
 </div><br><br><br>
 
-
 <div *ngIf="logged;else otherD">
   <div>
     <button *ngIf="userClass =='Client'" (click)="goToClientAccount()">{{accountName}}</button>
@@ -19,7 +18,6 @@
     <button routerLink="/sign-in">Sign in</button>
   </div>
 </ng-template>
-
 
 <ul>
   <li>

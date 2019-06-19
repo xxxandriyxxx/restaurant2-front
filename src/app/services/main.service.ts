@@ -5,8 +5,11 @@ import {Observable} from 'rxjs';
 import {Owner} from '../models/Owner';
 import {TransferMessage} from '../models/TransferMessage';
 import {User} from '../models/User';
-import {catchError} from 'rxjs/operators';
-import {LoginData} from '../models/LoginData';
+import {BasicData} from '../models/BasicData';
+import {DataService} from './data.service';
+import {Restaurant} from '../models/Restaurant';
+import {MenuSection} from '../models/MenuSection';
+import {Dish} from '../models/Dish';
 
 
 @Injectable({
@@ -27,7 +30,8 @@ export class MainService {
 
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private dataService: DataService
   ) {
   }
 
@@ -49,9 +53,52 @@ export class MainService {
     return this.http.post<TransferMessage>(this.url + '/activation', new TransferMessage(jwt));
   }
 
-  login(loginData: LoginData) {
+  login(loginData: BasicData) {
     return this.http.post(this.url + '/tryLogin', loginData,
       {observe: 'response', responseType: 'text'});
+  }
+
+
+  getUserById(id: string): Observable<User> {
+    // const headersOption = new HttpHeaders({Authorization: localStorage.getItem('_token')});
+    return this.http.get<User>(this.url + '/getUserById/' + id,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  updateProfile(userId: string, basicdata: BasicData): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/updateProfile/' + userId, basicdata,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  addRestaurant(ownerId: string, restaurant: Restaurant): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/addRestaurant/' + ownerId, restaurant,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  getRestaurants(ownerId: string): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(this.url + '/getRestaurants/' + ownerId,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  addMenuSection(restaurantId: string, newMenuSection: MenuSection): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/addMenuSection/' + restaurantId, newMenuSection,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  getMenuSections(restaurantId: string): Observable<MenuSection[]> {
+    return this.http.get<MenuSection[]>(this.url + '/getMenuSections/' + restaurantId,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+
+  addDish(restaurantId: string, sectionId: string, dish: Dish): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/addDish/' + restaurantId + '/' + sectionId, dish,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  getDishes(sectionId: string): Observable<Dish[]> {
+    return this.http.get<Dish[]>(this.url + '/getDishes/' + sectionId,
+      {headers: this.dataService.getAuthHeader()});
   }
 
 

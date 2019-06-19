@@ -34,26 +34,26 @@
   <label>Login or Email:<br>
     <input
       [(ngModel)]="logForm.loginEmail"
-      [ngStyle]="{border: loginEmailInp.invalid && loginEmailInp.dirty ? '2px solid red' : '2px solid green'}"
-      #loginEmailInp='ngModel'
-      required pattern="({{passLoginRegexp.source}})|({{emailRegexp.source}})"
+      [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty ? '2px solid red' : '2px solid green'}"
+      #usernameInp='ngModel'
+      required pattern="({{dataService.passLoginRegExp.source}})|({{dataService.emailRegExp.source}})"
       placeholder="login / email"
       size="25"
       type="text"
-      name="loginEmail"></label><br>
+      name="username"></label><br>
   <label>Password:<br>
     <input
       [(ngModel)]="logForm.password"
       [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
       #passwordInp='ngModel'
-      required pattern="{{passLoginRegexp.source}}"
+      required pattern="{{dataService.passLoginRegExp.source}}"
       placeholder="password"
       size="25"
       type="password"
       name="password"></label><br><br>
   <button
     [disabled]="signInForm.invalid"
-    (click)="login(signInForm)"
+    (click)="login()"
   >SIGN IN
   </button>
 </form>

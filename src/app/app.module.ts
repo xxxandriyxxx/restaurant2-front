@@ -7,10 +7,12 @@ import {SignupModule} from './modules/signup/signup.module';
 import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     MainRoutingModule,
     SignupModule,
-    SigninModule
+    SigninModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],
