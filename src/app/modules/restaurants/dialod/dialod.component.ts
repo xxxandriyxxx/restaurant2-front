@@ -12,24 +12,30 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class DialodComponent implements OnInit {
 
   form: FormGroup;
-  description = 'description ASD';
+  name = '';
+  description = '';
+  price = '';
+
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<DialodComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
+    this.name = data.name;
     this.description = data.description;
+    this.price = data.price;
   }
 
 
   ngOnInit() {
     this.form = this.fb.group({
-        description: [this.description, []]
+        name: [this.name, []],
+        description: [this.description, []],
+        price: [this.price, []]
       }
     );
   }
-
 
   save() {
     this.dialogRef.close(this.form.value);

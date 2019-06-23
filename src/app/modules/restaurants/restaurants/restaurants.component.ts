@@ -12,10 +12,12 @@ import {HtmlAstPath} from '@angular/compiler';
 })
 export class RestaurantsComponent implements OnInit {
 
-  showAddRest = false;
-  newRestaurant: Restaurant = new Restaurant();
-  restaurants: Restaurant[] = [];
 
+  newRestaurant: Restaurant = new Restaurant();
+  // changeRestaurant: Restaurant [] = [];
+  restaurants: Restaurant[] = [];
+  showAddRest = false;
+  showChangeRest: boolean [] = [];
 
   constructor(private mainService: MainService,
               private dataService: DataService,
@@ -23,16 +25,11 @@ export class RestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     const ownerId = localStorage.getItem('_userId');
     this.mainService.getRestaurants(ownerId)
       .subscribe((restaurants) => {
-
           this.restaurants = restaurants;
           console.log(restaurants);
-          // this.router.navigate(['/myRestaurants']);
-          // alert(value.message);
-
         },
         error => {
           console.log(error);
@@ -45,17 +42,48 @@ export class RestaurantsComponent implements OnInit {
     const ownerId = localStorage.getItem('_userId');
     this.mainService.addRestaurant(ownerId, this.newRestaurant)
       .subscribe((value) => {
-
-
           console.log(value);
           // window.location.reload();
           // this.router.navigate(['/myRestaurants']);
           // alert(value.message);
-
+          this.ngOnInit();
+          this.showAddRest = false;
         },
         error => {
           console.log(error);
         });
   }
+
+  changeRestaurant(rest: Restaurant) {
+    console.log(rest);
+    this.mainService.changeRestaurant(rest)
+      .subscribe((value) => {
+          console.log(value);
+          this.showChangeRest[rest.id] = false;
+          this.ngOnInit();
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  deleteRestaurant(id: number) {
+    this.mainService.deleteRestaurant(id)
+      .subscribe((value) => {
+          console.log(value);
+          this.ngOnInit();
+          // this.showChangeRest[rest.id] = false;
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+
+
+
+
+
+
 
 }

@@ -4,9 +4,142 @@ table, th, td {
 }
 
 table {
-  width:100%
+  width: 100%
 }
 
 th, td {
   padding: 15px;
 }
+
+.containerLeft {
+  float: left;
+  background: cadetblue;
+
+  width: 100%;
+}
+
+.containerRight {
+  float: left;
+  background: dimgray;
+  height: 500px;
+  width: 20%;
+}
+
+.box {
+  width: 1000px;
+  background: yellow;
+  color: white;
+  border: 5px solid red;
+  text-align: center;
+}
+
+.box-s {
+  box-sizing: border-box
+}
+
+.clearfix {
+  clear: both
+}
+
+/*-----------------------bloks*/
+.header,
+.footer {
+  height: 250px
+}
+
+.menu {
+  height: 150px
+}
+
+.left,
+.center,
+.right {
+  height: 400px
+}
+
+/*-------------------------height*/
+.h-80 {
+  height: 80%
+}
+
+.h-60 {
+  height: 60%
+}
+
+.h-50 {
+  height: 50%
+}
+
+.h-40 {
+  height: 40%
+}
+
+.h-20 {
+  height: 20%
+}
+
+/*-------------------------width*/
+.w-80 {
+  width: 80%
+}
+
+.w-50 {
+  width: 50%
+}
+
+.w-33 {
+  width: 33.3%
+}
+
+.w-25 {
+  width: 25%
+}
+
+/*-------------------------margin*/
+.m-0-auto {
+  margin: 0 auto;
+}
+
+.m-top-10 {
+  margin-top: 10%
+}
+
+.m-top-15 {
+  margin-top: 15%
+}
+
+.m-top-20 {
+  margin-top: 20%
+}
+
+.m-top-30 {
+  margin-top: 30%
+}
+
+.m-top-42 {
+  margin-top: 42%
+}
+
+.m-top-80 {
+  margin-top: 80%
+}
+
+/*-------------------------padding*/
+.pdg-3 {
+  padding: 3%
+}
+
+.pdg-10 {
+  padding: 10%
+}
+
+/*-------------------------float*/
+.float-l {
+  float: left
+}
+
+.float-r {
+  float: right
+}
+
+

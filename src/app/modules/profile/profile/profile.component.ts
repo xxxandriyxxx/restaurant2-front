@@ -41,17 +41,16 @@ export class ProfileComponent implements OnInit {
     const id = localStorage.getItem('_userId');
     this.mainService.updateProfile(id, this.basicData)
       .subscribe((value) => {
-
-
           console.log(value);
-          this.router.navigate(['/owner']);
+          // this.router.navigate(['/owner']);
           // alert(value.message);
-
+          this.showChange = false;
+          this.basicData.password = null;
+          this.ngOnInit();
         },
         error => {
           console.log(error);
         });
-
   }
 
 
