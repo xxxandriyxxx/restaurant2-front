@@ -8,6 +8,7 @@ import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {RestaurantsModule} from './modules/restaurants/restaurants.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainRoutingModule,
     SignupModule,
     SigninModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RestaurantsModule
 
   ],
   providers: [],

@@ -1,0 +1,156 @@
+<p>
+  restaurants works!
+</p>
+
+
+<div *ngIf="showAddRest;else otherD">
+
+  <form #addRestForm='ngForm'>
+    <label>Name:<br>
+      <input
+        [(ngModel)]="newRestaurant.name"
+        [ngStyle]="{border: restNameInp.invalid && restNameInp.dirty ? '2px solid red' : '2px solid green'}"
+        #restNameInp='ngModel'
+        required maxlength="50"
+        placeholder="restaurant's name"
+        size="50"
+        type="text"
+        name="restName"
+      ></label><br>
+    <label>Address:<br>
+      <input
+        [(ngModel)]="newRestaurant.address"
+        [ngStyle]="{border: restAddressInp.invalid && restAddressInp.dirty ? '2px solid red' : '2px solid green'}"
+        #restAddressInp='ngModel'
+        required maxlength="50"
+        placeholder="restaurant's address"
+        size="50"
+        type="text"
+        name="restAddress"
+        autocomplete="off"
+      ></label><br>
+    <label>Phone number:<br>
+      <input
+        [(ngModel)]="newRestaurant.phoneNumber"
+        [ngStyle]="{border: restPhoneInp.invalid && restPhoneInp.dirty? '2px solid red' : '2px solid green'}"
+        #restPhoneInp='ngModel'
+        required pattern="{{dataService.phoneRegExp.source}}"
+        placeholder="restaurant's phone number (pattern : +38(044)555-55-55)"
+        size="50"
+        type="text"
+        name="restPhone"
+        autocomplete="off"
+      ></label><br>
+    <label>About:<br>
+      <textarea
+        [(ngModel)]="newRestaurant.about"
+        [ngStyle]="{border: restAboutInp.invalid && restAboutInp.dirty? '2px solid red' : '2px solid green'}"
+        #restAboutInp='ngModel'
+        required maxlength="250"
+        cols="51"
+        rows="5"
+        placeholder="description of your restaurant"
+        type="text"
+        name="restAbout"
+      ></textarea>
+    </label><br><br>
+    <button (click)="showAddRest=false">Cancel</button>
+    <button
+      [disabled]="addRestForm.invalid"
+      (click)="addRestaurant()"
+    >Add
+    </button>
+  </form>
+
+</div>
+
+<ng-template #otherD>
+
+  <button (click)="showAddRest = true">Add restaurant</button>
+
+  <div class="container">
+    <div class="box header">
+      <div class="cell w25">Name</div>
+      <div class="cell w30">About</div>
+      <div class="cell">Address</div>
+      <div class="cell w15">Phone number</div>
+      <div class="cell w12">Actions</div>
+    </div>
+    <div class="box" *ngFor="let rest of restaurants">
+
+      <div *ngIf="!showChangeRest[rest.id]" class="cell"><a [routerLink]="rest.id">{{rest.name}}</a></div>
+      <div *ngIf="!showChangeRest[rest.id]" class="cell">{{rest.about}}</div>
+      <div *ngIf="!showChangeRest[rest.id]" class="cell">{{rest.address}}</div>
+      <div *ngIf="!showChangeRest[rest.id]" class="cell">{{rest.phoneNumber}}</div>
+      <div *ngIf="!showChangeRest[rest.id]">
+        <button (click)="showChangeRest[rest.id] = true">Change</button>
+        <button (click)="deleteRestaurant(rest.id)">Delete</button>
+      </div>
+
+      <!---------------change restaurant------------------------------------------------------------------>
+      <div *ngIf="showChangeRest[rest.id]" class="cell">
+        <textarea
+          [(ngModel)]="rest.name"
+          [ngStyle]="{border: rNewNameInp.invalid && rNewNameInp.dirty ? '2px solid red' : '2px solid green'}"
+          #rNewNameInp='ngModel'
+          required maxlength="50"
+          cols="26"
+          rows="2"
+          placeholder="restaurant's name"
+          type="text"
+          name="restName"
+        ></textarea>
+      </div>
+      <div *ngIf="showChangeRest[rest.id]" class="cell">
+        <textarea
+          [(ngModel)]="rest.about"
+          [ngStyle]="{border: rNewAboutInp.invalid && rNewAboutInp.dirty? '2px solid red' : '2px solid green'}"
+          #rNewAboutInp='ngModel'
+          required maxlength="250"
+          cols="51"
+          rows="5"
+          placeholder="description of your restaurant"
+          type="text"
+          name="restAbout"
+        ></textarea>
+      </div>
+      <div *ngIf="showChangeRest[rest.id]" class="cell">
+        <textarea
+          [(ngModel)]="rest.address"
+          [ngStyle]="{border: rNewAddressInp.invalid && rNewAddressInp.dirty ? '2px solid red' : '2px solid green'}"
+          #rNewAddressInp='ngModel'
+          required maxlength="50"
+          cols="26"
+          rows="2"
+          placeholder="restaurant's address"
+          type="text"
+          name="restAddress"
+          autocomplete="off"
+        ></textarea>
+      </div>
+      <div *ngIf="showChangeRest[rest.id]" class="cell">
+        <input
+          [(ngModel)]="rest.phoneNumber"
+          [ngStyle]="{border: rNewPhoneInp.invalid && rNewPhoneInp.dirty? '2px solid red' : '2px solid green'}"
+          #rNewPhoneInp='ngModel'
+          required pattern="{{dataService.phoneRegExp.source}}"
+          placeholder="restaurant's phone number (pattern : +38(044)555-55-55)"
+          size="20"
+          type="text"
+          name="restPhone"
+          autocomplete="off"
+        >
+      </div>
+      <div *ngIf="showChangeRest[rest.id]">
+        <button (click)="showChangeRest[rest.id] = false">Cancel</button>
+        <button
+          (click)="changeRestaurant(rest)">Apply
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</ng-template>

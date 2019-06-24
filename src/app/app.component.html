@@ -8,7 +8,7 @@
   <div>
     <button *ngIf="userClass =='Client'" (click)="goToClientAccount()">{{accountName}}</button>
     <button *ngIf="userClass =='Owner'" (click)="goToOwnerAccount()">{{accountName}}</button>
-    <button *ngIf="userClass =='AdminInMemory'" (click)="goToAdminAccount()">{{accountName}}</button>
+    <button *ngIf="userClass =='AdminInMemory page'" (click)="goToAdminAccount()">{{accountName}}</button>
   </div>
 </div>
 
@@ -17,15 +17,17 @@
     <button routerLink="/sign-up">Sign up</button>
     <button routerLink="/sign-in">Sign in</button>
   </div>
+
+  <div id = "signInMessage"> Please <a routerLink="/sign-in">sigh in</a> to be able to make an order</div>
+
+
 </ng-template>
 
-<ul>
-  <li>
-    <a routerLink="/restaurant">Restaurant page</a>
-  </li>
-</ul>
-
 <hr>
-<router-outlet></router-outlet>
+
+<router-outlet>
+
+
+</router-outlet>
 
 

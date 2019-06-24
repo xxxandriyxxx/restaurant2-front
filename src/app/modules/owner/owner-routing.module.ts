@@ -7,16 +7,16 @@ import {OwnerPageComponent} from './owner-page/owner-page.component';
 import {OrdersModule} from '../orders/orders.module';
 import {OrdersComponent} from '../orders/orders/orders.component';
 import {ProfileComponent} from '../profile/profile/profile.component';
-import {RestaurantsComponent} from '../restaurants/restaurants/restaurants.component';
-import {SingleRestaurantComponent} from '../restaurants/single-restaurant/single-restaurant.component';
+import {MyRestaurantsComponent} from '../my-restaurants/my-restaurants/my-restaurants.component';
+import {MySingleRestaurantComponent} from '../my-restaurants/my-single-restaurant/my-single-restaurant.component';
 
 const routes: Routes = [
   {
     path: '', component: OwnerPageComponent, children:
       [
         {path: 'myProfile', component: ProfileComponent},
-        {path: 'myRestaurants', component: RestaurantsComponent},
-        {path: 'myRestaurants/:id', component: SingleRestaurantComponent},
+        {path: 'myRestaurants', component: MyRestaurantsComponent},
+        {path: 'myRestaurants/:id', component: MySingleRestaurantComponent},
         {path: 'orders', component: OrdersComponent}
 
       ]

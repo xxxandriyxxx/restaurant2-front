@@ -5,7 +5,7 @@ import {OwnerRoutingModule} from './owner-routing.module';
 import {OwnerPageComponent} from './owner-page/owner-page.component';
 import {OrdersModule} from '../orders/orders.module';
 import {ProfileModule} from '../profile/profile.module';
-import {RestaurantsModule} from '../restaurants/restaurants.module';
+import {MyRestaurantsModule} from '../my-restaurants/my-restaurants.module';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import {RestaurantsModule} from '../restaurants/restaurants.module';
     CommonModule,
     OwnerRoutingModule,
     ProfileModule,
-    RestaurantsModule,
+    MyRestaurantsModule,
     OrdersModule
   ]
 })

@@ -2,196 +2,27 @@
   single-restaurant works!
 </p>
 
-<button (click)="openDialog()">Open dialog</button>
-<div *ngIf="showAddSection">
+<div>
+  {{count}}
+</div>
 
-  <form #addSectionForm='ngForm'>
-    <label>Name:<br>
-      <input
-        [(ngModel)]="newMenuSection.name"
-        [ngStyle]="{border: sectNameInp.invalid && sectNameInp.dirty ? '2px solid red' : '2px solid green'}"
-        #sectNameInp='ngModel'
-        required maxlength="50"
-        placeholder="menu section's name"
-        size="50"
-        type="text"
-        name="sectName"
-      ></label>
-
-    <button
-      [disabled]="addSectionForm.invalid"
-      (click)="addMenuSection()"
-    >Add
-    </button>
-    <button (click)="showAddSection=false">Cancel</button>
-  </form>
+<div class="grid">
+  <div class="header">
+    <div>Name</div>
+    <div>Description</div>
+    <div>Price</div>
+  </div>
+</div>
+<div class="grid" *ngFor="let sect of menuSections">
+  <div class="section">{{sect.name}}</div>
+  <div class="subgrid" *ngFor="let dish of sect.dishes">
+    <div>{{dish.name}}</div>
+    <div>
+      <button [disabled]="!showBuy" (click)="count=count+1">buy</button>
+    </div>
+    <div>{{dish.description}}</div>
+    <div>{{dish.price}}</div>
+  </div>
 
 </div>
 
-<!--<ng-template #otherD>-->
-
-<button (click)="showAddSection = true">Add menu section</button>
-<br><br>
-
-<div class="containerLeft">
-  <h1>Menu of restaurant</h1>
-  <table class="table">
-    <thead>
-    <tr style="background: chocolate">
-      <th scope="col" width="30%">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col" width="10%">Price</th>
-      <th scope="col" width="20%">Actions</th>
-    </tr>
-    </thead>
-
-  </table>
-  <table *ngFor="let sect of menuSections">
-    <thead>
-    <!-------------------------------------- menu section ------------------------------------------------------->
-    <tr *ngIf="!showChangeSect[sect.id]; else changeSect"
-        style="background: rosybrown">
-      <th colspan="3">Menu section : {{sect.name}}</th>
-      <th width="20%">
-        <button (click)="showChangeSect[sect.id] = true">Change</button>
-        <button (click)="deleteMenuSection(sect.id)">Delete</button>
-        <button (click)="showAddDish[sect.id] = true">Add dish</button>
-      </th>
-    </tr>
-    <!------------ change section ---------->
-    <ng-template #changeSect>
-      <tr *ngIf="showChangeSect[sect.id]"
-          style="background: rosybrown">
-        <th colspan="3">
-          <input
-            [(ngModel)]="newSectName"
-            [ngStyle]="{border: sectNewNameInp.invalid && sectNewNameInp.dirty ? '2px solid red' : '2px solid green'}"
-            #sectNewNameInp='ngModel'
-            required maxlength="50"
-            placeholder="{{sect.name}}"
-            size="50"
-            type="text"
-            name="sectNewName">
-        </th>
-        <th width="20%">
-          <button (click)="showChangeSect[sect.id] = false">Cancel</button>
-          <button [disabled]="sectNewNameInp.invalid"
-                  (click)="changeMenuSection(sect)"
-          >Change
-          </button>
-        </th>
-      </tr>
-    </ng-template>
-    <!------------- new dish ------------------>
-    <tr *ngIf="showAddDish[sect.id]"
-        style="background: rosybrown">
-      <th width="30%">
-        <input
-          [(ngModel)]="newDish.name"
-          [ngStyle]="{border: dNameInp.invalid && dNameInp.dirty ? '2px solid red' : '2px solid green'}"
-          #dNameInp='ngModel'
-          required maxlength="50"
-          size="50"
-          placeholder="new dish's name"
-          type="text"
-          name="sectName">
-      </th>
-      <th>
-          <textarea
-            [(ngModel)]="newDish.description"
-            [ngStyle]="{border: dDescInp.invalid && dDescInp.dirty? '2px solid red' : '2px solid green'}"
-            #dDescInp='ngModel'
-            required maxlength="280"
-            cols="71"
-            rows="4"
-            placeholder="new dish's description"
-            type="text"
-            name="dDesc"
-          ></textarea>
-      </th>
-      <th width="10%">
-        <input [(ngModel)]="newDish.price"
-               [ngStyle]="{border: dPriceInp.invalid && dPriceInp.dirty ? '2px solid red' : '2px solid green'}"
-               #dPriceInp='ngModel'
-               required pattern="{{dataService.priceRegExp.source}}"
-               size="10"
-               placeholder="new dish's price"
-               type="text"
-               name="sectName">
-      </th>
-      <th width="20%">
-        <button (click)="showAddDish[sect.id] = false">Cancel</button>
-        <button
-          [disabled]="dNameInp.invalid || dDescInp.invalid || dPriceInp.invalid"
-          (click)="addDish(sect.id)">Add dish
-        </button>
-      </th>
-    </tr>
-    </thead>
-    <!-------------------------------------- dishes ------------------------------------------------------->
-    <tbody *ngFor="let dish of sect.dishes">
-
-    <tr *ngIf="!showChangeDish[dish.id]">
-      <td width="30%">{{dish.name}}</td>
-      <td>{{dish.description}}</td>
-      <td width="10%">{{dish.price}}</td>
-      <td width="20">
-        <button (click)="showChangeDish[dish.id] = true">Change</button>
-        <button (click)="deleteDish(dish.id)">Delete</button>
-      </td>
-    </tr>
-
-
-    <!------------- change dish ------------->
-    <tr *ngIf="showChangeDish[dish.id]">
-      <th width="30%">
-        <input
-          [(ngModel)]="newDish.name"
-          [ngStyle]="{border: dNewNameInp.invalid && dNewNameInp.dirty ? '2px solid red' : '2px solid green'}"
-          #dNewNameInp='ngModel'
-          required maxlength="50"
-          size="50"
-          placeholder="{{dish.name}}"
-          type="text"
-          name="sectName">
-      </th>
-      <th>
-          <textarea
-            [(ngModel)]="newDish.description"
-            [ngStyle]="{border: dNewDescInp.invalid && dNewDescInp.dirty? '2px solid red' : '2px solid green'}"
-            #dNewDescInp='ngModel'
-            required maxlength="280"
-            cols="71"
-            rows="4"
-            placeholder="{{dish.description}}"
-            type="text"
-            name="dDesc"
-          ></textarea>
-      </th>
-      <th width="10%">
-        <input [(ngModel)]="newDish.price"
-               [ngStyle]="{border: dNewPriceInp.invalid && dNewPriceInp.dirty ? '2px solid red' : '2px solid green'}"
-               #dNewPriceInp='ngModel'
-               required pattern="{{dataService.priceRegExp.source}}"
-               size="10"
-               placeholder="{{dish.price}}"
-               type="text"
-               name="sectName">
-      </th>
-      <th *ngIf="showChangeDish[dish.id]" width="20%">
-        <button (click)="showChangeDish[dish.id] = false">Cancel</button>
-        <button
-          [disabled]="dNewNameInp.invalid || dNewDescInp.invalid || dNewPriceInp.invalid"
-          (click)="changeDish(dish)"
-        >Change
-        </button>
-      </th>
-    </tr>
-
-
-    </tbody>
-  </table>
-</div>
-
-
-<!--</ng-template>-->

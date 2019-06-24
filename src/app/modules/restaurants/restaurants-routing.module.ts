@@ -1,29 +1,17 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule, Routes} from '@angular/router';
-import {OwnerPageComponent} from '../owner/owner-page/owner-page.component';
-import {SingleRestaurantComponent} from './single-restaurant/single-restaurant.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
 import {RestaurantsComponent} from './restaurants/restaurants.component';
-
-
+import {SingleRestaurantComponent} from './single-restaurant/single-restaurant.component';
+import {CommonModule} from '@angular/common';
 
 const routes: Routes = [
-  {
-    path: '', component: RestaurantsComponent, children:
-      [
-        {path: ':id', component: SingleRestaurantComponent},
-      ]
-  },
-
 ];
 
-
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RestaurantsRoutingModule {
-}
+export class RestaurantsRoutingModule { }
