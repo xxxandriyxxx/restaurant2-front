@@ -4,11 +4,12 @@ import {CommonModule} from '@angular/common';
 import {OwnerPageComponent} from './owner-page/owner-page.component';
 
 
-import {OrdersModule} from '../orders/orders.module';
-import {OrdersComponent} from '../orders/orders/orders.component';
+
 import {ProfileComponent} from '../profile/profile/profile.component';
 import {MyRestaurantsComponent} from '../my-restaurants/my-restaurants/my-restaurants.component';
 import {MySingleRestaurantComponent} from '../my-restaurants/my-single-restaurant/my-single-restaurant.component';
+import {MyOrdersComponent} from '../orders/my-orders/my-orders.component';
+import {RestaurantsOrdersComponent} from '../orders/restaurants-orders/restaurants-orders.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,9 @@ const routes: Routes = [
         {path: 'myProfile', component: ProfileComponent},
         {path: 'myRestaurants', component: MyRestaurantsComponent},
         {path: 'myRestaurants/:id', component: MySingleRestaurantComponent},
-        {path: 'orders', component: OrdersComponent}
+        {path: 'restaurantsOrders', component: RestaurantsOrdersComponent},
+        {path: 'myOrders', component: MyOrdersComponent}
+
 
       ]
   },

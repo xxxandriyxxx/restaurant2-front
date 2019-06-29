@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-gap: 5px;
+  grid-gap: 2px;
 
 }
 
@@ -10,34 +10,108 @@
   grid-gap: 1px;
   border: black solid 2px;
 }
+
 .subgrid {
   display: grid;
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 4;*/
   grid-template-columns: 1.7fr 0.3fr 3fr 1fr;
   grid-gap: 1px;
   border: black solid 2px;
 }
 
 .header > div {
-  font-size: 1.5vw;
+  /*font-size: 1.5vw;*/
   padding: .5em;
   background: chocolate;
   text-align: center;
 }
 
 .subgrid > div {
-  font-size: 1.5vw;
+  /*font-size: 1.5vw;*/
+  padding: .5em;
+  background: cadetblue;
+  text-align: center;
+  /*vertical-align: middle;*/
+  word-break: break-all;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+}
+
+.section {
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 4;*/
+  padding: .5em;
+  margin-top: 2px;
+  background: teal;
+  text-align: center;
+  border: black solid 2px;
+}
+
+.order {
+  display: grid;
+  /*grid-gap: 1px;*/
+  width: 25%;
+  border: black solid 2px;
+  margin: .5em;
+}
+
+.order > div {
+  padding: .5em;
+  background: cadetblue;
+}
+
+#orderDetails {
+  display: grid;
+  grid-gap: 1px;
+  width: 80%;
+  margin-left: 10%;
+  border: black solid 2px;
+}
+
+#orderDetailsHeader {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 2;*/
+}
+
+#orderDetailsHeader > div {
+  padding: .5em;
+  background: chocolate;
+  text-align: center;
+}
+
+#orderDetailsSubgrid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  grid-gap: 1px;
+}
+
+
+#orderDetailsSubgrid > div {
   padding: .5em;
   background: cadetblue;
   text-align: center;
 }
 
-.section {
-  font-size: 1.5vw;
-  padding: .5em;
-  margin-top: .3em;
-  background: darkgoldenrod;
-  /*text-align: center;*/
-  border: black solid 2px;
+#total {
+  display: grid;
+  grid-template-columns: 5fr 1fr 2fr;
+  grid-gap: 1px;
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 2;*/
 }
+#total > div {
+  padding: .5em;
+  background: cadetblue;
+  text-align: center;
+}
+
+
+
+
+
 
 

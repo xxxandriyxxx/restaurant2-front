@@ -10,6 +10,7 @@ import {DataService} from './data.service';
 import {Restaurant} from '../models/Restaurant';
 import {MenuSection} from '../models/MenuSection';
 import {Dish} from '../models/Dish';
+import {Order} from '../models/Order';
 
 
 @Injectable({
@@ -147,6 +148,31 @@ export class MainService {
     return this.http.delete<TransferMessage>(this.url + '/deleteDish/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
+
+
+  makeOrder(order: Order, userId: string, restaurantId: string): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/makeOrder/' + userId + '/' + restaurantId, order,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  getMyOrders(userId: string): Observable<Order[]> {
+    return this.http.get<Order[]>(this.url + '/getMyOrders/' + userId,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+  getOrdersByOwnerId(id: string): Observable<Order[]> {
+    return this.http.get<Order[]>(this.url + '/getOrdersByOwnerId/' + id,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+
+  changeOrderStatus(order: Order): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/changeOrderStatus', order,
+      {headers: this.dataService.getAuthHeader()});
+  }
+
+
+
 
   // login() {
   //   this.http.post('http://localhost:8080/login',

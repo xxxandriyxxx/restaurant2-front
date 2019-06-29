@@ -2,27 +2,68 @@
   single-restaurant works!
 </p>
 
-<div>
-  {{count}}
-</div>
 
-<div class="grid">
-  <div class="header">
-    <div>Name</div>
-    <div>Description</div>
-    <div>Price</div>
-  </div>
-</div>
-<div class="grid" *ngFor="let sect of menuSections">
-  <div class="section">{{sect.name}}</div>
-  <div class="subgrid" *ngFor="let dish of sect.dishes">
-    <div>{{dish.name}}</div>
-    <div>
-      <button [disabled]="!showBuy" (click)="count=count+1">buy</button>
+<div *ngIf="showMakeOrder;else otherD">
+  <div>New order</div>
+  <div id="orderDetails">
+    <div id="orderDetailsHeader">
+      <div>Name</div>
+      <div>Amount</div>
+      <div>Price</div>
+      <div>Cost</div>
+      <div>Actions</div>
     </div>
-    <div>{{dish.description}}</div>
-    <div>{{dish.price}}</div>
+    <div id="orderDetailsSubgrid" *ngFor="let d of newOrder.dishes">
+      <div>{{d.name}}</div>
+      <div>{{newOrder.amount[newOrder.dishes.indexOf(d)]}}</div>
+      <div>{{d.price}}</div>
+      <div>{{newOrder.amount[newOrder.dishes.indexOf(d)] * d.price | number}}</div>
+      <div>
+        <button (click)="increaseAmount(newOrder.dishes.indexOf(d))">+</button>
+        <button (click)="reduceAmount(newOrder.dishes.indexOf(d))">-</button>
+        <button (click)="deleteDish(newOrder.dishes.indexOf(d))">X</button>
+      </div>
+    </div>
+    <div id="total">
+      <div>Total</div>
+      <div>{{totalCost | number}}</div>
+      <div><button [disabled]="!newOrder.dishes.length" (click)="makeOrder()">Confirm</button></div>
+    </div>
   </div>
 
+  <button (click)="cancel()">Go back to menu</button>
 </div>
 
+<ng-template #otherD>
+
+  <div class="order">
+    <div>New order</div>
+    <div>Amount : {{totalAmount}}</div>
+    <div>Cost : {{totalCost | number}}</div>
+    <div>
+      <button (click)="showMakeOrder = true">Make/edit an order</button>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="header">
+      <div>Name</div>
+      <div>Description</div>
+      <div>Price</div>
+    </div>
+  </div>
+  <div class="grid" *ngFor="let sect of menuSections">
+    <div class="section">{{sect.name}}</div>
+    <div class="subgrid" *ngFor="let dish of sect.dishes">
+      <div>{{dish.name}}</div>
+      <div>
+        <button [disabled]="!showBuy" (click)="addDishToOrder(dish.id)">buy</button>
+      </div>
+      <div>{{dish.description}}</div>
+      <div>{{dish.price}}</div>
+    </div>
+
+  </div>
+
+</ng-template>

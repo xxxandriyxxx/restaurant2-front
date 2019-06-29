@@ -1,5 +1,6 @@
 import {User} from './User';
 import {Restaurant} from './Restaurant';
+import {Order} from './Order';
 
 export class Owner extends User {
 
@@ -9,9 +10,10 @@ export class Owner extends User {
     public password: string = '',
     public email: string = '',
     public avatar: string = '',
-    public restaurants: Restaurant [] = []
+    public restaurants: Restaurant [] = [],
+    public orders: Order [] = []
   ) {
-    super(id, username, password, email, avatar);
+    super(id, username, password, email, avatar, orders);
   }
 
 

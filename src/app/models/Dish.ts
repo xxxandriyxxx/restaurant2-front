@@ -9,6 +9,7 @@ export class Dish {
     public name: string = '',
     public description: string = '',
     public price: number = null,
+    // public amount: number = null,
     public restaurant: Restaurant = null,
     public menuSection: MenuSection = null,
     public orders: Order [] = []
