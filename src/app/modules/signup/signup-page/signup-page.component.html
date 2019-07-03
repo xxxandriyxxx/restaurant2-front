@@ -1,45 +1,48 @@
-<h2>SIG UP</h2>
+<form #signUpForm='ngForm' class="form">
+  <h1>Sign up</h1>
+  <p>Please fill in this form to create an account.</p>
+  <hr>
 
+  <label><b>Type of user:</b></label>
+  <div>
+    <div>
+      <input #clientRadio type="radio" name="type" value="client" checked> client
+    </div>
+    <div>
+      <input #ownerRadio type="radio" name="type" value="owner"> owner
+    </div>
+  </div>
 
-<label>Type of user:<br>
-  <p>
-    <input #clientRadio type="radio" name="type" value="client" checked> client
-    <input #ownerRadio type="radio" name="type" value="owner"> owner
-  </p>
-</label>
-
-
-<form #signUpForm='ngForm'>
-  <label>Login:<br>
-    <input
-      [(ngModel)]="regForm.username"
-      [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty ? '2px solid red' : '2px solid green'}"
-      #usernameInp='ngModel'
-      required pattern="{{dataService.passLoginRegExp.source}}"
-      placeholder="3-20 latin letters/numbers"
-      size="25"
-      type="text"
-      name="username"></label><br>
-  <label>Email:<br>
-    <input
-      [(ngModel)]="regForm.email"
-      [ngStyle]="{border: emailInp.invalid && emailInp.dirty? '2px solid red' : '2px solid green'}"
-      #emailInp='ngModel'
-      required pattern="{{dataService.emailRegExp.source}}"
-      placeholder="email"
-      size="25"
-      type="text"
-      name="email"></label><br>
-  <label>Password:<br>
-    <input
-      [(ngModel)]="regForm.password"
-      [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
-      #passwordInp='ngModel'
-      required pattern="{{dataService.passLoginRegExp.source}}"
-      placeholder="3-20 latin letters/numbers"
-      size="25"
-      type="password"
-      name="password"></label><br><br>
+  <label><b>Login:</b></label>
+  <input
+    [(ngModel)]="regForm.username"
+    [ngStyle]="{border: usernameInp.invalid && usernameInp.dirty ? '2px solid red' : '2px solid green'}"
+    #usernameInp='ngModel'
+    required pattern="{{dataService.passLoginRegExp.source}}"
+    placeholder="3-20 latin letters/numbers"
+    size="25"
+    type="text"
+    name="username">
+  <label><b>Email:</b></label>
+  <input
+    [(ngModel)]="regForm.email"
+    [ngStyle]="{border: emailInp.invalid && emailInp.dirty? '2px solid red' : '2px solid green'}"
+    #emailInp='ngModel'
+    required pattern="{{dataService.emailRegExp.source}}"
+    placeholder="email"
+    size="25"
+    type="text"
+    name="email">
+  <label><b>Password:</b></label>
+  <input
+    [(ngModel)]="regForm.password"
+    [ngStyle]="{border: passwordInp.invalid && passwordInp.dirty? '2px solid red' : '2px solid green'}"
+    #passwordInp='ngModel'
+    required pattern="{{dataService.passLoginRegExp.source}}"
+    placeholder="3-20 latin letters/numbers"
+    size="25"
+    type="password"
+    name="password">
   <button
     [disabled]="signUpForm.invalid"
     (click)="saveUser(clientRadio.checked, ownerRadio.checked)"

@@ -1,14 +1,33 @@
-<h2 xmlns="http://www.w3.org/1999/html">home page</h2>
+<div class="navbar">
+  <a routerLink="/">Home</a>
+  <div *ngIf="logged;else signInUp">
 
-<div>
-  <button routerLink="/">HOME</button>
-</div><br><br><br>
+    <a *ngIf="userClass == 'Owner'" routerLink="myRestaurants">My restaurants</a>
+    <a routerLink="orders/my">My orders</a>
+    <a *ngIf="userClass == 'Owner'" routerLink="orders/clients">Clients' orders</a>
+
+    <a class="right" (click)="logout()">Log out</a>
+    <a *ngIf="(userClass == 'Owner')||(userClass == 'Client')" class="right" routerLink="myAccount">My account</a>
+    <a *ngIf="userClass == 'AdminInMemory'" class="right" routerLink="admin">Admin page</a>
+
+  </div>
+  <ng-template #signInUp>
+    <a class="right" routerLink="/sign-up">Sigh up</a>
+    <a class="right" routerLink="/sign-in">Sigh in</a>
+  </ng-template>
+
+</div>
+
+<div class="main">
+  <p>Some text some text some text some text..</p>
+</div>
+
 
 <div *ngIf="logged;else otherD">
   <div>
     <button *ngIf="userClass =='Client'" (click)="goToClientAccount()">{{accountName}}</button>
     <button *ngIf="userClass =='Owner'" (click)="goToOwnerAccount()">{{accountName}}</button>
-    <button *ngIf="userClass =='AdminInMemory page'" (click)="goToAdminAccount()">{{accountName}}</button>
+    <button *ngIf="userClass =='AdminInMemory'" (click)="goToAdminAccount()">{{accountName}}</button>
   </div>
 </div>
 
@@ -18,16 +37,13 @@
     <button routerLink="/sign-in">Sign in</button>
   </div>
 
-  <div id = "signInMessage"> Please <a routerLink="/sign-in">sigh in</a> to be able to make an order</div>
-
+  <div id="signInMessage"> Please <a routerLink="/sign-in">sigh in</a> to be able to make an order</div>
 
 </ng-template>
 
-<hr>
 
 <router-outlet>
 
 
 </router-outlet>
-
 

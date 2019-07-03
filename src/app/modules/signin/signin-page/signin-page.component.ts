@@ -5,11 +5,15 @@ import {HttpResponse} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/User';
 import {DataService} from '../../../services/data.service';
+import {importExpr} from '@angular/compiler/src/output/output_ast';
+import {Import} from '@angular/core/schematics/utils/typescript/imports';
+
 
 @Component({
   selector: 'app-signin-page',
   templateUrl: './signin-page.component.html',
-  styleUrls: ['./signin-page.component.css']
+  styleUrls: ['./signin-page.component.css',
+    '../../signup/signup-page/signup-page.component.css']
 })
 export class SigninPageComponent implements OnInit {
 

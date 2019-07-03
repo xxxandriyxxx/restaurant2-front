@@ -12,7 +12,7 @@
     <div>Phone number</div>
   </div>
   <div class="subgrid" *ngFor="let rest of restaurants">
-    <div><a [routerLink]="'rest/' + rest.id">{{rest.name}}</a></div>
+    <div><a [routerLink]="'restaurants/' + rest.id">{{rest.name}}</a></div>
     <div>{{rest.about}}</div>
     <div>{{rest.address}}</div>
     <div>{{rest.phoneNumber}}</div>

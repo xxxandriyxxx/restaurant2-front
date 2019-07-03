@@ -8,8 +8,8 @@ import {OwnerPageComponent} from './owner-page/owner-page.component';
 import {ProfileComponent} from '../profile/profile/profile.component';
 import {MyRestaurantsComponent} from '../my-restaurants/my-restaurants/my-restaurants.component';
 import {MySingleRestaurantComponent} from '../my-restaurants/my-single-restaurant/my-single-restaurant.component';
-import {MyOrdersComponent} from '../orders/my-orders/my-orders.component';
-import {RestaurantsOrdersComponent} from '../orders/restaurants-orders/restaurants-orders.component';
+import {MyOrdersComponent} from '../orders1/my-orders/my-orders.component';
+import {RestaurantsOrdersComponent} from '../orders1/restaurants-orders/restaurants-orders.component';
 
 const routes: Routes = [
   {

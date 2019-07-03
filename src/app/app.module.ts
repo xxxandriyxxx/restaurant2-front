@@ -7,8 +7,12 @@ import {SignupModule} from './modules/signup/signup.module';
 import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RestaurantsModule} from './modules/restaurants/restaurants.module';
+import {WINDOW_PROVIDERS} from './navigation/BrowserWindowRef';
+import {ProfileModule} from './modules/profile/profile.module';
+import {AccountModule} from './modules/account/account.module';
+import {MyRestaurantsModule} from './modules/my-restaurants/my-restaurants.module';
 
 
 @NgModule({
@@ -23,10 +27,13 @@ import {RestaurantsModule} from './modules/restaurants/restaurants.module';
     SignupModule,
     SigninModule,
     BrowserAnimationsModule,
-    RestaurantsModule
+    RestaurantsModule,
+    // ProfileModule
+    // MyRestaurantsModule
+
 
   ],
-  providers: [],
+  providers: [WINDOW_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -6,14 +6,15 @@ import {MySingleRestaurantComponent} from './my-single-restaurant/my-single-rest
 import {MyRestaurantsComponent} from './my-restaurants/my-restaurants.component';
 
 
-
 const routes: Routes = [
   {
-    path: '', component: MyRestaurantsComponent, children:
-      [
-        {path: ':id', component: MySingleRestaurantComponent},
-      ]
+    path: '', component: MyRestaurantsComponent
+    // , children:
+    //   [
+    //     {path: ':id', component: MySingleRestaurantComponent},
+    //   ]
   },
+  {path: ':id', component: MySingleRestaurantComponent},
 
 ];
 

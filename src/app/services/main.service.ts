@@ -20,14 +20,14 @@ export class MainService {
 
   url = 'http://localhost:8080';
 
-  const;
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': 'my-auth-token'
-      // 'observe': 'response'
-    })
-  };
+  // const;
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     // 'Authorization': 'my-auth-token'
+  //     // 'observe': 'response'
+  //   })
+  // };
 
 
   constructor(

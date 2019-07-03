@@ -9,17 +9,10 @@ import {DataService} from '../../../services/data.service';
 })
 export class AdminPageComponent implements OnInit {
 
-  constructor(private dataService: DataService,
-              private router: Router) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['/']);
   }
 
 

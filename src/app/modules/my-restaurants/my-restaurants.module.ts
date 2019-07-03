@@ -9,6 +9,7 @@ import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, Ma
 // import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import {AppComponent} from '../../app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MyRestaurantsRoutingModule} from './my-restaurants-routing.module';
 
 
 @NgModule({
@@ -17,10 +18,12 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [
     CommonModule,
     FormsModule,
-    OwnerRoutingModule,
+    // OwnerRoutingModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+
+    MyRestaurantsRoutingModule
 
     // MatButtonModule,
     // MatFormFieldModule,
