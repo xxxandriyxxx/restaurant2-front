@@ -1,4 +1,412 @@
 
+.grid {
+  display: grid;
+  grid-gap: 5px;
+  margin-bottom: 30px;
+  /*grid-template-rows: minmax(auto,auto);*/
+  /*grid-template-columns: minmax(auto,auto);*/
+
+
+}
+
+
+.subgrid, .header {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr 3fr 2fr 1fr 1fr;
+  grid-gap: 1px;
+  /*border: silver solid 2px;*/
+  grid-template-rows: minmax(auto, auto);
+  /*grid-template-columns: minmax(auto,auto);*/
+
+}
+
+.header > div {
+  /*font-size: 1.5vw;*/
+  padding: .5em;
+  background: rosybrown;
+  color: darkred;
+  font-weight: bold;
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.subgrid > div {
+  /*font-size: 1.5vw;*/
+  padding: .5em;
+  background: silver;
+  /*text-align: center;*/
+  /*vertical-align: middle;*/
+  /*word-wrap: break-word;*/
+  /*overflow-wrap: break-word;*/
+  word-break: break-all;
+  /*height: auto;*/
+  /*white-space: pre-wrap;*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.subgrid > .actions {
+  flex-direction: column;
+}
+
+.actions > button {
+  height: 40%;
+  width: 80%;
+  /*background: rosybrown;*/
+  /*background-color: #4CAF50;*/
+  /*color: white;*/
+  /*padding: 16px;*/
+  /*font-size: 16px;*/
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+
+}
+
+.actions > .change {
+  background: goldenrod;
+}
+
+.actions > .delete {
+  background: indianred;
+}
+
+
+.actions > button:hover {
+  /*background-color: #3e8e41;*/
+  opacity: 1;
+}
+
+
+.name-btn {
+  height: 100%;
+  width: 100%;
+  background: rosybrown;
+  font-weight: bold;
+  /*background-color: #4CAF50;*/
+  /*color: white;*/
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+
+}
+
+
+.name-btn:hover {
+  /*background-color: #3e8e41;*/
+  border: black solid 2px;
+
+}
+
+/*.subgrid > .name {*/
+/*!*font-size: 1.5vw;*!*/
+/*padding: .5em;*/
+/*background: teal;*/
+/*!*text-align: center;*!*/
+/*!*vertical-align: middle;*!*/
+/*!*word-wrap: break-word;*!*/
+/*!*overflow-wrap: break-word;*!*/
+/*word-break: break-all;*/
+/*!*height: auto;*!*/
+/*!*white-space: pre-wrap;*!*/
+
+/*display: flex;*/
+/*align-items: center;*/
+/*justify-content: center;*/
+/*text-align: center;*/
+/*}*/
+
+.subgrid > .logo-wrap, .subgrid > .name {
+  border: silver solid 1px;
+
+  padding: 0;
+}
+
+
+.subgrid > .about {
+
+  text-align: left;
+
+}
+
+/*#signInMessage {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 20px;
+  width: 50%;
+  border: black solid 2px;
+  background: indianred;
+  padding: .5em;
+  text-align: center;
+
+}*/
+
+.logo {
+  /*min-width: 100px;*/
+  min-height: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.logo2 {
+  /*min-width: 100px;*/
+  min-height: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border: 1px solid black;
+}
+
+
+#add-rest-btn {
+
+  height: 50px;
+  width: 200px;
+  background-color: #4CAF50;
+  /*color: white;*/
+  padding: 14px 20px;
+  margin: 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  font-weight: bold;
+
+
+}
+
+
+#add-rest-btn:hover {
+  opacity: 1;
+  /*background-color: #3e8e41;*/
+
+
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  /*left: 0;*/
+  /*right: 0;*/
+  top: 0;
+  height: 100%;
+  width: 100%; /* Full width */
+  /*height: 100%; !* Full height *!*/
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 50px auto 10px auto; /* 15% from the top and centered */
+  /*padding: 10px auto;*/
+  /*padding: 10px;*/
+
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.closeAddChangeRest {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.closeAddChangeRest:hover,
+.closeAddChangeRest:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box
+}
+
+
+.gridAddChangeRest {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(auto, auto);
+  /*grid-template-columns: minmax(auto,auto);*/
+}
+
+
+.headerAddChangeRest {
+  padding: 16px;
+  margin: 5px 20px 0 20px;
+
+}
+
+.form {
+  padding: 16px;
+  margin: 5px 20px;
+
+}
+
+
+/* Full-width input fields */
+.form > input, .form > div, .form > textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form > div {
+  display: flex;
+  /*align-items: center;*/
+  justify-content: space-around;
+  /*text-align: center;*/
+}
+
+.form > input:focus, .form > textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/*.form input [type=radio] {*/
+/*background-color: #eee;*/
+/*border-radius: 50%;*/
+/*font-size: 50px;*/
+/*}*/
+
+/*input [type=radio]:checked {*/
+/*background-color: #2196F3;*/
+/*display: block;*/
+/*}*/
+
+hr {
+  border: 1px solid #f1f1f1;
+}
+
+
+/* Set a style for all buttons */
+.form > button {
+  background-color: #4CAF50;
+  /*color: white;*/
+  padding: 14px 20px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+.changeLogo {
+  /*border: 2px solid black;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+
+}
+
+
+.changeLogo > button {
+  background-color: #aaaaaa;
+  /*color: white;*/
+  padding: 14px 20px;
+  margin: 10px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+
+}
+
+.changeLogo > button:hover {
+  opacity: 1;
+}
+
+
+.modal-content > button {
+  background-color: #4CAF50;
+  width: 40%;
+  padding: 14px 20px;
+  margin: 10px 30% 10px 30%;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+
+}
+
+.modal-content > #cancel-btn {
+  background-color: indianred;
+}
+
+.modal-content > #change-btn {
+  background-color: goldenrod;
+}
+
+
+.modal-content > button:hover {
+  opacity: 1;
+}
+
+/*!* Extra styles for the cancel button *!*/
+/*.cancelbtn {*/
+/*padding: 14px 20px;*/
+/*background-color: #f44336;*/
+/*}*/
+
+/*!* Float cancel and signup buttons and add an equal width *!*/
+/*.cancelbtn, .signupbtn {*/
+/*float: left;*/
+/*width: 50%;*/
+/*}*/
+
+/* Add padding to container elements */
+
+
+/*input[type=radio] {*/
+/*!*width: 100%;*!*/
+/*!*padding: 15px;*!*/
+/*!*margin: 5px 0 22px 0;*!*/
+/*!*display: inline-block;*!*/
+/*!*border: none;*!*/
+/*background: dimgray;*/
+/*}*/
+
+/* Clear floats */
+/*.clearfix::after {*/
+/*content: "";*/
+/*clear: both;*/
+/*display: table;*/
+/*}*/
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+
+
 .container {
   display: table;
   height: auto;
@@ -40,7 +448,7 @@
 
 }
 
-.boxChange{
+.boxChange {
   text-align: center;
   vertical-align: middle;
 }

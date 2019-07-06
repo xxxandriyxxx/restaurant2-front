@@ -1,3 +1,5 @@
-.form > #cancel {
+/*used styles from signup-page.component*/
+
+.form > #cancel-btn {
   background-color: indianred;
 }

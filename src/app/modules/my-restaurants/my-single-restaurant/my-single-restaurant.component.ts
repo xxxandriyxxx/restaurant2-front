@@ -4,8 +4,8 @@ import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Dish} from '../../../models/Dish';
-import {MatDialog, MatDialogConfig} from '@angular/material';
-import {DialodComponent} from '../dialod/dialod.component';
+// import {MatDialog, MatDialogConfig} from '@angular/material';
+// import {DialodComponent} from '../dialod/dialod.component';
 import {Restaurant} from '../../../models/Restaurant';
 
 @Component({
@@ -31,8 +31,7 @@ export class MySingleRestaurantComponent implements OnInit {
   constructor(private mainService: MainService,
               private dataService: DataService,
               private activatedRoute: ActivatedRoute,
-              private router: Router,
-              private dialog: MatDialog) {
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -153,22 +152,5 @@ export class MySingleRestaurantComponent implements OnInit {
         });
   }
 
-
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      id: 1,
-      title: 'Angular for beginners'
-    };
-    // this.dialog.open(DialodComponent, dialogConfig)
-    const dialogRef = this.dialog.open(DialodComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(
-      (data: Dish) => {
-        this.newDish = data;
-        console.log(this.newDish);
-      });
-  }
 
 }

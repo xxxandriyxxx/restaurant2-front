@@ -2,6 +2,73 @@
   single-restaurant works!
 </p>
 
+
+
+
+<div class="grid">
+  <div class="header">
+    <div>Name</div>
+    <div>Description</div>
+    <div>Price</div>
+    <div>Actions</div>
+  </div>
+</div>
+<div class="grid" *ngFor="let sect of menuSections">
+  <div class="section">
+    <div class="sect-name">  {{sect.name}}  </div>
+    <div class="actions">
+      <button class="change-btn">Change</button>
+      <button class="delete-btn">Delete</button>
+      <button class="add-btn">Add dish</button>
+    </div>
+
+  </div>
+  <div class="subgrid" *ngFor="let dish of sect.dishes">
+    <div>{{dish.name}}</div>
+    <div>{{dish.description}}</div>
+    <div>{{dish.price}}</div>
+    <div class="actions">
+      <button class="change-btn">Change</button>
+      <button class="delete-btn">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <button (click)="openDialog()">Open dialog</button>
 <div *ngIf="showAddSection">
 

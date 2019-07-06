@@ -1,5 +1,5 @@
 <div *ngIf="!showChange;else otherDD" class="form">
-  <h1>Your account data</h1>
+  <h2>Your account data</h2>
 
   <hr>
 
@@ -13,7 +13,7 @@
 <ng-template #otherDD>
 
   <form #newDataForm='ngForm' class="form">
-    <h1>Change account data</h1>
+    <h2>Change account data</h2>
     <p>Please enter new account data.<br>
     If you change the email it will require a confirmation.</p>
     <hr>
@@ -55,7 +55,7 @@
       (click)="updateProfile()"
     >Apply
     </button>
-    <button (click)="showChange=false" id="cancel">Cancel</button>
+    <button (click)="showChange=false" id="cancel-btn">Cancel</button>
 
   </form>
 

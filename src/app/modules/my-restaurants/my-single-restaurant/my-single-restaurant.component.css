@@ -1,3 +1,157 @@
+.grid {
+  display: grid;
+  grid-gap: 2px;
+}
+
+.header, .subgrid {
+  display: grid;
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 4;*/
+  grid-template-columns: 2fr 3fr 1fr 1.5fr;
+  grid-gap: 1px;
+  /*border: black solid 2px;*/
+}
+
+.header > div, .subgrid > div {
+  /*font-size: 1.5vw;*/
+  padding: .5em;
+  background: silver;
+  /*vertical-align: middle;*/
+  word-break: break-all;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.header > div {
+  background: rosybrown;
+  color: darkred;
+  font-weight: bold;
+}
+
+.section {
+  display: grid;
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 4;*/
+  grid-template-columns: 2fr 3fr 1fr 1.5fr;
+  grid-gap: 1px;
+  /*border: black solid 2px;*/
+
+}
+
+.section > div {
+  /*Grid-column-start: 1;*/
+  /*Grid-column-end: 4;*/
+  padding: .5em;
+  margin-top: 2px;
+  background: rosybrown;
+  /*border: black solid 2px;*/
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.section > .sect-name {
+  Grid-column-start: 1;
+  Grid-column-end: 4;
+}
+
+/*.actions{*/
+  /*flex-direction: row;*/
+  /*align-items: flex-start;*/
+  /*justify-content: left;*/
+  /*text-align: left;*/
+/*}*/
+
+.actions > button {
+  height: 30px;
+  width: 70px;
+  /*background: rosybrown;*/
+  /*background-color: #4CAF50;*/
+  /*color: white;*/
+  /*padding: 16px;*/
+  /*font-size: 16px;*/
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+
+}
+
+.actions > button:hover {
+  opacity: 1;
+}
+
+
+
+
+
+.add-btn{
+  background-color: #4CAF50;
+}
+
+.change-btn{
+  background-color: goldenrod;
+}
+
+.delete-btn{
+  background-color: indianred;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -42,7 +196,6 @@ th, td {
 }
 
 /*-----------------------bloks*/
-.header,
 .footer {
   height: 250px
 }

@@ -4,7 +4,7 @@ import {MySingleRestaurantComponent} from './my-single-restaurant/my-single-rest
 import {MyRestaurantsComponent} from './my-restaurants/my-restaurants.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OwnerRoutingModule} from '../owner/owner-routing.module';
-import {DialodComponent} from './dialod/dialod.component';
+// import {DialodComponent} from './dialod/dialod.component';
 import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatRippleModule} from '@angular/material';
 // import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import {AppComponent} from '../../app.component';
@@ -13,35 +13,16 @@ import {MyRestaurantsRoutingModule} from './my-restaurants-routing.module';
 
 
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [MySingleRestaurantComponent, MyRestaurantsComponent, DialodComponent],
+  declarations: [MySingleRestaurantComponent, MyRestaurantsComponent],
   imports: [
     CommonModule,
     FormsModule,
-    // OwnerRoutingModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-
     MyRestaurantsRoutingModule
-
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule,
   ],
   exports: [
     MyRestaurantsComponent,
     MySingleRestaurantComponent,
-    DialodComponent,
-
-    // MatButtonModule,
-    // MatFormFieldModule,
-    // MatInputModule,
-    // MatRippleModule,
-  ],
-
-  entryComponents: [DialodComponent]
+  ]
 })
 export class MyRestaurantsModule {
 }
