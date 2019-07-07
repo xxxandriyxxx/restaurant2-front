@@ -216,7 +216,7 @@
   background-color: #fefefe;
   margin: 50px auto 10px auto; /* 15% from the top and centered */
   /*padding: 10px auto;*/
-  /*padding: 10px;*/
+  padding-bottom: 20px;
 
   border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
@@ -355,6 +355,10 @@ hr {
 
 }
 
+.modal-content > button:hover {
+  opacity: 1;
+}
+
 .modal-content > #cancel-btn {
   background-color: indianred;
 }
@@ -364,9 +368,7 @@ hr {
 }
 
 
-.modal-content > button:hover {
-  opacity: 1;
-}
+
 
 /*!* Extra styles for the cancel button *!*/
 /*.cancelbtn {*/

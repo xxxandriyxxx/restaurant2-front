@@ -3,7 +3,7 @@
 </p>
 
 <div>
-  <button id="add-rest-btn" (click)="showAddRest()">Add restaurant</button>
+  <button id="add-rest-btn" (click)="showAddRestaurant()">Add restaurant</button>
 
 </div>
 
@@ -26,7 +26,7 @@
     <div>{{rest.address}}</div>
     <div>{{rest.phoneNumber}}</div>
     <div class="actions">
-      <button class="change" (click)="showChangeRest(rest)">Change</button>
+      <button class="change" (click)="showChangeRestaurant(rest)">Change</button>
       <button class="delete" (click)="deleteRestaurant(rest.id)">Delete</button>
     </div>
   </div>
@@ -49,21 +49,21 @@
 
       <div>
         <form #addRestForm='ngForm' class="form">
-
-
           <label><b>Name:</b></label>
           <input
-            [(ngModel)]="newRestaurant.name"
+            [(ngModel)]="showAddRest ? newRestaurant.name : restaurantForChange.name"
+            (ngModelChange)="showAddRest ? newRestaurant.name=$event: restaurantForChange.name=$event"
             [ngStyle]="{border: restNameInp.invalid && restNameInp.dirty ? '2px solid red' : '2px solid green'}"
             #restNameInp='ngModel'
             required maxlength="50"
             placeholder="restaurant's name"
             size="50"
             type="text"
-            name="restName">
+            name="restName"
+            autocomplete="off">
           <label><b>Address:</b></label>
           <input
-            [(ngModel)]="newRestaurant.address"
+            [(ngModel)]="showAddRest && newRestaurant.address || restaurantForChange.address"
             [ngStyle]="{border: restAddressInp.invalid && restAddressInp.dirty ? '2px solid red' : '2px solid green'}"
             #restAddressInp='ngModel'
             required maxlength="50"
@@ -74,7 +74,7 @@
             autocomplete="off">
           <label><b>Phone number:</b></label>
           <input
-            [(ngModel)]="newRestaurant.phoneNumber"
+            [(ngModel)]="newRestaurant.phoneNumber || showChangeRest && restaurantForChange.phoneNumber"
             [ngStyle]="{border: restPhoneInp.invalid && restPhoneInp.dirty? '2px solid red' : '2px solid green'}"
             #restPhoneInp='ngModel'
             required pattern="{{dataService.phoneRegExp.source}}"
@@ -85,18 +85,16 @@
             autocomplete="off">
           <label><b>About:</b></label>
           <textarea
-            [(ngModel)]="newRestaurant.about"
+            [(ngModel)]="showAddRest && newRestaurant.about || showChangeRest && restaurantForChange.about"
             [ngStyle]="{border: restAboutInp.invalid && restAboutInp.dirty? '2px solid red' : '2px solid green'}"
             #restAboutInp='ngModel'
             required maxlength="250"
-            cols="51"
+            cols="60"
             rows="5"
             placeholder="description of your restaurant"
             type="text"
             name="restAbout"
           ></textarea>
-
-
         </form>
       </div>
       <div class="changeLogo">
@@ -109,14 +107,14 @@
     </div>
 
     <button
-      *ngIf="showAddButton"
+      *ngIf="showAddRest"
       [disabled]="addRestForm.invalid"
       (click)="addRestaurant()"
     >Add
     </button>
     <button
       id="change-btn"
-      *ngIf="showChangeButton"
+      *ngIf="showChangeRest"
       [disabled]="addRestForm.invalid"
       (click)="changeRestaurant()"
     >Change

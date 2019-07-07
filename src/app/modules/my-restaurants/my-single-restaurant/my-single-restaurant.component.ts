@@ -15,17 +15,32 @@ import {Restaurant} from '../../../models/Restaurant';
 })
 export class MySingleRestaurantComponent implements OnInit {
 
+  span;
+  modal;
+
   restaurantId = '';
-  showAddSection = false;
-  showChangeSect: boolean [] = [];
-  showAddDish: boolean [] = [];
+  // showAddSection = false;
+  // showChangeSect: boolean [] = [];
+  // showAddDish: boolean [] = [];
   menuSections: MenuSection[] = [];
-  sectionsForChange: MenuSection [] = [];
-  newMenuSection: MenuSection = new MenuSection();
-  newSectName = '';
+  // sectionsForChange: MenuSection [] = [];
   dishes: Dish[] = [];
+  // showChangeDish: boolean [] = [];
+
+
+  newMenuSection: MenuSection = new MenuSection();
+  sectionForChange: MenuSection = new MenuSection();
+  // sectionName = '';
   newDish: Dish = new Dish();
-  showChangeDish: boolean [] = [];
+  dishForChange: Dish = new Dish();
+  dishName = '';
+  showAddSect: boolean;
+  showChangeSect: boolean;
+  showAddDsh: boolean;
+  showChangeDsh: boolean;
+  description = '';
+  sectionId: number = null;
+  sectionName = '';
 
 
   constructor(private mainService: MainService,
@@ -34,7 +49,14 @@ export class MySingleRestaurantComponent implements OnInit {
               private router: Router) {
   }
 
+
   ngOnInit() {
+    this.loadData();
+    this.updateData();
+  }
+
+
+  loadData() {
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
     });
@@ -47,26 +69,23 @@ export class MySingleRestaurantComponent implements OnInit {
         error => {
           console.log(error);
         });
-
-    // this.mainService.getDishesByRestaurantId(this.restaurantId)
-    //   .subscribe((dishes) => {
-    //       this.dishes = dishes;
-    //       console.log(dishes);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
-
   }
+
+
+  updateData() {
+    this.span = document.getElementsByClassName('closeModal')[0];
+    this.modal = document.getElementById('modal');
+  }
+
 
   addMenuSection() {
     console.log(this.newMenuSection);
-    this.newDish.price = Number(this.newDish.price);
     this.mainService.addMenuSection(this.restaurantId, this.newMenuSection)
       .subscribe((value) => {
           console.log(value);
+          this.closeModal();
           // window.location.reload();
-          this.ngOnInit();
+          this.loadData();
         },
         error => {
           console.log(error);
@@ -74,15 +93,14 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  changeMenuSection(section: MenuSection) {
-    section.name = this.newSectName;
-    console.log(section);
-    this.mainService.changeMenuSection(section)
+  changeMenuSection() {
+    console.log(this.sectionForChange);
+    this.mainService.changeMenuSection(this.sectionForChange)
       .subscribe((value) => {
           console.log(value);
-          this.newSectName = '';
-          this.showChangeSect[section.id] = false;
-          this.ngOnInit();
+          this.closeModal();
+          this.loadData();
+
           // window.location.reload();
         },
         error => {
@@ -95,7 +113,8 @@ export class MySingleRestaurantComponent implements OnInit {
     this.mainService.deleteMenuSection(id)
       .subscribe((value) => {
           console.log(value);
-          this.ngOnInit();
+          this.loadData();
+
           // window.location.reload();
         },
         error => {
@@ -104,17 +123,15 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  addDish(sectionId: number) {
+  addDish() {
     console.log(this.newDish);
-    // this.mainService.getAllDishes()
-    this.mainService.addDish(this.restaurantId, sectionId, this.newDish)
+    this.newDish.price = Number(this.newDish.price);
+    this.mainService.addDish(this.restaurantId, this.sectionId, this.newDish)
       .subscribe((value) => {
           console.log(value);
-          this.newDish.name = '';
-          this.newDish.description = '';
-          this.newDish.price = null;
-          this.showAddDish[sectionId] = false;
-          this.ngOnInit();
+          this.closeModal();
+          this.loadData();
+
           // window.location.reload();
         },
         error => {
@@ -123,17 +140,20 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  changeDish(dish: Dish) {
-    this.newDish.id = dish.id;
-    this.mainService.changeDish(this.newDish)
+  changeDish() {
+    console.log(this.dishForChange);
+    this.dishForChange.price = Number(this.dishForChange.price);
+    this.mainService.changeDish(this.dishForChange)
       .subscribe((value) => {
           console.log(value);
-          this.showChangeDish[dish.id] = false;
-          this.newDish.name = '';
-          this.newDish.description = '';
-          this.newDish.price = null;
-          this.newDish.id = null;
-          this.ngOnInit();
+          // this.showChangeDish[dish.id] = false;
+          // this.newDish.name = '';
+          // this.newDish.description = '';
+          // this.newDish.price = null;
+          // this.newDish.id = null;
+          this.closeModal();
+          this.loadData();
+
         },
         error => {
           console.log(error);
@@ -144,7 +164,8 @@ export class MySingleRestaurantComponent implements OnInit {
     this.mainService.deleteDish(id)
       .subscribe((value) => {
           console.log(value);
-          this.ngOnInit();
+          this.loadData();
+
           // window.location.reload();
         },
         error => {
@@ -152,5 +173,53 @@ export class MySingleRestaurantComponent implements OnInit {
         });
   }
 
+
+  showAddSection() {
+    this.description = 'The name of section should be unique for the same restaurant.';
+    this.showAddSect = true;
+    this.showModal();
+  }
+
+  showChangeSection(section: MenuSection) {
+    this.sectionForChange.id = section.id;
+    this.sectionForChange.name = section.name;
+    this.sectionForChange.dishes = section.dishes;
+    this.description = 'The name of section should be unique for the same restaurant.';
+    this.sectionName = section.name;
+    this.showChangeSect = true;
+    this.showModal();
+  }
+
+  showAddDish(section: MenuSection) {
+    this.sectionId = section.id;
+    this.sectionName = section.name;
+    this.description = 'The name of dish should be unique for the same restaurant.';
+    this.showAddDsh = true;
+    this.showModal();
+  }
+
+
+  showChangeDish(dish: Dish, sectionName: string) {
+    this.dishForChange.id = dish.id;
+    this.dishForChange.name = dish.name;
+    this.dishForChange.description = dish.description;
+    this.dishForChange.price = dish.price;
+    this.sectionName = sectionName;
+    this.description = 'The name of dish should be unique for the same restaurant.';
+    this.showChangeDsh = true;
+    this.showModal();
+  }
+
+  showModal() {
+    this.modal.style.display = 'block';
+  }
+
+  closeModal() {
+    this.modal.style.display = 'none';
+    this.showAddSect = false;
+    this.showChangeSect = false;
+    this.showAddDsh = false;
+    this.showChangeDsh = false;
+  }
 
 }

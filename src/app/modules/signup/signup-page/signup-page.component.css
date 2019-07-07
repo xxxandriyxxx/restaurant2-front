@@ -11,6 +11,7 @@
   display: inline-block;
   border: none;
   background: #f1f1f1;
+  word-break: break-all;
 }
 
 .form > div {

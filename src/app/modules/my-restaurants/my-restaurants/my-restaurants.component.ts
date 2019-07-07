@@ -15,29 +15,34 @@ export class MyRestaurantsComponent implements OnInit {
 
   span;
   modal;
-
+  restaurants: Restaurant[] = [];
   operationName = '';
-  // var btn = document.getElementById("myBtn");
-
+  notification = '';
+  restaurantName = '';
   newRestaurant: Restaurant = new Restaurant();
-  restaurantName = this.newRestaurant.name;
+  restaurantForChange: Restaurant = new Restaurant();
+  showAddRest: boolean;
+  showChangeRest: boolean;
 
   // changeRestaurant: Restaurant [] = [];
-  restaurants: Restaurant[] = [];
-  // showAddRest = false;
-  showAddButton = false;
-  showChangeButton = false;
-  notification = '';
-
   // showChangeRest: boolean [] = [];
+  address = '';
+  name = '';
+
 
   constructor(private mainService: MainService,
               private dataService: DataService,
               private router: Router) {
-
   }
 
+
   ngOnInit() {
+    this.loadData();
+    this.updateData();
+  }
+
+
+  loadData() {
     const ownerId = localStorage.getItem('_userId');
     this.mainService.getRestaurants(ownerId)
       .subscribe((restaurants) => {
@@ -47,10 +52,16 @@ export class MyRestaurantsComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
 
+
+  updateData() {
     this.span = document.getElementsByClassName('closeAddChangeRest')[0];
     this.modal = document.getElementById('modalAddChangeRest');
+  }
 
+  goToRestaurant(id: number) {
+    this.router.navigate(['myRestaurants/' + id]);
   }
 
 
@@ -65,17 +76,12 @@ export class MyRestaurantsComponent implements OnInit {
           // alert(value.message);
           // this.showAddRest = false;
           // this.newRestaurant = new Restaurant();
-          this.modal.style.display = 'none';
+          this.closeModalAddChangeRest();
           this.ngOnInit();
-
         },
         error => {
           console.log(error);
         });
-  }
-
-  goToRestaurant(id: number) {
-    this.router.navigate(['myRestaurants/' + id]);
   }
 
 
@@ -83,7 +89,8 @@ export class MyRestaurantsComponent implements OnInit {
     this.mainService.changeRestaurant(this.newRestaurant)
       .subscribe((value) => {
           console.log(value);
-          this.modal.style.display = 'none';
+          this.closeModalAddChangeRest();
+          // this.modal.style.display = 'none';
 
           // this.showChangeRest[rest.id] = false;
           this.ngOnInit();
@@ -105,27 +112,25 @@ export class MyRestaurantsComponent implements OnInit {
         });
   }
 
-  showAddRest() {
+  showAddRestaurant() {
     this.operationName = 'Add restaurant';
     this.restaurantName = '';
     this.notification = 'You may add restaurants with the same names, but then their addresses must be different.';
-    this.showAddButton = true;
-    this.showChangeButton = false;
+    this.showAddRest = true;
     this.showModalAddChangeRest();
 
   }
 
-  showChangeRest(rest: Restaurant) {
-    this.newRestaurant.id = rest.id;
-    this.newRestaurant.name = rest.name;
-    this.newRestaurant.address = rest.address;
-    this.newRestaurant.phoneNumber = rest.phoneNumber;
-    this.newRestaurant.about = rest.about;
+  showChangeRestaurant(rest: Restaurant) {
+    this.restaurantForChange.id = rest.id;
+    this.restaurantForChange.name = rest.name;
+    this.restaurantForChange.address = rest.address;
+    this.restaurantForChange.phoneNumber = rest.phoneNumber;
+    this.restaurantForChange.about = rest.about;
     this.operationName = 'Change restaurant';
-    this.restaurantName = this.newRestaurant.name;
+    this.restaurantName = rest.name;
     this.notification = '';
-    this.showChangeButton = true;
-    this.showAddButton = false;
+    this.showChangeRest = true;
     this.showModalAddChangeRest();
   }
 
@@ -136,6 +141,8 @@ export class MyRestaurantsComponent implements OnInit {
 
   closeModalAddChangeRest() {
     this.modal.style.display = 'none';
+    this.showAddRest = false;
+    this.showChangeRest = false;
   }
 
 
