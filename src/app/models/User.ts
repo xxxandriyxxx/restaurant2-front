@@ -9,7 +9,7 @@ export class User {
     public email: string = '',
     public avatar: string = '',
     public orders: Order [] = [],
-    // public role: string = '', // !!!!!!!!
+    // public role: string = '',
     // public isAccountNonExpired: boolean = false,
     // public isAccountNonLocked: boolean = false,
     // public isCredentialsNonExpired: boolean = false,

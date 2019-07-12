@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MainService} from '../../../services/main.service';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-activation-page',
@@ -14,22 +15,22 @@ export class ActivationPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private mainService: MainService
-  ) {
+    private mainService: MainService) {
   }
 
   ngOnInit() {
-    // const jwt = this.activatedRoute.snapshot.params.jwt;
     this.activatedRoute.params.subscribe((params) => {
-      const jwt = params.jwt;
-      console.log(jwt);
-      this.mainService.activation(jwt)
+      // console.log(params.jwt);
+      this.mainService.activation(params.jwt)
         .subscribe((res) => {
-          console.log(res);
-          if (res.message.indexOf('SUCCESS') > -1) {
-            this.activated = true;
-          }
-        });
+            console.log(res);
+            if (res.message.indexOf('SUCCESS') > -1) {
+              this.activated = true;
+            }
+          },
+          error => {
+            console.log(error);
+          });
     });
   }
 

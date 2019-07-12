@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../../../models/User';
 import {BasicData} from '../../../models/BasicData';
 import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
-import {Router} from '@angular/router';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-account',
@@ -15,17 +15,19 @@ export class AccountComponent implements OnInit {
 
   user: User = new User();
   basicData: BasicData = new BasicData();
-
-
   showChange = false;
-
 
   constructor(private mainService: MainService,
               private dataService: DataService,
-              private router: Router) {
+              private appComponent: AppComponent) {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+
+  loadData() {
     this.mainService.getUserById(localStorage.getItem('_userId'))
       .subscribe((obj: User) => {
           this.user = obj;
@@ -37,20 +39,20 @@ export class AccountComponent implements OnInit {
         });
   }
 
-  updateProfile(form) {
+
+  updateProfile() {
     const id = localStorage.getItem('_userId');
     this.mainService.updateProfile(id, this.basicData)
       .subscribe((value) => {
-          console.log(value);
-          // this.router.navigate(['/owner']);
-          // alert(value.message);
           this.showChange = false;
           this.basicData.password = null;
-          this.ngOnInit();
+          this.appComponent.showModal(value.message);
+          this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
         });
   }
+
 
 }

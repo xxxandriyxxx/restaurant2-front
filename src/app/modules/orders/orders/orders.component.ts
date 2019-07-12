@@ -1,17 +1,16 @@
-import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
-import {MenuSection} from '../../../models/MenuSection';
-import {Dish} from '../../../models/Dish';
+import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../models/Order';
 import {MainService} from '../../../services/main.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {OrderStatus} from '../../../models/OrderStatus';
 import {Restaurant} from '../../../models/Restaurant';
+import {AppComponent} from '../../../app.component';
+
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['../my-orders/my-orders.component.css',
-    './orders.component.css']
+  styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
 
@@ -26,16 +25,17 @@ export class OrdersComponent implements OnInit {
   showConfirmOrd: boolean [] = [];
   showPaidOrd: boolean [] = [];
   restaurants: Restaurant [] = [];
+  whoseOrdersHeader = '';
 
   constructor(private mainService: MainService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private appComponent: AppComponent) {
   }
 
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.whoseOrders = params.whose;
-      console.log('whoseOrders = ' + this.whoseOrders);
       this.loadData();
     });
   }
@@ -76,15 +76,24 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-
   updateData() {
     this.resetShow();
     this.restForShowId = null;
+    this.restaurants = [];
+    this.totalCost = [];
+    this.ordersForShow = this.myOrders;
     this.restForShowName = 'all';
     this.statusForShow = 'all';
-    this.restaurants = [];
-    this.ordersForShow = this.myOrders;
     console.log(this.myOrders);
+
+    if (this.whoseOrders === 'my') {
+      this.whoseOrdersHeader = 'My orders';
+    } else if (this.whoseOrders === 'clients') {
+      this.whoseOrdersHeader = 'Clients\' orders';
+    } else {
+      this.whoseOrdersHeader = 'ERROR: whoseOrders = ' + this.whoseOrders;
+    }
+
 
     for (const ord of this.myOrders) {
       let ordCost = 0;
@@ -108,43 +117,42 @@ export class OrdersComponent implements OnInit {
     } else {
       ord.status = OrderStatus.CANCELED_BY_RESTAURANT;
     }
-
     this.mainService.changeOrderStatus(ord)
-      .subscribe((val) => {
-          console.log(val);
+      .subscribe((value) => {
+          this.appComponent.showModal(value.message);
           this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
         });
   }
 
   confirmOrder(ord: Order) {
     ord.status = OrderStatus.CONFIRMED_BY_RESTAURANT;
     this.mainService.changeOrderStatus(ord)
-      .subscribe((val) => {
-          console.log(val);
+      .subscribe((value) => {
+          this.appComponent.showModal(value.message);
           this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
         });
   }
 
   paidOrder(ord: Order) {
     ord.status = OrderStatus.PAID;
     this.mainService.changeOrderStatus(ord)
-      .subscribe((val) => {
-          console.log(val);
+      .subscribe((value) => {
+          this.appComponent.showModal(value.message);
+
           this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
         });
   }
 
   showAll() {
-    // this.ngOnInit();
     // this.router.navigate(['orders/' + this.whoseOrders]);
     this.loadData();
   }
@@ -180,7 +188,6 @@ export class OrdersComponent implements OnInit {
     this.statusForShow = 'ordered';
   }
 
-
   showCanceledByClient() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -205,7 +212,6 @@ export class OrdersComponent implements OnInit {
     this.statusForShow = 'canceled by restaurant';
   }
 
-
   showConfirmed() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -218,7 +224,6 @@ export class OrdersComponent implements OnInit {
     this.statusForShow = 'confirmed by restaurant';
   }
 
-
   showPaid() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -230,7 +235,6 @@ export class OrdersComponent implements OnInit {
     this.assignShow(this.ordersForShow);
     this.statusForShow = 'paid';
   }
-
 
   assignShow(orders: Order []) {
     for (const ord of orders) {
@@ -256,7 +260,6 @@ export class OrdersComponent implements OnInit {
       }
     }
   }
-
 
   resetShow() {
     this.ordersForShow = [];

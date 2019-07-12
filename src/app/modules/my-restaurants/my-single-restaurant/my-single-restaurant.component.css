@@ -1,3 +1,19 @@
+#add-section-btn {
+  height: 50px;
+  width: 200px;
+  background-color: #4CAF50;
+  padding: 14px 20px;
+  margin: 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+#add-section-btn:hover {
+  opacity: 1;
+}
+
 .grid {
   display: grid;
   grid-gap: 2px;
@@ -5,30 +21,20 @@
 
 .header, .subgrid {
   display: grid;
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 4;*/
   grid-template-columns: 2fr 3fr 1fr 1.5fr;
   grid-gap: 1px;
   /*border: black solid 2px;*/
 }
 
-
-
 .header > div, .subgrid > div {
-  /*font-size: 1.5vw;*/
   padding: .5em;
   background: silver;
-  /*vertical-align: middle;*/
-  word-break: break-all;
-  /*align-items: center;*/
-  /*justify-content: center;*/
-
+  word-break: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-
 
 .header > div {
   background: rosybrown;
@@ -37,28 +43,20 @@
 }
 
 .subgrid > .description {
-
   text-align: left;
-
 }
 
 .section {
   display: grid;
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 4;*/
   grid-template-columns: 2fr 3fr 1fr 1.5fr;
   grid-gap: 1px;
-  /*border: black solid 2px;*/
-
+  margin-top: 5px;
 }
 
 .section > div {
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 4;*/
   padding: .5em;
   margin-top: 2px;
   background: rosybrown;
-  /*border: black solid 2px;*/
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -71,97 +69,49 @@
   Grid-column-end: 4;
 }
 
-/*.actions {*/
-  /*display: flex;*/
-  /*flex-direction: row;*/
-  /*align-items: flex-start;*/
-  /*justify-content: left;*/
-  /*text-align: left;*/
-/*}*/
+.subgrid > .actions, .section > .actions {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
 
 .actions > button {
   height: 30px;
   width: 70px;
-  /*background: rosybrown;*/
-  /*background-color: #4CAF50;*/
-  /*color: white;*/
-  /*padding: 16px;*/
-  /*font-size: 16px;*/
   border: none;
   cursor: pointer;
   opacity: 0.8;
-
 }
 
 .actions > button:hover {
   opacity: 1;
 }
 
-
-
-
-
-
-#add-section-btn {
-
-  height: 50px;
-  width: 200px;
-  background-color: #4CAF50;
-  /*color: white;*/
-  padding: 14px 20px;
-  margin: 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
-  font-weight: bold;
-
-
-}
-
-
-#add-section-btn:hover {
-  opacity: 1;
-  /*background-color: #3e8e41;*/
-
-
-}
-
-
-
-
-
-
-
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 3;
   /*left: 0;*/
   /*right: 0;*/
   top: 0;
   height: 100%;
-  width: 100%; /* Full width */
-  /*height: 100%; !* Full height *!*/
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 50px auto 10px auto; /* 15% from the top and centered */
-  /*padding: 10px auto;*/
+  margin: 50px auto 10px auto;
   padding: 10px 10px 20px 10px;
-
-
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 40%;
 }
 
-/* The Close Button */
-.closeModal {
+.close-modal {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -170,8 +120,8 @@
   margin-right: 10px;
 }
 
-.closeModal:hover,
-.closeModal:focus {
+.close-modal:hover,
+.close-modal:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -185,18 +135,8 @@
   padding: 16px;
   margin: 5px 10%;
   width: 80%;
-
 }
 
-/*.form {*/
-  /*padding: 16px;*/
-  /*margin-left: 35%;*/
-  /*margin-right: 35%;*/
-  /*margin-bottom: 20px;*/
-/*}*/
-
-
-/* Full-width input fields */
 .form > input, .form > div, .form > textarea {
   width: 100%;
   padding: 10px;
@@ -204,8 +144,12 @@
   display: inline-block;
   border: none;
   background: #f1f1f1;
-  word-break: break-all;
+  word-break: break-word;
+}
 
+.form > input:focus, .form > textarea:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
 .form > div {
@@ -215,32 +159,12 @@
   /*text-align: center;*/
 }
 
-.form > input:focus, .form > textarea:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/*.form input [type=radio] {*/
-/*background-color: #eee;*/
-/*border-radius: 50%;*/
-/*font-size: 50px;*/
-/*}*/
-
-/*input [type=radio]:checked {*/
-/*background-color: #2196F3;*/
-/*display: block;*/
-/*}*/
-
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 20px;
 }
 
-
-/* Set a style for all buttons */
 .form > button {
-  /*background-color: #4CAF50;*/
-  /*color: white;*/
   padding: 14px 20px;
   margin: 5px 0;
   border: none;
@@ -249,26 +173,9 @@ hr {
   opacity: 0.9;
 }
 
-
-
-
-
-
-
-
-
-
-
 .form > button:hover {
   opacity: 1;
 }
-
-
-
-
-
-
-
 
 .add-btn {
   background-color: #4CAF50;
@@ -281,177 +188,3 @@ hr {
 .cancel-btn, .delete-btn {
   background-color: indianred;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-table {
-  width: 100%
-}
-
-th, td {
-  padding: 15px;
-}
-
-.containerLeft {
-  float: left;
-  background: cadetblue;
-
-  width: 100%;
-}
-
-.containerRight {
-  float: left;
-  background: dimgray;
-  height: 500px;
-  width: 20%;
-}
-
-.box {
-  width: 1000px;
-  background: yellow;
-  color: white;
-  border: 5px solid red;
-  text-align: center;
-}
-
-.box-s {
-  box-sizing: border-box
-}
-
-.clearfix {
-  clear: both
-}
-
-/*-----------------------bloks*/
-.footer {
-  height: 250px
-}
-
-.menu {
-  height: 150px
-}
-
-.left,
-.center,
-.right {
-  height: 400px
-}
-
-/*-------------------------height*/
-.h-80 {
-  height: 80%
-}
-
-.h-60 {
-  height: 60%
-}
-
-.h-50 {
-  height: 50%
-}
-
-.h-40 {
-  height: 40%
-}
-
-.h-20 {
-  height: 20%
-}
-
-/*-------------------------width*/
-.w-80 {
-  width: 80%
-}
-
-.w-50 {
-  width: 50%
-}
-
-.w-33 {
-  width: 33.3%
-}
-
-.w-25 {
-  width: 25%
-}
-
-/*-------------------------margin*/
-.m-0-auto {
-  margin: 0 auto;
-}
-
-.m-top-10 {
-  margin-top: 10%
-}
-
-.m-top-15 {
-  margin-top: 15%
-}
-
-.m-top-20 {
-  margin-top: 20%
-}
-
-.m-top-30 {
-  margin-top: 30%
-}
-
-.m-top-42 {
-  margin-top: 42%
-}
-
-.m-top-80 {
-  margin-top: 80%
-}
-
-/*-------------------------padding*/
-.pdg-3 {
-  padding: 3%
-}
-
-.pdg-10 {
-  padding: 10%
-}
-
-/*-------------------------float*/
-.float-l {
-  float: left
-}
-
-.float-r {
-  float: right
-}
-
-

@@ -2,8 +2,13 @@
   box-sizing: border-box
 }
 
+.form {
+  padding: 16px;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 20px;
+}
 
-/* Full-width input fields */
 .form > input, .form > div {
   width: 100%;
   padding: 10px;
@@ -16,9 +21,7 @@
 
 .form > div {
   display: flex;
-  /*align-items: center;*/
   justify-content: space-around;
-  /*text-align: center;*/
 }
 
 .form > input:focus {
@@ -26,26 +29,13 @@
   outline: none;
 }
 
-/*.form input [type=radio] {*/
-  /*background-color: #eee;*/
-  /*border-radius: 50%;*/
-  /*font-size: 50px;*/
-/*}*/
-
-/*input [type=radio]:checked {*/
-  /*background-color: #2196F3;*/
-  /*display: block;*/
-/*}*/
-
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
 
-/* Set a style for all buttons */
 button {
   background-color: #4CAF50;
-  /*color: white;*/
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -57,47 +47,3 @@ button {
 button:hover {
   opacity: 1;
 }
-
-/*!* Extra styles for the cancel button *!*/
-/*.cancelbtn {*/
-/*padding: 14px 20px;*/
-/*background-color: #f44336;*/
-/*}*/
-
-/*!* Float cancel and signup buttons and add an equal width *!*/
-/*.cancelbtn, .signupbtn {*/
-/*float: left;*/
-/*width: 50%;*/
-/*}*/
-
-/* Add padding to container elements */
-.form {
-  padding: 16px;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-bottom: 20px;
-}
-
-/*input[type=radio] {*/
-  /*!*width: 100%;*!*/
-  /*!*padding: 15px;*!*/
-  /*!*margin: 5px 0 22px 0;*!*/
-  /*!*display: inline-block;*!*/
-  /*!*border: none;*!*/
-  /*background: dimgray;*/
-/*}*/
-
-/* Clear floats */
-/*.clearfix::after {*/
-/*content: "";*/
-/*clear: both;*/
-/*display: table;*/
-/*}*/
-
-/* Change styles for cancel button and signup button on extra small screens */
-/*@media screen and (max-width: 300px) {*/
-  /*.cancelbtn, .signupbtn {*/
-    /*width: 100%;*/
-  /*}*/
-/*}*/
-

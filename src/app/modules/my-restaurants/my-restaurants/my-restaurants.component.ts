@@ -3,8 +3,7 @@ import {Restaurant} from '../../../models/Restaurant';
 import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {Router} from '@angular/router';
-import {HtmlAstPath, identifierModuleUrl} from '@angular/compiler';
-import {getTemplateUrl} from 'codelyzer/util/ngQuery';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-my-restaurants',
@@ -13,32 +12,25 @@ import {getTemplateUrl} from 'codelyzer/util/ngQuery';
 })
 export class MyRestaurantsComponent implements OnInit {
 
-  span;
   modal;
   restaurants: Restaurant[] = [];
-  operationName = '';
-  notification = '';
-  restaurantName = '';
   newRestaurant: Restaurant = new Restaurant();
   restaurantForChange: Restaurant = new Restaurant();
   showAddRest: boolean;
   showChangeRest: boolean;
-
-  // changeRestaurant: Restaurant [] = [];
-  // showChangeRest: boolean [] = [];
-  address = '';
-  name = '';
-
+  operationName = '';
+  notification = '';
+  restaurantName = '';
 
   constructor(private mainService: MainService,
               private dataService: DataService,
-              private router: Router) {
+              private router: Router,
+              private appComponent: AppComponent) {
   }
-
 
   ngOnInit() {
     this.loadData();
-    this.updateData();
+    this.modal = document.getElementById('modal');
   }
 
 
@@ -55,71 +47,63 @@ export class MyRestaurantsComponent implements OnInit {
   }
 
 
-  updateData() {
-    this.span = document.getElementsByClassName('closeAddChangeRest')[0];
-    this.modal = document.getElementById('modalAddChangeRest');
-  }
-
   goToRestaurant(id: number) {
     this.router.navigate(['myRestaurants/' + id]);
   }
 
 
   addRestaurant() {
+    // this.closeModal();
     const ownerId = localStorage.getItem('_userId');
-    this.newRestaurant.id = null;
     this.mainService.addRestaurant(ownerId, this.newRestaurant)
       .subscribe((value) => {
-          console.log(value);
-          // window.location.reload();
-          // this.router.navigate(['/myRestaurants']);
-          // alert(value.message);
-          // this.showAddRest = false;
-          // this.newRestaurant = new Restaurant();
-          this.closeModalAddChangeRest();
-          this.ngOnInit();
+          this.appComponent.showModal(value.message);
+          this.closeModal();
+          this.loadData();
         },
         error => {
           console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
 
   changeRestaurant() {
-    this.mainService.changeRestaurant(this.newRestaurant)
+    // this.closeModal();
+    this.mainService.changeRestaurant(this.restaurantForChange)
       .subscribe((value) => {
-          console.log(value);
-          this.closeModalAddChangeRest();
-          // this.modal.style.display = 'none';
-
-          // this.showChangeRest[rest.id] = false;
-          this.ngOnInit();
+          this.appComponent.showModal(value.message);
+          this.closeModal();
+          this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
+
 
   deleteRestaurant(id: number) {
     this.mainService.deleteRestaurant(id)
       .subscribe((value) => {
-          console.log(value);
-          this.ngOnInit();
-          // this.showChangeRest[rest.id] = false;
+          this.appComponent.showModal(value.message);
+          this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
         });
   }
+
 
   showAddRestaurant() {
     this.operationName = 'Add restaurant';
     this.restaurantName = '';
     this.notification = 'You may add restaurants with the same names, but then their addresses must be different.';
     this.showAddRest = true;
-    this.showModalAddChangeRest();
-
+    this.showModal();
   }
+
 
   showChangeRestaurant(rest: Restaurant) {
     this.restaurantForChange.id = rest.id;
@@ -131,15 +115,16 @@ export class MyRestaurantsComponent implements OnInit {
     this.restaurantName = rest.name;
     this.notification = '';
     this.showChangeRest = true;
-    this.showModalAddChangeRest();
+    this.showModal();
   }
 
 
-  showModalAddChangeRest() {
+  showModal() {
     this.modal.style.display = 'block';
   }
 
-  closeModalAddChangeRest() {
+
+  closeModal() {
     this.modal.style.display = 'none';
     this.showAddRest = false;
     this.showChangeRest = false;

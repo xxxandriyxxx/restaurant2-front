@@ -3,6 +3,7 @@ import {MainService} from '../../../services/main.service';
 import {Client} from '../../../models/Client';
 import {Owner} from '../../../models/Owner';
 import {DataService} from '../../../services/data.service';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-signup-page',
@@ -16,16 +17,13 @@ export class SignupPageComponent implements OnInit {
     password: '',
     email: ''
   };
-
   client: Client = new Client();
   owner: Owner = new Owner();
 
-  // passLoginRegexp = new RegExp('^[a-zA-Z0-9]{3,20}$');
-  // emailRegexp = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
-  // passRegexp = new RegExp('^[a-zA-Z0-9]+$');
 
   constructor(private mainService: MainService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private appComponent: AppComponent) {
   }
 
   ngOnInit() {
@@ -33,17 +31,28 @@ export class SignupPageComponent implements OnInit {
   }
 
   saveUser(isClient: boolean, isOwner: boolean) {
-    console.log('regForm:', this.regForm, 'isClient:', isClient, 'isOwner:', isOwner);
     if (isClient) {
       this.client.username = this.regForm.username;
       this.client.password = this.regForm.password;
       this.client.email = this.regForm.email;
-      this.mainService.saveClient(this.client);
+      this.mainService.saveClient(this.client)
+        .subscribe((value) => {
+            this.appComponent.showModal(value.message);
+          },
+          error => {
+            this.appComponent.showModal(error);
+          });
     } else if (isOwner) {
       this.owner.username = this.regForm.username;
       this.owner.password = this.regForm.password;
       this.owner.email = this.regForm.email;
-      this.mainService.saveOwner(this.owner);
+      this.mainService.saveOwner(this.owner)
+        .subscribe((value) => {
+            this.appComponent.showModal(value.message);
+          },
+          error => {
+            this.appComponent.showModal(error);
+          });
     } else {
       console.log('ERROR of saveUser function');
     }

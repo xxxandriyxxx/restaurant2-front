@@ -1,3 +1,18 @@
+#add-rest-btn {
+  height: 50px;
+  width: 200px;
+  background-color: #4CAF50;
+  padding: 14px 20px;
+  margin: 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  font-weight: bold;
+}
+
+#add-rest-btn:hover {
+  opacity: 1;
+}
 
 .grid {
   display: grid;
@@ -5,30 +20,20 @@
   margin-bottom: 30px;
   /*grid-template-rows: minmax(auto,auto);*/
   /*grid-template-columns: minmax(auto,auto);*/
-
-
 }
-
 
 .subgrid, .header {
   display: grid;
-
   grid-template-columns: 1fr 2fr 3fr 2fr 1fr 1fr;
   grid-gap: 1px;
-  /*border: silver solid 2px;*/
   grid-template-rows: minmax(auto, auto);
-  /*grid-template-columns: minmax(auto,auto);*/
-
 }
 
 .header > div {
-  /*font-size: 1.5vw;*/
   padding: .5em;
   background: rosybrown;
   color: darkred;
   font-weight: bold;
-
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,23 +41,27 @@
 }
 
 .subgrid > div {
-  /*font-size: 1.5vw;*/
   padding: .5em;
   background: silver;
   /*text-align: center;*/
   /*vertical-align: middle;*/
   /*word-wrap: break-word;*/
   /*overflow-wrap: break-word;*/
-  word-break: break-all;
-  /*height: auto;*/
-  /*white-space: pre-wrap;*/
-
+  word-break: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
+.subgrid > .logo-wrap, .subgrid > .name {
+  border: silver solid 1px;
+  padding: 0;
+}
+
+.subgrid > .about {
+  text-align: left;
+}
 
 .subgrid > .actions {
   flex-direction: column;
@@ -61,96 +70,30 @@
 .actions > button {
   height: 40%;
   width: 80%;
-  /*background: rosybrown;*/
-  /*background-color: #4CAF50;*/
-  /*color: white;*/
-  /*padding: 16px;*/
-  /*font-size: 16px;*/
   border: none;
   cursor: pointer;
   opacity: 0.8;
-
 }
-
-.actions > .change {
-  background: goldenrod;
-}
-
-.actions > .delete {
-  background: indianred;
-}
-
 
 .actions > button:hover {
   /*background-color: #3e8e41;*/
   opacity: 1;
 }
 
-
 .name-btn {
   height: 100%;
   width: 100%;
   background: rosybrown;
   font-weight: bold;
-  /*background-color: #4CAF50;*/
-  /*color: white;*/
   padding: 16px;
   font-size: 16px;
   border: none;
   cursor: pointer;
-
-
 }
-
 
 .name-btn:hover {
-  /*background-color: #3e8e41;*/
   border: black solid 2px;
-
 }
-
-/*.subgrid > .name {*/
-/*!*font-size: 1.5vw;*!*/
-/*padding: .5em;*/
-/*background: teal;*/
-/*!*text-align: center;*!*/
-/*!*vertical-align: middle;*!*/
-/*!*word-wrap: break-word;*!*/
-/*!*overflow-wrap: break-word;*!*/
-/*word-break: break-all;*/
-/*!*height: auto;*!*/
-/*!*white-space: pre-wrap;*!*/
-
-/*display: flex;*/
-/*align-items: center;*/
-/*justify-content: center;*/
-/*text-align: center;*/
-/*}*/
-
-.subgrid > .logo-wrap, .subgrid > .name {
-  border: silver solid 1px;
-
-  padding: 0;
-}
-
-
-.subgrid > .about {
-
-  text-align: left;
-
-}
-
-/*#signInMessage {
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-bottom: 20px;
-  width: 50%;
-  border: black solid 2px;
-  background: indianred;
-  padding: .5em;
-  text-align: center;
-
-}*/
 
 .logo {
   /*min-width: 100px;*/
@@ -169,61 +112,29 @@
   border: 1px solid black;
 }
 
-
-#add-rest-btn {
-
-  height: 50px;
-  width: 200px;
-  background-color: #4CAF50;
-  /*color: white;*/
-  padding: 14px 20px;
-  margin: 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
-  font-weight: bold;
-
-
-}
-
-
-#add-rest-btn:hover {
-  opacity: 1;
-  /*background-color: #3e8e41;*/
-
-
-}
-
-
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 3;
   /*left: 0;*/
   /*right: 0;*/
   top: 0;
   height: 100%;
-  width: 100%; /* Full width */
-  /*height: 100%; !* Full height *!*/
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
-.modal-content {
+.modal-form {
   background-color: #fefefe;
-  margin: 50px auto 10px auto; /* 15% from the top and centered */
-  /*padding: 10px auto;*/
+  margin: 50px auto 10px auto;
   padding-bottom: 20px;
-
   border: 1px solid #888;
-  width: 60%; /* Could be more or less, depending on screen size */
+  width: 60%;
 }
 
-/* The Close Button */
-.closeAddChangeRest {
+.close-modal {
   color: #aaa;
   float: right;
   font-size: 28px;
@@ -232,8 +143,8 @@
   margin-right: 10px;
 }
 
-.closeAddChangeRest:hover,
-.closeAddChangeRest:focus {
+.close-modal:hover,
+.close-modal:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -243,7 +154,6 @@
   box-sizing: border-box
 }
 
-
 .gridAddChangeRest {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -251,21 +161,16 @@
   /*grid-template-columns: minmax(auto,auto);*/
 }
 
-
 .headerAddChangeRest {
   padding: 16px;
   margin: 5px 20px 0 20px;
-
 }
 
 .form {
   padding: 16px;
   margin: 5px 20px;
-
 }
 
-
-/* Full-width input fields */
 .form > input, .form > div, .form > textarea {
   width: 100%;
   padding: 10px;
@@ -287,34 +192,9 @@
   outline: none;
 }
 
-/*.form input [type=radio] {*/
-/*background-color: #eee;*/
-/*border-radius: 50%;*/
-/*font-size: 50px;*/
-/*}*/
-
-/*input [type=radio]:checked {*/
-/*background-color: #2196F3;*/
-/*display: block;*/
-/*}*/
-
 hr {
   border: 1px solid #f1f1f1;
 }
-
-
-/* Set a style for all buttons */
-.form > button {
-  background-color: #4CAF50;
-  /*color: white;*/
-  padding: 14px 20px;
-  margin: 5px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
 
 .changeLogo {
   /*border: 2px solid black;*/
@@ -323,9 +203,7 @@ hr {
   justify-content: center;
   text-align: center;
   flex-direction: column;
-
 }
-
 
 .changeLogo > button {
   background-color: #aaaaaa;
@@ -335,16 +213,14 @@ hr {
   border: none;
   cursor: pointer;
   opacity: 0.9;
-
 }
 
 .changeLogo > button:hover {
   opacity: 1;
 }
 
-
-.modal-content > button {
-  background-color: #4CAF50;
+.modal-form > button {
+  /*background-color: #4CAF50;*/
   width: 40%;
   padding: 14px 20px;
   margin: 10px 30% 10px 30%;
@@ -352,209 +228,20 @@ hr {
   border: none;
   cursor: pointer;
   opacity: 0.9;
-
 }
 
-.modal-content > button:hover {
+.modal-form > button:hover {
   opacity: 1;
 }
 
-.modal-content > #cancel-btn {
-  background-color: indianred;
+.add-btn {
+  background-color: #4CAF50;
 }
 
-.modal-content > #change-btn {
+.change-btn {
   background-color: goldenrod;
 }
 
-
-
-
-/*!* Extra styles for the cancel button *!*/
-/*.cancelbtn {*/
-/*padding: 14px 20px;*/
-/*background-color: #f44336;*/
-/*}*/
-
-/*!* Float cancel and signup buttons and add an equal width *!*/
-/*.cancelbtn, .signupbtn {*/
-/*float: left;*/
-/*width: 50%;*/
-/*}*/
-
-/* Add padding to container elements */
-
-
-/*input[type=radio] {*/
-/*!*width: 100%;*!*/
-/*!*padding: 15px;*!*/
-/*!*margin: 5px 0 22px 0;*!*/
-/*!*display: inline-block;*!*/
-/*!*border: none;*!*/
-/*background: dimgray;*/
-/*}*/
-
-/* Clear floats */
-/*.clearfix::after {*/
-/*content: "";*/
-/*clear: both;*/
-/*display: table;*/
-/*}*/
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-    width: 100%;
-  }
-}
-
-
-.container {
-  display: table;
-  height: auto;
-  /*overflow: hidden;*/
-  width: 100%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  table-layout: fixed;
-}
-
-.box {
-  display: table-row;
-  table-layout: fixed;
-  height: auto;
-  /*overflow: hidden;*/
-  width: 100%;
-  border: 1px solid black;
-  /*white-space: nowrap;*/
-
-
-}
-
-.header {
-  font-weight: bold;
-}
-
-.box > div {
-  height: auto;
-  display: table-cell;
-  border: 1px solid black;
-  /*margin-left: -1px;*/
-  /*margin-top: -1px;*/
-  vertical-align: middle;
-  padding: 15px;
-  word-wrap: break-word;
-  /*overflow-wrap: break-word;*/
-  /*word-break: break-all;*/
-  /*display: table-cell;*/
-
-}
-
-.boxChange {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.w10 {
-  width: 10%;
-}
-
-.w12 {
-  width: 12%;
-}
-
-.w15 {
-  width: 15%;
-}
-
-.w20 {
-  width: 20%;
-}
-
-.w25 {
-  width: 25%;
-}
-
-.w30 {
-  width: 30%;
-}
-
-.w40 {
-  width: 40%;
-}
-
-
-/*.cell*/
-/*{*/
-/*!*display: inline-block;*!*/
-/*!*box-sizing: padding-box;*!*/
-/*border: 1px solid black;*/
-/*width: 24%;*/
-/*margin-left: -1px;*/
-/*margin-bottom: -1px;*/
-
-/*}*/
-
-
-/*.container {*/
-/*!*display: table;*!*/
-/*!*border-collapse: collapse;*!*/
-/*!*padding-left: 10px;*!*/
-/*overflow: hidden;*/
-
-/*width: 100%;*/
-/*}*/
-
-/*.cell {*/
-/*padding-left: 10px;*/
-/*display: table-cell;*/
-/*border: 1px solid black;*/
-/*width: 25%;*/
-/*height: 20px;*/
-/*!*-webkit-box-sizing: border-box;*!*/
-/*!*-moz-box-sizing: border-box;*!*/
-/*!*box-sizing: border-box;*!*/
-/*}*/
-
-
-/*.container {*/
-/*width: 100%;*/
-/*display: table;*/
-/*border-collapse: collapse;*/
-/*}*/
-
-
-.inner {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  border-collapse: collapse;
-
-
-}
-
-.item {
-  width: 200px;
-
-}
-
-.blue {
-  background: blue;
-}
-
-.red {
-  background: red;
-}
-
-.green {
-  background: green;
-}
-
-.yellow {
-  background: yellow;
-}
-
-.inner > div {
-  border: 1px solid black;
-  width: 25%;
+.cancel-btn, .delete-btn {
+  background-color: indianred;
 }

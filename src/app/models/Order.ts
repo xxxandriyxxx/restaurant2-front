@@ -14,8 +14,7 @@ export class Order {
     public username: string = '',
     public restaurant: Restaurant = null,
     public dishes: Dish [] = [],
-    public amount: number [] = [],
-    // public dishes: { dish: Dish, amount: number }[] = []
+    public amount: number [] = []
   ) {
 
   }

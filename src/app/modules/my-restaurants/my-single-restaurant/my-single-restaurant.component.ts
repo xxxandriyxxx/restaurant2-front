@@ -2,11 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {MenuSection} from '../../../models/MenuSection';
 import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Dish} from '../../../models/Dish';
-// import {MatDialog, MatDialogConfig} from '@angular/material';
-// import {DialodComponent} from '../dialod/dialod.component';
-import {Restaurant} from '../../../models/Restaurant';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-my-single-restaurant',
@@ -15,44 +13,31 @@ import {Restaurant} from '../../../models/Restaurant';
 })
 export class MySingleRestaurantComponent implements OnInit {
 
-  span;
   modal;
-
   restaurantId = '';
-  // showAddSection = false;
-  // showChangeSect: boolean [] = [];
-  // showAddDish: boolean [] = [];
+  sectionId: number = null;
   menuSections: MenuSection[] = [];
-  // sectionsForChange: MenuSection [] = [];
   dishes: Dish[] = [];
-  // showChangeDish: boolean [] = [];
-
-
   newMenuSection: MenuSection = new MenuSection();
   sectionForChange: MenuSection = new MenuSection();
-  // sectionName = '';
   newDish: Dish = new Dish();
   dishForChange: Dish = new Dish();
-  dishName = '';
   showAddSect: boolean;
   showChangeSect: boolean;
   showAddDsh: boolean;
   showChangeDsh: boolean;
   description = '';
-  sectionId: number = null;
   sectionName = '';
-
 
   constructor(private mainService: MainService,
               private dataService: DataService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private appComponent: AppComponent) {
   }
-
 
   ngOnInit() {
     this.loadData();
-    this.updateData();
+    this.modal = document.getElementById('modal');
   }
 
 
@@ -60,7 +45,6 @@ export class MySingleRestaurantComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
     });
-
     this.mainService.getMenuSections(this.restaurantId)
       .subscribe((sections) => {
           this.menuSections = sections;
@@ -72,39 +56,32 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  updateData() {
-    this.span = document.getElementsByClassName('closeModal')[0];
-    this.modal = document.getElementById('modal');
-  }
-
-
   addMenuSection() {
-    console.log(this.newMenuSection);
+    // this.closeModal();
     this.mainService.addMenuSection(this.restaurantId, this.newMenuSection)
       .subscribe((value) => {
-          console.log(value);
+          this.appComponent.showModal(value.message);
           this.closeModal();
-          // window.location.reload();
           this.loadData();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
 
   changeMenuSection() {
-    console.log(this.sectionForChange);
+    // this.closeModal();
     this.mainService.changeMenuSection(this.sectionForChange)
       .subscribe((value) => {
-          console.log(value);
+          this.appComponent.showModal(value.message);
           this.closeModal();
           this.loadData();
-
-          // window.location.reload();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
@@ -112,64 +89,57 @@ export class MySingleRestaurantComponent implements OnInit {
   deleteMenuSection(id: number) {
     this.mainService.deleteMenuSection(id)
       .subscribe((value) => {
-          console.log(value);
+          this.appComponent.showModal(value.message);
           this.loadData();
-
-          // window.location.reload();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
 
   addDish() {
-    console.log(this.newDish);
+    // this.closeModal();
     this.newDish.price = Number(this.newDish.price);
     this.mainService.addDish(this.restaurantId, this.sectionId, this.newDish)
       .subscribe((value) => {
-          console.log(value);
+          this.appComponent.showModal(value.message);
           this.closeModal();
           this.loadData();
-
-          // window.location.reload();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
 
   changeDish() {
-    console.log(this.dishForChange);
+    // this.closeModal();
     this.dishForChange.price = Number(this.dishForChange.price);
     this.mainService.changeDish(this.dishForChange)
       .subscribe((value) => {
-          console.log(value);
-          // this.showChangeDish[dish.id] = false;
-          // this.newDish.name = '';
-          // this.newDish.description = '';
-          // this.newDish.price = null;
-          // this.newDish.id = null;
+          this.appComponent.showModal(value.message);
           this.closeModal();
           this.loadData();
-
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
+
 
   deleteDish(id: number) {
     this.mainService.deleteDish(id)
       .subscribe((value) => {
-          console.log(value);
+          this.appComponent.showModal(value.message);
           this.loadData();
-
-          // window.location.reload();
         },
         error => {
-          console.log(error);
+          this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
@@ -180,6 +150,7 @@ export class MySingleRestaurantComponent implements OnInit {
     this.showModal();
   }
 
+
   showChangeSection(section: MenuSection) {
     this.sectionForChange.id = section.id;
     this.sectionForChange.name = section.name;
@@ -189,6 +160,7 @@ export class MySingleRestaurantComponent implements OnInit {
     this.showChangeSect = true;
     this.showModal();
   }
+
 
   showAddDish(section: MenuSection) {
     this.sectionId = section.id;
@@ -210,9 +182,11 @@ export class MySingleRestaurantComponent implements OnInit {
     this.showModal();
   }
 
+
   showModal() {
     this.modal.style.display = 'block';
   }
+
 
   closeModal() {
     this.modal.style.display = 'none';

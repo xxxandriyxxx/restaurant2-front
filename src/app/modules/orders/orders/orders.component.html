@@ -1,68 +1,61 @@
-<p>
-  orders works!
-</p>
+<!--<div *ngIf = "myOrders">-->
 
-<div *ngIf = "myOrders">
+<div class="navbar">
+  <div id="shown">
+    <div><span class="bold-shown">{{whoseOrdersHeader}}</span></div>
+    <div><span class="bold-shown">Restaurant:</span> {{restForShowName}}</div>
+    <div><span class="bold-shown">Status of orders:</span> {{statusForShow}}</div>
+  </div>
 
-
-<div id="showDetails">
-  <div>Restaurant: {{restForShowName}}</div>
-  <div>Status of orders: {{statusForShow}}</div>
+  <div id="show">
+    <div class="dropdown">
+      <button class="drop-btn">Сhoose a restaurant</button>
+      <div class="dropdown-content">
+        <a (click)="showAll()">Show all orders</a>
+        <a *ngFor="let rest of restaurants" (click)="showByRestaurant(rest.id)">{{rest.name}}</a>
+      </div>
+    </div>
+    <button (click)="showByRestaurant(restForShowId)">All</button>
+    <button (click)="showOrdered()">Ordered</button>
+    <button (click)="showCanceledByClient()">Canceled by client</button>
+    <button (click)="showCanceledByRest()">Canceled by restaurant</button>
+    <button (click)="showConfirmed()">Confirmed by restaurant</button>
+    <button (click)="showPaid()">Paid</button>
+  </div>
 </div>
-
-
-<!--<div class="btn-group btn-group-justified">-->
-<div id="show">
-  <div class="dropdown">
-    <button class="dropbtn">Сhoose a restaurant</button>
-    <div class="dropdown-content">
-      <a (click)="showAll()">Show all orders</a>
-      <a *ngFor="let rest of restaurants" (click)="showByRestaurant(rest.id)">{{rest.name}}</a>
+<div class="main">
+  <div class="order" *ngFor="let ord of ordersForShow">
+    <div class="order-header">
+      <div><span class="bold">Restaurant:</span>  {{ord.restaurant.name}}</div>
+      <div><span class="bold">Date:</span>  {{ord.date | date: 'dd LLL yyyy, HH:mm'}}</div>
+      <div><span class="bold">User:</span> {{ord.username}}</div>
+      <div><span class="bold">Status:</span> {{ord.status}}</div>
+      <div class="actions">
+        <button [disabled]="!showCancelOrd[ordersForShow.indexOf(ord)]" (click)="cancelOrder(ord)">Cancel</button>
+        <button *ngIf="whoseOrders == 'clients'" [disabled]="!showConfirmOrd[ordersForShow.indexOf(ord)]"
+                (click)="confirmOrder(ord)">Confirm
+        </button>
+        <button *ngIf="whoseOrders == 'clients'" [disabled]="!showPaidOrd[ordersForShow.indexOf(ord)]"
+                (click)="paidOrder(ord)">Paid
+        </button>
+      </div>
+    </div>
+    <div class="header-names">
+      <div>Name of dish</div>
+      <div>Amount</div>
+      <div>Price</div>
+      <div>Cost</div>
+    </div>
+    <div class="order-details" *ngFor="let dish of ord.dishes">
+      <div>{{dish.name}}</div>
+      <div>{{ord.amount[ord.dishes.indexOf(dish)]}}</div>
+      <div>{{dish.price}}</div>
+      <div>{{ord.amount[ord.dishes.indexOf(dish)] * dish.price | number}}</div>
+    </div>
+    <div class="order-details">
+      <div class="total"><span class="bold">Total sum</span></div>
+      <div><span class="bold">{{totalCost[myOrders.indexOf(ord)] | number}}</span></div>
     </div>
   </div>
-  <button (click)="showByRestaurant(restForShowId)">All</button>
-  <button (click)="showOrdered()">Ordered</button>
-  <button (click)="showCanceledByClient()">Canceled by client</button>
-  <button (click)="showCanceledByRest()">Canceled by restaurant</button>
-  <button (click)="showConfirmed()">Confirmed by restaurant</button>
-  <button (click)="showPaid()">Paid</button>
 </div>
 <!--</div>-->
-
-
-<div id="orderDetails" *ngFor="let ord of ordersForShow">
-  <div class="subgrid">
-    <div>Restaurant:  {{ord.restaurant.name}}</div>
-    <div>Date:  {{ord.date | date: 'dd LLL yyyy, HH:mm'}}</div>
-    <div>User:  {{ord.username}}</div>
-    <div>Status:  {{ord.status}}</div>
-    <div id="action">
-      <button [disabled]="!showCancelOrd[ordersForShow.indexOf(ord)]" (click)="cancelOrder(ord)">Cancel</button>
-      <button *ngIf="whoseOrders == 'clients'" [disabled]="!showConfirmOrd[ordersForShow.indexOf(ord)]"
-              (click)="confirmOrder(ord)">Confirm
-      </button>
-      <button *ngIf="whoseOrders == 'clients'" [disabled]="!showPaidOrd[ordersForShow.indexOf(ord)]"
-              (click)="paidOrder(ord)">Paid
-      </button>
-    </div>
-
-  </div>
-  <div id="orderDetailsHeader">
-    <div>Name of dish</div>
-    <div>Amount</div>
-    <div>Price</div>
-    <div>Cost</div>
-  </div>
-  <div class="orderDetailsSubgrid" *ngFor="let dish of ord.dishes">
-    <div>{{dish.name}}</div>
-    <div>{{ord.amount[ord.dishes.indexOf(dish)]}}</div>
-    <div>{{dish.price}}</div>
-    <div>{{ord.amount[ord.dishes.indexOf(dish)] * dish.price | number}}</div>
-  </div>
-  <div class="orderDetailsSubgrid">
-    <div id="total">Total sum</div>
-    <div>{{totalCost[myOrders.indexOf(ord)] | number}}</div>
-  </div>
-</div>
-
-</div>

@@ -6,8 +6,6 @@ import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [SignupPageComponent],
   imports: [
-    // HttpClientModule,
-    // BrowserModule,
     CommonModule,
     FormsModule
   ],
