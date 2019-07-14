@@ -14,6 +14,7 @@ export class Restaurant {
     public bigPicture: string = '',
     public smallPicture: string = '',
     public about: string = '',
+    public logo: string = '',
     public owner: Owner = null,
     public menuSections: MenuSection [] = [],
     public dishes: Dish [] = [],
