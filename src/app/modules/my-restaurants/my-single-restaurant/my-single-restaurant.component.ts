@@ -26,8 +26,9 @@ export class MySingleRestaurantComponent implements OnInit {
   showChangeSect: boolean;
   showAddDsh: boolean;
   showChangeDsh: boolean;
-  description = '';
+  restaurantName = '';
   sectionName = '';
+  description = '';
 
   constructor(private mainService: MainService,
               private dataService: DataService,
@@ -45,6 +46,9 @@ export class MySingleRestaurantComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
     });
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.restaurantName = params.name;
+    });
     this.mainService.getMenuSections(this.restaurantId)
       .subscribe((sections) => {
           this.menuSections = sections;
@@ -53,6 +57,8 @@ export class MySingleRestaurantComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+
   }
 
 

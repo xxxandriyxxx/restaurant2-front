@@ -44,7 +44,7 @@
   <div class="subgrid" *ngFor="let rest of restaurants">
     <div class="logo-wrap"><img class="logo" src="../../../../assets/img/{{rest.logo}}" alt="logo"></div>
     <div class="name">
-      <button class="name-btn" (click)="goToRestaurant(rest.id)">{{rest.name}}</button>
+      <button class="name-btn" (click)="goToRestaurant(rest.id,rest.name)">{{rest.name}}</button>
     </div>
     <div class="about">{{rest.about}}</div>
     <div>{{rest.address}}</div>
@@ -118,19 +118,35 @@
             placeholder="description of your restaurant"
             type="text"
             name="restAbout"></textarea>
+          <button
+            *ngIf="showChangeRest"
+            class="change-btn"
+            [disabled]="addRestForm.invalid"
+            (click)="changeRestaurant()"
+          >Change restaurant data
+          </button>
+          <!--<button-->
+          <!--*ngIf="showChangeRest"-->
+          <!--class="cancel-btn"-->
+          <!--(click)="closeModal()"-->
+          <!--&gt;Cancel-->
+          <!--</button>-->
         </form>
       </div>
       <div class="changeLogo">
         <label><b>Logo:</b></label><br>
         <div class="logo-change-wrap">
-          <img class="logo-change" *ngIf="showAddRest && !imgURL && !errorLoadLogo" src="../../../../assets/img/no_logo.png" alt="no logo">
-          <img class="logo-change" *ngIf="!showAddRest && !imgURL && !errorLoadLogo" src="../../../../assets/img/{{restaurantForChange.logo}}" alt="no logo">
+          <img class="logo-change" *ngIf="showAddRest && !imgURL && !errorLoadLogo"
+               src="../../../../assets/img/no_logo.png" alt="no logo">
+          <img class="logo-change" *ngIf="!showAddRest && !imgURL && !errorLoadLogo"
+               src="../../../../assets/img/{{restaurantForChange.logo}}" alt="no logo">
           <img class="logo-change" *ngIf="imgURL && !errorLoadLogo" [src]="imgURL" alt="logo">
           <img class="logo-change" *ngIf="errorLoadLogo" src="../../../../assets/img/error_logo.png" alt="error logo">
         </div>
         <input #logoInput type="file" accept='image/*' (change)="preview(logoInput.files)"
                style="display: none"/>
         <button (click)="logoInput.click()">Load picture</button>
+        <button *ngIf="showChangeRest" [disabled]="!logo" class="change-btn" (click)="changeLogo()">Change logo</button>
 
 
         <!--<label><b>Logo:</b></label><br>-->
@@ -142,18 +158,11 @@
     </div>
 
     <button
-      class="add-btn"
       *ngIf="showAddRest"
-      [disabled]="addRestForm.invalid && !imgURL || errorLoadLogo"
+      class="add-btn"
+      [disabled]="addRestForm.invalid || !logo || errorLoadLogo"
       (click)="addRestaurant()"
     >Add
-    </button>
-    <button
-      class="change-btn"
-      *ngIf="showChangeRest"
-      [disabled]="addRestForm.invalid"
-      (click)="changeRestaurant()"
-    >Change
     </button>
     <button
       class="cancel-btn"

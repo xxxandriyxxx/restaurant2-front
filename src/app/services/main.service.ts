@@ -59,26 +59,26 @@ export class MainService {
   //     {headers: this.dataService.getAuthHeader()});
   // }
 
-  // changeRestaurant(restaurant: Restaurant): Observable<TransferMessage> {
-  //   return this.http.post<TransferMessage>(this.url + '/changeRestaurant', restaurant,
-  //     {headers: this.dataService.getAuthHeader()});
-  // }
+  changeRestaurant(restaurant: Restaurant): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/changeRestaurant', restaurant,
+      {headers: this.dataService.getAuthHeader()});
+  }
 
   addRestaurant(ownerId: string, formData: FormData): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/addRestaurant/' + ownerId, formData,
       {headers: this.dataService.getAuthHeader()});
   }
 
-  changeRestaurant(formData: FormData): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeRestaurant', formData,
-      {headers: this.dataService.getAuthHeader()});
-  }
-
-
-  // saveLogo(restId: number, logo: FormData): Observable<TransferMessage> {
-  //   return this.http.post<TransferMessage>(this.url + '/saveLogo/' + restId, logo,
+  // changeRestaurant(formData: FormData): Observable<TransferMessage> {
+  //   return this.http.post<TransferMessage>(this.url + '/changeRestaurant', formData,
   //     {headers: this.dataService.getAuthHeader()});
   // }
+
+
+  changeLogo(restId: number, formData: FormData): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/changeLogo/' + restId, formData,
+      {headers: this.dataService.getAuthHeader()});
+  }
 
   getRestaurants(ownerId: string): Observable<Restaurant[]> {
     return this.http.get<Restaurant[]>(this.url + '/getRestaurants/' + ownerId,

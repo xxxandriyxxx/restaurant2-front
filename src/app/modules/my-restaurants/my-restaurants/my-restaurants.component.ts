@@ -75,8 +75,8 @@ export class MyRestaurantsComponent implements OnInit {
   }
 
 
-  goToRestaurant(id: number) {
-    this.router.navigate(['myRestaurants/' + id]);
+  goToRestaurant(id: number, restName: string) {
+    this.router.navigate(['myRestaurants/' + id], {queryParams: {name: restName}});
   }
 
 
@@ -113,25 +113,9 @@ export class MyRestaurantsComponent implements OnInit {
         });
   }
 
-  // changeRestaurant() {
-  //   // this.closeModal();
-  //   this.mainService.changeRestaurant(this.restaurantForChange)
-  //     .subscribe((value) => {
-  //         this.appComponent.showModal(value.message);
-  //         this.closeModal();
-  //         this.loadData();
-  //       },
-  //       error => {
-  //         this.appComponent.showModal(error);
-  //         this.closeModal();
-  //       });
-  // }
-
   changeRestaurant() {
     // this.closeModal();
-    this.formData.append('restaurant', JSON.stringify(this.restaurantForChange));
-    this.formData.append('logo', this.logo);
-    this.mainService.changeRestaurant(this.formData)
+    this.mainService.changeRestaurant(this.restaurantForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -142,6 +126,34 @@ export class MyRestaurantsComponent implements OnInit {
           this.closeModal();
         });
   }
+
+  changeLogo() {
+    this.formData.append('logo', this.logo);
+    this.mainService.changeLogo(this.restaurantForChange.id, this.formData)
+      .subscribe((value) => {
+          this.appComponent.showModal(value.message);
+          this.loadData();
+        },
+        error => {
+          this.appComponent.showModal(error);
+        });
+  }
+
+  // changeRestaurant() {
+  //   // this.closeModal();
+  //   this.formData.append('restaurant', JSON.stringify(this.restaurantForChange));
+  //   this.formData.append('logo', this.logo);
+  //   this.mainService.changeRestaurant(this.formData)
+  //     .subscribe((value) => {
+  //         this.appComponent.showModal(value.message);
+  //         this.closeModal();
+  //         this.loadData();
+  //       },
+  //       error => {
+  //         this.appComponent.showModal(error);
+  //         this.closeModal();
+  //       });
+  // }
 
 
   deleteRestaurant(id: number) {
@@ -199,37 +211,37 @@ export class MyRestaurantsComponent implements OnInit {
     console.log(this.pathLogo);
   }
 
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile.name);
-    // console.log(this.path.toString());
-    console.log(window.URL.createObjectURL(event.target.files[0]).toString());
-  }
-
-  showPreviewImage(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.localUrl = event.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-
-  readURL(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const file = event.target.files[0];
-
-      const reader = new FileReader();
-      reader.onload = e => this.imageSrc = reader.result.toString();
-
-      reader.readAsDataURL(file);
-
-      console.log(this.imageSrc);
-      console.log(file);
-
-    }
-  }
+  // onFileChanged(event) {
+  //   this.selectedFile = event.target.files[0];
+  //   console.log(this.selectedFile.name);
+  //   // console.log(this.path.toString());
+  //   console.log(window.URL.createObjectURL(event.target.files[0]).toString());
+  // }
+  //
+  // showPreviewImage(event: any) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const reader = new FileReader();
+  //     reader.onload = (event: any) => {
+  //       this.localUrl = event.target.result;
+  //     };
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
+  //
+  // readURL(event: any): void {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const file = event.target.files[0];
+  //
+  //     const reader = new FileReader();
+  //     reader.onload = e => this.imageSrc = reader.result.toString();
+  //
+  //     reader.readAsDataURL(file);
+  //
+  //     console.log(this.imageSrc);
+  //     console.log(file);
+  //
+  //   }
+  // }
 
 
   preview(files) {
