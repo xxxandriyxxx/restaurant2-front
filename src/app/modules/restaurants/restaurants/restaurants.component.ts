@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MainService} from '../../../services/main.service';
 import {Restaurant} from '../../../models/Restaurant';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-restaurants',
@@ -12,7 +13,8 @@ export class RestaurantsComponent implements OnInit {
   // showSigInMessage = false;
   restaurants: Restaurant[] = [];
 
-  constructor(private mainService: MainService) {
+  constructor(private mainService: MainService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -28,6 +30,11 @@ export class RestaurantsComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  goToRestaurant(id, restName) {
+    this.router.navigate(['restaurants/' + id], {queryParams: {name: restName}});
+
   }
 
 }

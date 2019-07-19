@@ -6,6 +6,7 @@ import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {Order} from '../../../models/Order';
 import {OrderStatus} from '../../../models/OrderStatus';
+import {AppComponent} from '../../../app.component';
 
 @Component({
   selector: 'app-single-restaurant',
@@ -31,11 +32,13 @@ export class SingleRestaurantComponent implements OnInit {
   newDish: Dish = new Dish();
   showChangeDish: boolean [] = [];
   newOrder: Order = new Order();
+  private restaurantName = '';
 
 
   constructor(private mainService: MainService,
               private dataService: DataService,
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private appComponent: AppComponent
   ) {
   }
 
@@ -47,6 +50,10 @@ export class SingleRestaurantComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
       // console.log(this.restaurantId);
+    });
+
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.restaurantName = params.name;
     });
 
     this.mainService.getMenuSections(this.restaurantId)
@@ -204,9 +211,11 @@ export class SingleRestaurantComponent implements OnInit {
           this.totalAmount = 0;
           this.totalCost = 0;
           this.cancel();
+          this.appComponent.showModal(val.message);
         },
         error => {
           console.log(error);
+          this.appComponent.showModal(error);
         });
 
   }

@@ -1,3 +1,16 @@
+.navbar {
+  /*overflow: hidden;*/
+  z-index: 2;
+  position: fixed;
+  top: 110px;
+  width: 100%;
+}
+
+.main {
+  margin-top: 205px;
+}
+
+
 .grid {
   display: grid;
   grid-gap: 2px;
@@ -8,7 +21,8 @@
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
   grid-gap: 1px;
-  border: black solid 2px;
+  background: white;
+  border-bottom: #333 solid 2px;
 }
 
 .subgrid {
@@ -17,48 +31,111 @@
   /*Grid-column-end: 4;*/
   grid-template-columns: 1.7fr 0.3fr 3fr 1fr;
   grid-gap: 1px;
-  border: black solid 2px;
+  /*border: black solid 2px;*/
 }
 
 .header > div {
   /*font-size: 1.5vw;*/
   padding: .5em;
-  background: chocolate;
+  background: rosybrown;
+  /*background: burlywood;*/
   text-align: center;
 }
 
 .subgrid > div {
   /*font-size: 1.5vw;*/
   padding: .5em;
-  background: cadetblue;
+  background: silver;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  /*vertical-align: middle;*/
-  word-break: break-all;
-  /*align-items: center;*/
-  /*justify-content: center;*/
+  word-break: break-word;
+}
+.subgrid > .dish-name, .subgrid > .dish-description {
+  text-align: left;
 }
 
 .section {
   /*Grid-column-start: 1;*/
   /*Grid-column-end: 4;*/
   padding: .5em;
-  margin-top: 2px;
-  background: teal;
+  margin-top: 15px;
+  background: rosybrown;
   text-align: center;
-  border: black solid 2px;
+  border: silver solid 1px;
 }
 
-.order {
+
+#order {
+  top: 0;
   display: grid;
-  /*grid-gap: 1px;*/
-  width: 25%;
-  border: black solid 2px;
-  margin: .5em;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 50px;
+  background-color: white;
+  grid-gap: 1px;
+  border-bottom: #333 solid 6px;
 }
 
-.order > div {
-  padding: .5em;
-  background: cadetblue;
+#order > div {
+  padding-left: 10px;
+  background: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  word-break: break-word;
+
+}
+
+
+#order button {
+  background-color: #4CAF50;
+  /*height: 30px;*/
+  padding: 8px;
+  width: 50%;
+  margin-left: 25%;
+  /*padding: 10px;*/
+  /*margin: 5px;*/
+  /*display: inline-block;*/
+  border: black solid 1px;
+  /*border: none;*/
+  cursor: pointer;
+}
+
+/*#order {*/
+/*display: grid;*/
+/*margin-top: 10px;*/
+
+/*!*grid-gap: 1px;*!*/
+/*width: 25%;*/
+/*border: black solid 2px;*/
+/*}*/
+
+/*#order > div {*/
+/*padding: .5em;*/
+/*background: silver;*/
+/*}*/
+
+
+/*#order button {*/
+/*background-color: #4CAF50;*/
+/*!*height: 30px;*!*/
+/*padding: 8px;*/
+/*width: 80%;*/
+/*margin-left: 10%;*/
+/*!*padding: 10px;*!*/
+/*!*margin: 5px;*!*/
+/*!*display: inline-block;*!*/
+/*!*border: black solid 1px;*!*/
+/*border: none;*/
+/*cursor: pointer;*/
+/*opacity: 0.8;*/
+/*}*/
+
+#order button:hover {
+  background-color: #3e8e41;
+
 }
 
 #orderDetails {
@@ -67,6 +144,17 @@
   width: 80%;
   margin-left: 10%;
   border: black solid 2px;
+}
+
+#orderDetailsName {
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word;
+  background: silver;
+
+
 }
 
 #orderDetailsHeader {
@@ -79,9 +167,15 @@
 
 #orderDetailsHeader > div {
   padding: .5em;
-  background: chocolate;
+  background: rosybrown;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  word-break: break-word;
+
 }
+
 
 #orderDetailsSubgrid {
   display: grid;
@@ -92,26 +186,136 @@
 
 #orderDetailsSubgrid > div {
   padding: .5em;
-  background: cadetblue;
+  background: silver;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  word-break: break-word;
+}
+
+
+#orderDetailsSubgrid > .dish-name {
+
+  text-align: left;
+  word-break: break-word;
+}
+
+#totalSubgrid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  grid-gap: 1px;
+
 }
 
 #total {
-  display: grid;
-  grid-template-columns: 5fr 1fr 2fr;
-  grid-gap: 1px;
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 2;*/
+  Grid-column-start: 1;
+  Grid-column-end: 4;
 }
-#total > div {
+
+#totalSubgrid > div {
   padding: .5em;
-  background: cadetblue;
+  background: silver;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  word-break: break-word;
+}
+
+.bold-red {
+  font-weight: bold;
+  color: darkred;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 
+#orderDetailsSubgrid button {
+  /*background-color: #4CAF50;*/
+  width: 30px;
+  height: 30px;
+  /*padding: 10px;*/
+  /*margin: 5px;*/
+  /*display: inline-block;*/
+  border: silver solid 1px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#orderDetailsSubgrid button:hover {
+  opacity: 1;
+}
+
+#cancel-btn {
+  margin: 10px 10px 10px 10%;
+  padding: 12px;
+  width: 20%;
+  /*height: 30px ;*/
+  /*padding: 10px;*/
+  /*margin: 5px;*/
+  /*display: inline-block;*/
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#confirm-btn {
+  padding: 12px;
+  width: 80%;
+  /*height: 30px ;*/
+  /*padding: 10px;*/
+  /*margin: 5px;*/
+  /*display: inline-block;*/
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#confirm-btn:hover, #cancel-btn:hover {
+  opacity: 1;
+}
+
+.increase-btn {
+  background-color: #4CAF50;
+
+}
+
+.reduce-btn {
+  background-color: goldenrod;
+
+}
+
+.delete-btn {
+  background-color: indianred;
+}
+
+#confirm-btn {
+  background-color: #4CAF50;
+
+}
+
+#cancel-btn {
+  background-color: indianred;
+}
 
 
+.buy-btn {
+  /*background-color: #4CAF50;*/
+  width: 50px;
+  height: 30px;
+  background-color: #4CAF50;
 
+  /*padding: 10px;*/
+  /*margin: 5px;*/
+  /*display: inline-block;*/
+  border: silver solid 1px;
+  cursor: pointer;
+  opacity: 0.8;
+}
 
-
+.buy-btn:hover {
+  opacity: 1;
+}

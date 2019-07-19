@@ -1,17 +1,65 @@
-#add-section-btn {
+.navbar {
+  /*overflow: hidden;*/
+  z-index: 2;
+  position: fixed;
+  top: 110px;
+  width: 100%;
+}
+
+.main {
+  margin-top: 195px;
+}
+
+
+#shown {
+  top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 50px;
-  width: 200px;
+  background-color: white;
+  grid-gap: 1px;
+  border-bottom: #333 solid 6px;
+}
+
+/*#shown > #whose{*/
+/*Grid-column-start: 1;*/
+/*Grid-column-end: 3;*/
+/*!*display: flex;*!*/
+/*!*align-items: center;*!*/
+/*!*justify-content: center;*!*/
+/*text-align: center;*/
+/*!*background-color: silver;*!*/
+/*}*/
+
+#shown > div {
+  padding-left: 10px;
+  background: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  /*text-align: left;*/
+  word-break: break-word;
+}
+
+.bold-shown{
+  font-weight: bold;
+  color: darkred;
+}
+
+#add-section-btn {
+  height: 30px;
+  width: 30%;
+  margin-left: 35%;
   background-color: #4CAF50;
-  padding: 14px 20px;
-  margin: 20px;
-  border: none;
+  /*padding: 14px 20px;*/
+  /*margin: 20px;*/
+  border: dimgrey solid 1px;
   cursor: pointer;
-  opacity: 0.9;
   font-weight: bold;
 }
 
 #add-section-btn:hover {
-  opacity: 1;
+  background-color: #3e8e41;
 }
 
 .grid {
@@ -24,6 +72,13 @@
   grid-template-columns: 2fr 3fr 1fr 1.5fr;
   grid-gap: 1px;
   /*border: black solid 2px;*/
+
+}
+
+.header {
+  border-bottom: black solid 1px;
+  background-color: white;
+
 }
 
 .header > div, .subgrid > div {
@@ -38,6 +93,7 @@
 
 .header > div {
   background: rosybrown;
+  /*background: burlywood;*/
   color: darkred;
   font-weight: bold;
 }
@@ -46,11 +102,16 @@
   text-align: left;
 }
 
+.subgrid > .name {
+  text-align: left;
+}
+
 .section {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1.5fr;
   grid-gap: 1px;
-  margin-top: 5px;
+  /*margin-top: 5px;*/
+  margin-top: 10px;
 }
 
 .section > div {
@@ -67,6 +128,7 @@
 .section > .sect-name {
   Grid-column-start: 1;
   Grid-column-end: 4;
+  border: silver solid 1px;
 }
 
 .subgrid > .actions, .section > .actions {

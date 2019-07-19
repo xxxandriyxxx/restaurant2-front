@@ -1,35 +1,44 @@
+<div class="navbar">
+  <div id="shown">
+    <div><span class="bold-shown">Restaurant:</span> {{restaurantName}}</div>
 
-<div>{{restaurantName}}</div>
-<button id="add-section-btn" (click)="showAddSection()">Add menu section</button>
-
-<div class="grid">
-  <div class="header">
-    <div>Name</div>
-    <div>Description</div>
-    <div>Price</div>
-    <div>Actions</div>
-  </div>
-</div>
-<div class="grid" *ngFor="let sect of menuSections">
-  <div class="section">
-    <div class="sect-name">  {{sect.name}}  </div>
-    <div class="actions">
-      <button class="change-btn" (click)="showChangeSection(sect)">Change</button>
-      <button class="delete-btn" (click)="deleteMenuSection(sect.id)">Delete</button>
-      <button class="add-btn" (click)="showAddDish(sect)">Add dish</button>
+    <div>
+      <button id="add-section-btn" (click)="showAddSection()">Add menu section</button>
     </div>
   </div>
-  <div class="subgrid" *ngFor="let dish of sect.dishes">
-    <div>{{dish.name}}</div>
-    <div class="description">{{dish.description}}</div>
-    <div>{{dish.price}}</div>
-    <div class="actions">
-      <button class="change-btn" (click)="showChangeDish(dish,sect.name)">Change</button>
-      <button class="delete-btn" (click)="deleteDish(dish.id)">Delete</button>
+
+
+  <div class="grid">
+    <div class="header">
+      <div>Name</div>
+      <div>Description</div>
+      <div>Price</div>
+      <div>Actions</div>
     </div>
   </div>
 </div>
 
+<div class="main">
+  <div class="grid" *ngFor="let sect of menuSections">
+    <div class="section">
+      <div class="sect-name">  {{sect.name}}  </div>
+      <div class="actions">
+        <button class="change-btn" (click)="showChangeSection(sect)">Change</button>
+        <button class="delete-btn" (click)="deleteMenuSection(sect.id)">Delete</button>
+        <button class="add-btn" (click)="showAddDish(sect)">Add dish</button>
+      </div>
+    </div>
+    <div class="subgrid" *ngFor="let dish of sect.dishes">
+      <div class="name">{{dish.name}}</div>
+      <div class="description">{{dish.description}}</div>
+      <div>{{dish.price}}</div>
+      <div class="actions">
+        <button class="change-btn" (click)="showChangeDish(dish,sect.name)">Change</button>
+        <button class="delete-btn" (click)="deleteDish(dish.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="modal" class="modal">
   <div class="modal-content">

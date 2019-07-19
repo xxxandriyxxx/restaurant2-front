@@ -37,9 +37,10 @@ export class MyRestaurantsComponent implements OnInit {
 
   imgURL: any;
   public message: string;
-  private logo: File;
+  private logo: File = null;
   private formData = new FormData();
   private errorLoadLogo: boolean;
+  ownerName = '';
 
   // String pathToFolder = "user.home" + Path.sep + "Restaurant_Project"
   //   + File.separator + "Logo" + File.separator;
@@ -56,14 +57,21 @@ export class MyRestaurantsComponent implements OnInit {
     this.modal = document.getElementById('modal');
     // this.path = document.getElementById('path');
     // var userHome = require('user-home');
-    console.log(this.logo);
-    console.log(this.formData);
+    // console.log(this.logo);
+    // console.log(this.formData);
 
   }
 
 
   loadData() {
     const ownerId = localStorage.getItem('_userId');
+    this.mainService.getUserById(ownerId)
+      .subscribe((user) => {
+          this.ownerName = user.username;
+        },
+        error => {
+          console.log(error);
+        });
     this.mainService.getRestaurants(ownerId)
       .subscribe((restaurants) => {
           this.restaurants = restaurants;
