@@ -121,9 +121,9 @@ export class MyRestaurantsComponent implements OnInit {
         });
   }
 
-  changeRestaurant() {
+  changeRestaurantData() {
     // this.closeModal();
-    this.mainService.changeRestaurant(this.restaurantForChange)
+    this.mainService.changeRestaurantData(this.restaurantForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -177,7 +177,7 @@ export class MyRestaurantsComponent implements OnInit {
 
 
   showAddRestaurant() {
-    this.operationName = 'Add restaurant';
+    this.operationName = 'Add a restaurant';
     this.restaurantName = '';
     this.notification = 'You may add restaurants with the same names, but then their addresses must be different.';
     this.showAddRest = true;
@@ -190,9 +190,10 @@ export class MyRestaurantsComponent implements OnInit {
     this.restaurantForChange.name = rest.name;
     this.restaurantForChange.address = rest.address;
     this.restaurantForChange.phoneNumber = rest.phoneNumber;
+    this.restaurantForChange.site = rest.site;
     this.restaurantForChange.about = rest.about;
     this.restaurantForChange.logo = rest.logo;
-    this.operationName = 'Change restaurant';
+    this.operationName = 'Change the restaurant';
     this.restaurantName = rest.name;
     this.notification = '';
     this.showChangeRest = true;

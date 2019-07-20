@@ -53,7 +53,6 @@ export class AppComponent implements OnInit {
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);
-    // this.ngOnInit();
   }
 
   showModal(message: string) {

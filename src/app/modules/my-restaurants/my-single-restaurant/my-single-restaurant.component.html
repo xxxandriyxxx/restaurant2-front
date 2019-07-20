@@ -3,7 +3,7 @@
     <div><span class="bold-shown">Restaurant:</span> {{restaurantName}}</div>
 
     <div>
-      <button id="add-section-btn" (click)="showAddSection()">Add menu section</button>
+      <button id="add-section-btn" (click)="showAddSection()">Add a menu section</button>
     </div>
   </div>
 
@@ -46,7 +46,7 @@
 
     <!---------------------------------------------------------------add section form-->
     <form *ngIf="showAddSect" #addSectionForm='ngForm' class="form">
-      <h2>Add menu section</h2>
+      <h2>Add a menu section</h2>
       <p>{{description}}</p>
       <hr>
       <label><b>Name:</b></label>
@@ -55,7 +55,7 @@
         [ngStyle]="{border: newSectNameInp.invalid && newSectNameInp.dirty ? '2px solid red' : '2px solid green'}"
         #newSectNameInp='ngModel'
         required maxlength="50"
-        placeholder="the name of new section"
+        placeholder="name"
         size="50"
         type="text"
         name="newSectName"
@@ -71,7 +71,7 @@
     </form>
     <!---------------------------------------------------------------change section form-->
     <form *ngIf="showChangeSect" #changeSectionForm='ngForm' class="form">
-      <h2>Change menu section</h2>
+      <h2>Change the menu section</h2>
       <p>{{description}}</p>
       <hr>
       <label><b>Existing name:</b></label>
@@ -82,7 +82,7 @@
         [ngStyle]="{border: changeSectNameInp.invalid && changeSectNameInp.dirty ? '2px solid red' : '2px solid green'}"
         #changeSectNameInp='ngModel'
         required maxlength="50"
-        placeholder="new name of the section"
+        placeholder="name"
         size="50"
         type="text"
         name="changeSectName"
@@ -92,13 +92,13 @@
         class="change-btn"
         [disabled]="changeSectionForm.invalid"
         (click)="changeMenuSection()"
-      >Change
+      >Save changes
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
     <!----------------------------------------------------------------------add dish form-->
     <form *ngIf="showAddDsh" #addDishForm='ngForm' class="form">
-      <h2>Add dish</h2>
+      <h2>Add a dish</h2>
       <p>{{description}}</p>
       <hr>
       <label><b>Menu section:</b></label>
@@ -111,7 +111,7 @@
         #newDishNameInp='ngModel'
         required maxlength="50"
         size="50"
-        placeholder="the name of new dish"
+        placeholder="name"
         type="text"
         name="newDishName"
         autocomplete="off">
@@ -123,7 +123,7 @@
         required maxlength="280"
         cols="50"
         rows="6"
-        placeholder="the description of new dish"
+        placeholder="description"
         type="text"
         name="newDishDesc"
       ></textarea>
@@ -134,7 +134,7 @@
         #newDishPriceInp='ngModel'
         required pattern="{{dataService.priceRegExp.source}}"
         size="10"
-        placeholder="the price of new dish"
+        placeholder="price"
         type="text"
         name="newDishPrice"
         autocomplete="off">
@@ -149,7 +149,7 @@
 
     <!----------------------------------------------------------------------change dish form-->
     <form *ngIf="showChangeDsh" #changeDishForm='ngForm' class="form">
-      <h2>Change dish</h2>
+      <h2>Change the dish</h2>
       <p>{{description}}</p>
       <hr>
       <label><b>Menu section:</b></label>
@@ -162,7 +162,7 @@
         #changeDishNameInp='ngModel'
         required maxlength="50"
         size="50"
-        placeholder="new name of the dish"
+        placeholder="name"
         type="text"
         name="changeDishName"
         autocomplete="off">
@@ -174,7 +174,7 @@
         required maxlength="280"
         cols="50"
         rows="6"
-        placeholder="new description of the dish"
+        placeholder="description"
         type="text"
         name="changeDishDesc"
       ></textarea>
@@ -185,7 +185,7 @@
         #changeDishPriceInp='ngModel'
         required pattern="{{dataService.priceRegExp.source}}"
         size="10"
-        placeholder="new price of the dish"
+        placeholder="price"
         type="text"
         name="changeDishPrice"
         autocomplete="off">
@@ -193,7 +193,7 @@
         class="change-btn"
         [disabled]="changeDishForm.invalid"
         (click)="changeDish()"
-      >Change
+      >Save changes
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>

@@ -33,6 +33,7 @@ export class SingleRestaurantComponent implements OnInit {
   showChangeDish: boolean [] = [];
   newOrder: Order = new Order();
   private restaurantName = '';
+  showSect: boolean [] = [];
 
 
   constructor(private mainService: MainService,
@@ -43,9 +44,12 @@ export class SingleRestaurantComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (localStorage.getItem('_userId') !== null) {
-      this.showBuy = true;
-    }
+    this.loadData();
+    this.updateData();
+  }
+
+
+  loadData() {
 
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
@@ -60,7 +64,6 @@ export class SingleRestaurantComponent implements OnInit {
       .subscribe((sections) => {
           this.menuSections = sections;
           // console.log(sections);
-
           this.ordDishes = [];
           for (const s of sections) {
             for (const d of s.dishes) {
@@ -73,6 +76,20 @@ export class SingleRestaurantComponent implements OnInit {
         error => {
           console.log(error);
         });
+
+  }
+
+  updateData() {
+    const userClass = localStorage.getItem('_userClass');
+    if (userClass == null || userClass === 'AdminInMemory') {
+      this.showBuy = false;
+    } else {
+      this.showBuy = true;
+    }
+
+    for (const sect of this.menuSections) {
+      this.showSect.push(false);
+    }
   }
 
 
@@ -90,6 +107,16 @@ export class SingleRestaurantComponent implements OnInit {
 
     this.totalAmount += 1;
     this.totalCost += item.price;
+  }
+
+
+  showSection(id: number) {
+    this.showSect[id] = true;
+  }
+
+  hideSection(id: number) {
+    this.showSect[id] = false;
+
   }
 
 
@@ -201,10 +228,10 @@ export class SingleRestaurantComponent implements OnInit {
     this.ngOnInit();
   }
 
-  makeOrder() {
+  placeOrder() {
     this.newOrder.date = new Date();
     this.newOrder.status = OrderStatus.ORDERED;
-    this.mainService.makeOrder(this.newOrder, localStorage.getItem('_userId'), this.restaurantId)
+    this.mainService.placeOrder(this.newOrder, localStorage.getItem('_userId'), this.restaurantId)
       .subscribe((val) => {
           console.log(val);
           this.newOrder = new Order();

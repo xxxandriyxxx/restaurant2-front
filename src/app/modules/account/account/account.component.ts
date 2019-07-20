@@ -40,9 +40,9 @@ export class AccountComponent implements OnInit {
   }
 
 
-  updateProfile() {
+  updateAccount() {
     const id = localStorage.getItem('_userId');
-    this.mainService.updateProfile(id, this.basicData)
+    this.mainService.updateAccount(id, this.basicData)
       .subscribe((value) => {
           this.showChange = false;
           this.basicData.password = null;

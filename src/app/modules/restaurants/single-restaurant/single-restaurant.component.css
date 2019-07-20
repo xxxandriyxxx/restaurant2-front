@@ -1,3 +1,21 @@
+
+body {
+  min-height: 100vh;
+  /*background: lightgoldenrodyellow;*/
+  /*background: gainsboro;*/
+  background: beige;
+  padding-top: 1px;
+  /*min-height: 500px;*/
+}
+
+#signInMessage {
+  width: 100%;
+  padding-top: 10px;
+  text-align: center;
+  color: crimson;
+  background: beige;
+}
+
 .navbar {
   /*overflow: hidden;*/
   z-index: 2;
@@ -7,13 +25,28 @@
 }
 
 .main {
-  margin-top: 205px;
+  margin-top: 120px;
+}
+
+#menu-name {
+  width: 100%;
+  padding-top: 15px;
+  text-align: center;
+  border-bottom: darkred solid 2px;
+  background: beige;
 }
 
 
 .grid {
   display: grid;
   grid-gap: 2px;
+  width: 60%;
+  /*position: relative;*/
+  margin: 20px 20%;
+  background: tan;
+  /*text-align: center;*/
+  border: dimgrey solid 2px;
+  box-shadow: 9px 7px 10px 0 rgba(0, 0, 0, 0.26);
 
 }
 
@@ -27,11 +60,13 @@
 
 .subgrid {
   display: grid;
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 4;*/
-  grid-template-columns: 1.7fr 0.3fr 3fr 1fr;
-  grid-gap: 1px;
-  /*border: black solid 2px;*/
+  /*!*Grid-column-start: 1;*!*/
+  /*!*Grid-column-end: 4;*!*/
+  grid-template-columns: 5fr 1fr;
+  grid-gap: 2px;
+  border: lightgoldenrodyellow solid 1px;
+  margin: 0 20px 20px 20px;
+  background: lightgrey;
 }
 
 .header > div {
@@ -44,28 +79,63 @@
 
 .subgrid > div {
   /*font-size: 1.5vw;*/
-  padding: .5em;
-  background: silver;
+  padding: 10px;
+  /*background: silver;*/
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: left;
+  text-align: left;
   word-break: break-word;
 }
-.subgrid > .dish-name, .subgrid > .dish-description {
-  text-align: left;
+
+.buy {
+  Grid-row-start: 1;
+  Grid-row-end: 4;
+  Grid-column-start: 2;
+  Grid-column-end: 3;
 }
 
 .section {
   /*Grid-column-start: 1;*/
   /*Grid-column-end: 4;*/
-  padding: .5em;
-  margin-top: 15px;
-  background: rosybrown;
-  text-align: center;
-  border: silver solid 1px;
+  padding: 20px 10px 20px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }
 
+.section > button {
+  background-color: tan;
+  border: none;
+  cursor: pointer;
+}
+
+.section > button:hover {
+  /*background: #ddd;*/
+  /*cursor: pointer;*/
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bold-color {
+  font-weight: bold;
+  font-size: larger;
+  color: darkred;
+}
+
+.bold-color-header {
+  font-weight: bold;
+  font-size: x-large;
+  color: darkred;
+}
+
+.bold-red {
+  font-weight: bold;
+  color: darkred;
+}
 
 #order {
   top: 0;
@@ -95,10 +165,11 @@
   padding: 8px;
   width: 50%;
   margin-left: 25%;
+  font-weight: bold;
   /*padding: 10px;*/
   /*margin: 5px;*/
   /*display: inline-block;*/
-  border: black solid 1px;
+  border: silver solid 1px;
   /*border: none;*/
   cursor: pointer;
 }
@@ -141,8 +212,8 @@
 #orderDetails {
   display: grid;
   grid-gap: 1px;
-  width: 80%;
-  margin-left: 10%;
+  width: 60%;
+  margin-left: 20%;
   border: black solid 2px;
 }
 
@@ -160,7 +231,7 @@
 #orderDetailsHeader {
   display: grid;
   grid-gap: 1px;
-  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   /*Grid-column-start: 1;*/
   /*Grid-column-end: 2;*/
 }
@@ -173,13 +244,13 @@
   justify-content: center;
   text-align: center;
   word-break: break-word;
-
+  font-weight: bold;
 }
 
 
 #orderDetailsSubgrid {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
 }
 
@@ -196,14 +267,13 @@
 
 
 #orderDetailsSubgrid > .dish-name {
-
   text-align: left;
   word-break: break-word;
 }
 
 #totalSubgrid {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
 
 }
@@ -221,12 +291,10 @@
   justify-content: center;
   text-align: center;
   word-break: break-word;
+  font-weight: bold;
+
 }
 
-.bold-red {
-  font-weight: bold;
-  color: darkred;
-}
 
 .bold {
   font-weight: bold;
@@ -250,13 +318,15 @@
 }
 
 #cancel-btn {
-  margin: 10px 10px 10px 10%;
+  margin: 10px 10px 10px 20%;
   padding: 12px;
-  width: 20%;
+  width: 15%;
   /*height: 30px ;*/
   /*padding: 10px;*/
   /*margin: 5px;*/
   /*display: inline-block;*/
+  background-color: indianred;
+  font-weight: bold;
   border: none;
   cursor: pointer;
   opacity: 0.9;
@@ -294,28 +364,26 @@
 
 #confirm-btn {
   background-color: #4CAF50;
-
+  border: whitesmoke solid 1px;
+  font-weight: bold;
 }
 
-#cancel-btn {
-  background-color: indianred;
-}
 
 
 .buy-btn {
   /*background-color: #4CAF50;*/
-  width: 50px;
-  height: 30px;
-  background-color: #4CAF50;
-
-  /*padding: 10px;*/
-  /*margin: 5px;*/
-  /*display: inline-block;*/
-  border: silver solid 1px;
+  margin: 10px 10px auto auto;
+  padding: 10px 20px;
+  border: none;
   cursor: pointer;
-  opacity: 0.8;
+  /*background-color: #4CAF50;*/
+  background-color: #333;
+  color: #f2f2f2;
 }
 
 .buy-btn:hover {
-  opacity: 1;
+  /*background-color: #3e8e41;*/
+  background: whitesmoke;
+  color: black;
+  cursor: pointer;
 }

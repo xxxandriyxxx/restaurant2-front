@@ -27,11 +27,11 @@ export class MainService {
 
 
   saveClient(client: Client): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/saveClient', client);
+    return this.http.post<TransferMessage>(this.url + '/save/client', client);
   }
 
   saveOwner(owner: Owner): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/saveOwner', owner);
+    return this.http.post<TransferMessage>(this.url + '/save/owner', owner);
   }
 
   activation(jwt): Observable<TransferMessage> {
@@ -39,18 +39,18 @@ export class MainService {
   }
 
   login(loginData: BasicData) {
-    return this.http.post(this.url + '/tryLogin', loginData,
+    return this.http.post(this.url + '/login/try', loginData,
       {observe: 'response', responseType: 'text'});
   }
 
   getUserById(id: string): Observable<User> {
     // const headersOption = new HttpHeaders({Authorization: localStorage.getItem('_token')});
-    return this.http.get<User>(this.url + '/getUserById/' + id,
+    return this.http.get<User>(this.url + '/user/get/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
 
-  updateProfile(userId: string, basicdata: BasicData): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/updateProfile/' + userId, basicdata,
+  updateAccount(userId: string, basicData: BasicData): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/user/update/' + userId, basicData,
       {headers: this.dataService.getAuthHeader()});
   }
 
@@ -59,13 +59,13 @@ export class MainService {
   //     {headers: this.dataService.getAuthHeader()});
   // }
 
-  changeRestaurant(restaurant: Restaurant): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeRestaurant', restaurant,
+  changeRestaurantData(restaurant: Restaurant): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/restaurant/change', restaurant,
       {headers: this.dataService.getAuthHeader()});
   }
 
   addRestaurant(ownerId: string, formData: FormData): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/addRestaurant/' + ownerId, formData,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/add/' + ownerId, formData,
       {headers: this.dataService.getAuthHeader()});
   }
 
@@ -76,33 +76,33 @@ export class MainService {
 
 
   changeLogo(restId: number, formData: FormData): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeLogo/' + restId, formData,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/change/logo/' + restId, formData,
       {headers: this.dataService.getAuthHeader()});
   }
 
   getRestaurants(ownerId: string): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.url + '/getRestaurants/' + ownerId,
+    return this.http.get<Restaurant[]>(this.url + '/restaurants/get/' + ownerId,
       {headers: this.dataService.getAuthHeader()});
   }
 
   getAllRestaurants(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.url + '/getAllRestaurants');
+    return this.http.get<Restaurant[]>(this.url + '/restaurants/get');
   }
 
 
 
   deleteRestaurant(id: number): Observable<TransferMessage> {
-    return this.http.delete<TransferMessage>(this.url + '/deleteRestaurant/' + id,
+    return this.http.delete<TransferMessage>(this.url + '/restaurant/delete/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
 
   addMenuSection(restaurantId: string, newMenuSection: MenuSection): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/addMenuSection/' + restaurantId, newMenuSection,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/menu-section/add/' + restaurantId, newMenuSection,
       {headers: this.dataService.getAuthHeader()});
   }
 
   getMenuSections(restaurantId: string): Observable<MenuSection[]> {
-    return this.http.get<MenuSection[]>(this.url + '/getMenuSections/' + restaurantId);
+    return this.http.get<MenuSection[]>(this.url + '/restaurant/menu-sections/get/' + restaurantId);
   }
 
   // getMenuSections(restaurantId: string): Observable<MenuSection[]> {
@@ -111,63 +111,63 @@ export class MainService {
   // }
 
   changeMenuSection(menuSection: MenuSection): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeMenuSection', menuSection,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/menu-section/change', menuSection,
       {headers: this.dataService.getAuthHeader()});
   }
 
   deleteMenuSection(id: number): Observable<TransferMessage> {
-    return this.http.delete<TransferMessage>(this.url + '/deleteMenuSection/' + id,
+    return this.http.delete<TransferMessage>(this.url + '/restaurant/menu-section/delete/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
 
   addDish(restaurantId: string, sectionId: number, dish: Dish): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/addDish/' + restaurantId + '/' + sectionId, dish,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/dish/add/' + restaurantId + '/' + sectionId, dish,
       {headers: this.dataService.getAuthHeader()});
   }
 
-  getDishesBySectionId(id: string): Observable<Dish[]> {
-    return this.http.get<Dish[]>(this.url + '/getDishesBySectionId/' + id,
+  getDishesBySectionId(sectionId: string): Observable<Dish[]> {
+    return this.http.get<Dish[]>(this.url + '/restaurant/dishes/get/{sectionId}' + sectionId,
       {headers: this.dataService.getAuthHeader()});
   }
 
-  getDishesByRestaurantId(id: string): Observable<Dish[]> {
-    return this.http.get<Dish[]>(this.url + '/getDishesByRestaurantId/' + id,
+  getDishesByRestaurantId(restaurantId: string): Observable<Dish[]> {
+    return this.http.get<Dish[]>(this.url + '/restaurant/dishes/get/' + restaurantId,
       {headers: this.dataService.getAuthHeader()});
   }
 
-  getAllDishes(): Observable<Dish[]> {
-    return this.http.get<Dish[]>(this.url + '/getAllDishes',
-      {headers: this.dataService.getAuthHeader()});
-  }
+  // getAllDishes(): Observable<Dish[]> {
+  //   return this.http.get<Dish[]>(this.url + '/getAllDishes',
+  //     {headers: this.dataService.getAuthHeader()});
+  // }
 
   changeDish(dish: Dish): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeDish', dish,
+    return this.http.post<TransferMessage>(this.url + '/restaurant/dish/change', dish,
       {headers: this.dataService.getAuthHeader()});
   }
 
   deleteDish(id: number): Observable<TransferMessage> {
-    return this.http.delete<TransferMessage>(this.url + '/deleteDish/' + id,
+    return this.http.delete<TransferMessage>(this.url + '/restaurant/dish/delete/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
 
 
-  makeOrder(order: Order, userId: string, restaurantId: string): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/makeOrder/' + userId + '/' + restaurantId, order,
+  placeOrder(order: Order, userId: string, restaurantId: string): Observable<TransferMessage> {
+    return this.http.post<TransferMessage>(this.url + '/order/place/' + userId + '/' + restaurantId, order,
       {headers: this.dataService.getAuthHeader()});
   }
 
   getMyOrders(userId: string): Observable<Order[]> {
-    return this.http.get<Order[]>(this.url + '/getMyOrders/' + userId,
+    return this.http.get<Order[]>(this.url + '/orders/get/my/' + userId,
       {headers: this.dataService.getAuthHeader()});
   }
 
   getOrdersByOwnerId(id: string): Observable<Order[]> {
-    return this.http.get<Order[]>(this.url + '/getOrdersByOwnerId/' + id,
+    return this.http.get<Order[]>(this.url + '/orders/get/clients/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
 
   changeOrderStatus(order: Order): Observable<TransferMessage> {
-    return this.http.post<TransferMessage>(this.url + '/changeOrderStatus', order,
+    return this.http.post<TransferMessage>(this.url + '/order/change-status', order,
       {headers: this.dataService.getAuthHeader()});
   }
 

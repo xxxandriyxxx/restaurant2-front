@@ -3,7 +3,7 @@
 
     <div><span class="bold-shown">Owner:</span> {{ownerName}}</div>
     <div>
-      <button id="add-rest-btn" (click)="showAddRestaurant()">Add restaurant</button>
+      <button id="add-rest-btn" (click)="showAddRestaurant()">Add a restaurant</button>
     </div>
   </div>
 
@@ -86,7 +86,7 @@
             [ngStyle]="{border: restNameInp.invalid && restNameInp.dirty ? '2px solid red' : '2px solid green'}"
             #restNameInp='ngModel'
             required maxlength="50"
-            placeholder="restaurant's name"
+            placeholder="name"
             size="50"
             type="text"
             name="restName"
@@ -98,7 +98,7 @@
             [ngStyle]="{border: restAddressInp.invalid && restAddressInp.dirty ? '2px solid red' : '2px solid green'}"
             #restAddressInp='ngModel'
             required maxlength="50"
-            placeholder="restaurant's address"
+            placeholder="address"
             size="50"
             type="text"
             name="restAddress"
@@ -110,10 +110,22 @@
             [ngStyle]="{border: restPhoneInp.invalid && restPhoneInp.dirty? '2px solid red' : '2px solid green'}"
             #restPhoneInp='ngModel'
             required pattern="{{dataService.phoneRegExp.source}}"
-            placeholder="restaurant's phone number (pattern : +38(044)555-55-55)"
+            placeholder="phone number (pattern : +38(044)555-55-55)"
             size="50"
             type="text"
             name="restPhone"
+            autocomplete="off">
+          <label><b>Site:</b></label>
+          <input
+            [(ngModel)]="showAddRest ? newRestaurant.site : restaurantForChange.site"
+            (ngModelChange)="showAddRest ? newRestaurant.site=$event: restaurantForChange.site=$event"
+            [ngStyle]="{border: restSiteInp.invalid && restSiteInp.dirty? '2px solid red' : '2px solid green'}"
+            #restSiteInp='ngModel'
+            required pattern="{{dataService.siteRegExp.source}}"
+            placeholder="site"
+            size="50"
+            type="text"
+            name="restSite"
             autocomplete="off">
           <label><b>About:</b></label>
           <textarea
@@ -124,15 +136,15 @@
             required maxlength="250"
             cols="60"
             rows="5"
-            placeholder="description of your restaurant"
+            placeholder="description"
             type="text"
             name="restAbout"></textarea>
           <button
             *ngIf="showChangeRest"
             class="change-btn"
             [disabled]="addRestForm.invalid"
-            (click)="changeRestaurant()"
-          >Change restaurant data
+            (click)="changeRestaurantData()"
+          >Update data
           </button>
           <!--<button-->
           <!--*ngIf="showChangeRest"-->
@@ -155,7 +167,7 @@
         <input #logoInput type="file" accept='image/*' (change)="preview(logoInput.files)"
                style="display: none"/>
         <button (click)="logoInput.click()">Load picture</button>
-        <button *ngIf="showChangeRest" [disabled]="!logo" class="change-btn" (click)="changeLogo()">Change logo</button>
+        <button *ngIf="showChangeRest" [disabled]="!logo" class="change-btn" (click)="changeLogo()">Update logo</button>
 
 
         <!--<label><b>Logo:</b></label><br>-->

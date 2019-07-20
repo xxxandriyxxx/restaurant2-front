@@ -151,7 +151,7 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   showAddSection() {
-    this.description = 'The name of section should be unique for the same restaurant.';
+    this.description = 'The name of menu section should be unique for the same restaurant.';
     this.showAddSect = true;
     this.showModal();
   }
@@ -161,7 +161,7 @@ export class MySingleRestaurantComponent implements OnInit {
     this.sectionForChange.id = section.id;
     this.sectionForChange.name = section.name;
     this.sectionForChange.dishes = section.dishes;
-    this.description = 'The name of section should be unique for the same restaurant.';
+    this.description = 'The name of menu section should be unique for the same restaurant.';
     this.sectionName = section.name;
     this.showChangeSect = true;
     this.showModal();
