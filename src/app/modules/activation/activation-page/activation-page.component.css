@@ -1,0 +1,18 @@
+body{
+  min-height: 100vh;
+  /*background: lightgoldenrodyellow;*/
+  background: beige;
+  padding-top: 1px;
+}
+
+div{
+  width: 30%;
+  margin: 20px 35%;
+}
+
+#header{
+  margin: 20px 20%;
+  font-size: x-large;
+  font-weight: bold;
+  color: darkred;
+}

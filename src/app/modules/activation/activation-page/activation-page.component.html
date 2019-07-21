@@ -1,15 +1,17 @@
-<h2>
-  ACTIVATION
-</h2>
-<p *ngIf="activated;else otherP">
-  Your account has been successfully activated ! <br>
-  To continue, sign in with the following link: <br>
-  <a href='http://localhost:4200/login'>http://localhost:4200/login</a>
-</p>
-<ng-template #otherP>
-  <p>
-    ERROR of activation !
+<body>
+<div>
+  <h2 id="header">
+    ACTIVATION
+  </h2>
+  <p *ngIf="activated;else otherP">
+    Your account has been successfully activated ! <br>
+    To continue, sign in with the following link: <br>
+    <a href='http://localhost:4200/sign-in'>http://localhost:4200/sign-in</a>
   </p>
-</ng-template>
-
-
+  <ng-template #otherP>
+    <p>
+      ERROR of activation !
+    </p>
+  </ng-template>
+</div>
+</body>

@@ -10,7 +10,7 @@ import {AppComponent} from '../../../app.component';
 })
 export class ActivationPageComponent implements OnInit {
 
-  private activated = false;
+  activated = false;
 
 
   constructor(
