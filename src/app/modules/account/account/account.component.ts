@@ -29,6 +29,7 @@ export class AccountComponent implements OnInit {
     this.loadData();
   }
 
+  
 
   loadData() {
     this.mainService.getUserById(localStorage.getItem('_userId'))
