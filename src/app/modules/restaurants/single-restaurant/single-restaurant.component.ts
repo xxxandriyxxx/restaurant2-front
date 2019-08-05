@@ -50,7 +50,6 @@ export class SingleRestaurantComponent implements OnInit {
 
 
   loadData() {
-
     this.activatedRoute.params.subscribe((params) => {
       this.restaurantId = params.id;
       // console.log(this.restaurantId);

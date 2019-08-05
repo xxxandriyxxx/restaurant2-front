@@ -1,7 +1,5 @@
 <body>
 
-<!--<div id = "signInMessage" *ngIf = "showSigInMessage"> Please <a routerLink="/sign-in">sigh in</a> to be able to make an order</div>-->
-
 <div class="restaurant" *ngFor="let rest of restaurants">
   <div class="grid">
     <div class="logo-wrap"><img class="logo" src="../../../../assets/img/{{rest.logo}}" alt="logo"></div>
@@ -16,26 +14,6 @@
       <div>{{rest.about}}</div>
     </div>
   </div>
-  <!--<div class="subgrid" >-->
-  <!--<div><a (click)="goToRestaurant(rest.id, rest.name)">{{rest.name}}</a></div>-->
-  <!--<div>{{rest.address}}</div>-->
-  <!--<div>{{rest.phoneNumber}}</div>-->
-  <!--</div>-->
 </div>
 
-
-<!--<div class="grid">-->
-<!--<div class="header">-->
-<!--<div>Name</div>-->
-<!--<div>About</div>-->
-<!--<div>Address</div>-->
-<!--<div>Phone number</div>-->
-<!--</div>-->
-<!--<div class="subgrid" *ngFor="let rest of restaurants">-->
-<!--<div><a (click)="goToRestaurant(rest.id, rest.name)">{{rest.name}}</a></div>-->
-<!--<div>{{rest.about}}</div>-->
-<!--<div>{{rest.address}}</div>-->
-<!--<div>{{rest.phoneNumber}}</div>-->
-<!--</div>-->
-<!--</div>-->
 </body>

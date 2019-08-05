@@ -22,28 +22,12 @@ export class MyRestaurantsComponent implements OnInit {
   operationName = '';
   notification = '';
   restaurantName = '';
-/////////////////////////////////////////////////////
-//   path;
-  pathLogo = '';
-  selectedFile: File;
-  localUrl: any[];
-
-  logos: string [] = [];
-  imageSrc: string;
-
-
-  public imagePath;
-
-
   imgURL: any;
-  public message: string;
   private logo: File = null;
   private formData = new FormData();
   private errorLoadLogo: boolean;
   ownerName = '';
 
-  // String pathToFolder = "user.home" + Path.sep + "Restaurant_Project"
-  //   + File.separator + "Logo" + File.separator;
 
 
   constructor(private mainService: MainService,
@@ -55,10 +39,6 @@ export class MyRestaurantsComponent implements OnInit {
   ngOnInit() {
     this.loadData();
     this.modal = document.getElementById('modal');
-    // this.path = document.getElementById('path');
-    // var userHome = require('user-home');
-    // console.log(this.logo);
-    // console.log(this.formData);
 
   }
 
@@ -86,23 +66,6 @@ export class MyRestaurantsComponent implements OnInit {
   goToRestaurant(id: number, restName: string) {
     this.router.navigate(['myRestaurants/' + id], {queryParams: {name: restName}});
   }
-
-
-  // addRestaurant() {
-  //   // this.closeModal();
-  //   const ownerId = localStorage.getItem('_userId');
-  //   this.mainService.addRestaurant(ownerId, this.newRestaurant)
-  //     .subscribe((value) => {
-  //         this.appComponent.showModal(value.message);
-  //         this.closeModal();
-  //         this.loadData();
-  //       },
-  //       error => {
-  //         console.log(error);
-  //         this.appComponent.showModal(error);
-  //         this.closeModal();
-  //       });
-  // }
 
 
   addRestaurant() {
@@ -146,22 +109,6 @@ export class MyRestaurantsComponent implements OnInit {
           this.appComponent.showModal(error);
         });
   }
-
-  // changeRestaurant() {
-  //   // this.closeModal();
-  //   this.formData.append('restaurant', JSON.stringify(this.restaurantForChange));
-  //   this.formData.append('logo', this.logo);
-  //   this.mainService.changeRestaurant(this.formData)
-  //     .subscribe((value) => {
-  //         this.appComponent.showModal(value.message);
-  //         this.closeModal();
-  //         this.loadData();
-  //       },
-  //       error => {
-  //         this.appComponent.showModal(error);
-  //         this.closeModal();
-  //       });
-  // }
 
 
   deleteRestaurant(id: number) {
@@ -210,47 +157,9 @@ export class MyRestaurantsComponent implements OnInit {
     this.modal.style.display = 'none';
     this.showAddRest = false;
     this.showChangeRest = false;
-    // this.imgURL = null;
     this.errorLoadLogo = false;
     this.ngOnInit();
   }
-
-
-  loadLogo() {
-    console.log(this.pathLogo);
-  }
-
-  // onFileChanged(event) {
-  //   this.selectedFile = event.target.files[0];
-  //   console.log(this.selectedFile.name);
-  //   // console.log(this.path.toString());
-  //   console.log(window.URL.createObjectURL(event.target.files[0]).toString());
-  // }
-  //
-  // showPreviewImage(event: any) {
-  //   if (event.target.files && event.target.files[0]) {
-  //     const reader = new FileReader();
-  //     reader.onload = (event: any) => {
-  //       this.localUrl = event.target.result;
-  //     };
-  //     reader.readAsDataURL(event.target.files[0]);
-  //   }
-  // }
-  //
-  // readURL(event: any): void {
-  //   if (event.target.files && event.target.files[0]) {
-  //     const file = event.target.files[0];
-  //
-  //     const reader = new FileReader();
-  //     reader.onload = e => this.imageSrc = reader.result.toString();
-  //
-  //     reader.readAsDataURL(file);
-  //
-  //     console.log(this.imageSrc);
-  //     console.log(file);
-  //
-  //   }
-  // }
 
 
   preview(files) {
@@ -264,29 +173,12 @@ export class MyRestaurantsComponent implements OnInit {
       return;
     }
     const reader = new FileReader();
-    // this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (event) => {
       this.imgURL = reader.result;
     };
-
-
-    // console.log(this.imgURL);
-    // console.log(this.imagePath);
     console.log(files[0]);
     this.logo = files[0];
-
-    // const formData: FormData = new FormData();
-
-
-    // this.mainService.saveLogo(id, this.logo)
-    //   .subscribe((value) => {
-    //       this.appComponent.showModal(value.message);
-    //       this.loadData();
-    //     },
-    //     error => {
-    //       this.appComponent.showModal(error);
-    //     });
   }
 
 }

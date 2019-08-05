@@ -6,10 +6,8 @@ import {SignupModule} from './modules/signup/signup.module';
 import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RestaurantsModule} from './modules/restaurants/restaurants.module';
-import {AccountModule} from './modules/account/account.module';
-import {MyRestaurantsModule} from './modules/my-restaurants/my-restaurants.module';
+
 
 
 @NgModule({
@@ -23,12 +21,8 @@ import {MyRestaurantsModule} from './modules/my-restaurants/my-restaurants.modul
     MainRoutingModule,
     SignupModule,
     SigninModule,
-    // BrowserAnimationsModule,
     RestaurantsModule,
-    // ProfileModule
-    // MyRestaurantsModule
   ],
-  // exports: [AppComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

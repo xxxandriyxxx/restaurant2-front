@@ -1,11 +1,8 @@
 
 body {
   min-height: 100vh;
-  /*background: lightgoldenrodyellow;*/
-  /*background: gainsboro;*/
   background: beige;
   padding-top: 1px;
-  /*min-height: 500px;*/
 }
 
 #signInMessage {
@@ -17,7 +14,6 @@ body {
 }
 
 .navbar {
-  /*overflow: hidden;*/
   z-index: 2;
   position: fixed;
   top: 110px;
@@ -41,10 +37,8 @@ body {
   display: grid;
   grid-gap: 2px;
   width: 60%;
-  /*position: relative;*/
   margin: 20px 20%;
   background: tan;
-  /*text-align: center;*/
   border: dimgrey solid 2px;
   box-shadow: 9px 7px 10px 0 rgba(0, 0, 0, 0.26);
 
@@ -60,8 +54,6 @@ body {
 
 .subgrid {
   display: grid;
-  /*!*Grid-column-start: 1;*!*/
-  /*!*Grid-column-end: 4;*!*/
   grid-template-columns: 5fr 1fr;
   grid-gap: 2px;
   border: lightgoldenrodyellow solid 1px;
@@ -70,17 +62,13 @@ body {
 }
 
 .header > div {
-  /*font-size: 1.5vw;*/
   padding: .5em;
   background: rosybrown;
-  /*background: burlywood;*/
   text-align: center;
 }
 
 .subgrid > div {
-  /*font-size: 1.5vw;*/
   padding: 10px;
-  /*background: silver;*/
   display: flex;
   align-items: center;
   justify-content: left;
@@ -96,8 +84,6 @@ body {
 }
 
 .section {
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 4;*/
   padding: 20px 10px 20px 100px;
   display: flex;
   flex-direction: row;
@@ -161,48 +147,14 @@ body {
 
 #order button {
   background-color: #4CAF50;
-  /*height: 30px;*/
   padding: 8px;
   width: 50%;
   margin-left: 25%;
   font-weight: bold;
-  /*padding: 10px;*/
-  /*margin: 5px;*/
-  /*display: inline-block;*/
   border: silver solid 1px;
-  /*border: none;*/
   cursor: pointer;
 }
 
-/*#order {*/
-/*display: grid;*/
-/*margin-top: 10px;*/
-
-/*!*grid-gap: 1px;*!*/
-/*width: 25%;*/
-/*border: black solid 2px;*/
-/*}*/
-
-/*#order > div {*/
-/*padding: .5em;*/
-/*background: silver;*/
-/*}*/
-
-
-/*#order button {*/
-/*background-color: #4CAF50;*/
-/*!*height: 30px;*!*/
-/*padding: 8px;*/
-/*width: 80%;*/
-/*margin-left: 10%;*/
-/*!*padding: 10px;*!*/
-/*!*margin: 5px;*!*/
-/*!*display: inline-block;*!*/
-/*!*border: black solid 1px;*!*/
-/*border: none;*/
-/*cursor: pointer;*/
-/*opacity: 0.8;*/
-/*}*/
 
 #order button:hover {
   background-color: #3e8e41;
@@ -232,8 +184,6 @@ body {
   display: grid;
   grid-gap: 1px;
   grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
-  /*Grid-column-start: 1;*/
-  /*Grid-column-end: 2;*/
 }
 
 #orderDetailsHeader > div {
@@ -302,12 +252,8 @@ body {
 
 
 #orderDetailsSubgrid button {
-  /*background-color: #4CAF50;*/
   width: 30px;
   height: 30px;
-  /*padding: 10px;*/
-  /*margin: 5px;*/
-  /*display: inline-block;*/
   border: silver solid 1px;
   cursor: pointer;
   opacity: 0.8;
@@ -321,10 +267,6 @@ body {
   margin: 10px 10px 10px 20%;
   padding: 12px;
   width: 15%;
-  /*height: 30px ;*/
-  /*padding: 10px;*/
-  /*margin: 5px;*/
-  /*display: inline-block;*/
   background-color: indianred;
   font-weight: bold;
   border: none;
@@ -335,10 +277,6 @@ body {
 #confirm-btn {
   padding: 12px;
   width: 80%;
-  /*height: 30px ;*/
-  /*padding: 10px;*/
-  /*margin: 5px;*/
-  /*display: inline-block;*/
   border: none;
   cursor: pointer;
   opacity: 0.9;
@@ -371,18 +309,15 @@ body {
 
 
 .buy-btn {
-  /*background-color: #4CAF50;*/
   margin: 10px 10px auto auto;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  /*background-color: #4CAF50;*/
   background-color: #333;
   color: #f2f2f2;
 }
 
 .buy-btn:hover {
-  /*background-color: #3e8e41;*/
   background: whitesmoke;
   color: black;
   cursor: pointer;

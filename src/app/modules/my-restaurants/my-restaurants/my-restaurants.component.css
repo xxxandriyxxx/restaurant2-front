@@ -1,5 +1,4 @@
 .navbar {
-  /*overflow: hidden;*/
   z-index: 2;
   position: fixed;
   top: 110px;
@@ -21,15 +20,6 @@
   border-bottom: #333 solid 6px;
 }
 
-/*#shown > #whose{*/
-/*Grid-column-start: 1;*/
-/*Grid-column-end: 3;*/
-/*!*display: flex;*!*/
-/*!*align-items: center;*!*/
-/*!*justify-content: center;*!*/
-/*text-align: center;*/
-/*!*background-color: silver;*!*/
-/*}*/
 
 #shown > div {
   padding-left: 10px;
@@ -37,7 +27,6 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  /*text-align: left;*/
   word-break: break-word;
 }
 
@@ -51,8 +40,6 @@
   width: 30%;
   margin-left: 35%;
   background-color: #4CAF50;
-  /*padding: 14px 20px;*/
-  /*margin: 20px;*/
   border: silver solid 1px;
   cursor: pointer;
   font-weight: bold;
@@ -63,30 +50,10 @@
 }
 
 
-
-
-/*#add-rest-btn {*/
-  /*height: 50px;*/
-  /*width: 200px;*/
-  /*background-color: #4CAF50;*/
-  /*padding: 14px 20px;*/
-  /*margin: 20px;*/
-  /*border: none;*/
-  /*cursor: pointer;*/
-  /*opacity: 0.9;*/
-  /*font-weight: bold;*/
-/*}*/
-
-/*#add-rest-btn:hover {*/
-  /*opacity: 1;*/
-/*}*/
-
 .grid {
   display: grid;
   grid-gap: 5px;
   margin-bottom: 30px;
-  /*grid-template-rows: minmax(auto,auto);*/
-  /*grid-template-columns: minmax(auto,auto);*/
 }
 
 .subgrid, .header {
@@ -99,7 +66,6 @@
 .header {
   border-bottom: black solid 1px;
 }
-
 
 
 .header > div {
@@ -116,10 +82,6 @@
 .subgrid > div {
   padding: .5em;
   background: silver;
-  /*text-align: center;*/
-  /*vertical-align: middle;*/
-  /*word-wrap: break-word;*/
-  /*overflow-wrap: break-word;*/
   word-break: break-word;
   display: flex;
   align-items: center;
@@ -150,7 +112,6 @@
 }
 
 .actions > button:hover {
-  /*background-color: #3e8e41;*/
   opacity: 1;
 }
 
@@ -170,7 +131,6 @@
 }
 
 .logo {
-  /*min-width: 100px;*/
   min-height: 100px;
   max-width: 100%;
   max-height: 100%;
@@ -181,8 +141,6 @@
   display: none;
   position: fixed;
   z-index: 3;
-  /*left: 0;*/
-  /*right: 0;*/
   top: 0;
   height: 100%;
   width: 100%;
@@ -223,7 +181,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: minmax(auto, auto);
-  /*grid-template-columns: minmax(auto,auto);*/
 }
 
 .headerAddChangeRest {
@@ -247,9 +204,7 @@
 
 .form > div {
   display: flex;
-  /*align-items: center;*/
   justify-content: space-around;
-  /*text-align: center;*/
 }
 
 .form > input:focus, .form > textarea:focus {
@@ -262,7 +217,6 @@ hr {
 }
 
 .changeLogo {
-  /*border: 2px solid black;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,7 +226,6 @@ hr {
 
 .changeLogo > button {
   background-color: #aaaaaa;
-  /*color: white;*/
   padding: 14px 20px;
   margin: 10px 20px;
   border: none;
@@ -285,25 +238,16 @@ hr {
 }
 
 .logo-change {
-  /*min-width: 100px;*/
   min-height: 100px;
   min-width: 100px;
   max-width: 245px;
   max-height: 245px;
-  /*object-fit: contain;*/
-  /*border: 1px solid black;*/
 }
 
 .logo-change-wrap {
   border: 1px solid black;
-  /*padding: 5px;*/
-  /*text-align: center;*/
-  /*vertical-align: middle;*/
-  /*word-wrap: break-word;*/
-  /*overflow-wrap: break-word;*/
   width: 250px;
   height: 250px;
-  /*word-break: break-word;*/
   display: flex;
   align-items: center;
   justify-content: center;
@@ -311,7 +255,6 @@ hr {
 }
 
 .modal-form > button {
-  /*background-color: #4CAF50;*/
   width: 40%;
   padding: 14px 20px;
   margin: 10px 30% 10px 30%;
@@ -326,7 +269,6 @@ hr {
 }
 
 .form > button {
-  /*background-color: #4CAF50;*/
   width: 100%;
   padding: 14px 20px;
   margin: 10px 0 10px 0;
@@ -352,9 +294,6 @@ hr {
   background-color: indianred;
 }
 
-/*input[type="file"] {*/
-/*display: none;*/
-/*}*/
 
 .custom-file-upload {
   border: 1px solid #ccc;

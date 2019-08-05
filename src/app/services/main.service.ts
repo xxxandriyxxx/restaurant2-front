@@ -54,11 +54,6 @@ export class MainService {
       {headers: this.dataService.getAuthHeader()});
   }
 
-  // addRestaurant(ownerId: string, restaurant: Restaurant): Observable<TransferMessage> {
-  //   return this.http.post<TransferMessage>(this.url + '/addRestaurant/' + ownerId, restaurant,
-  //     {headers: this.dataService.getAuthHeader()});
-  // }
-
   changeRestaurantData(restaurant: Restaurant): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/restaurant/change', restaurant,
       {headers: this.dataService.getAuthHeader()});
@@ -68,12 +63,6 @@ export class MainService {
     return this.http.post<TransferMessage>(this.url + '/restaurant/add/' + ownerId, formData,
       {headers: this.dataService.getAuthHeader()});
   }
-
-  // changeRestaurant(formData: FormData): Observable<TransferMessage> {
-  //   return this.http.post<TransferMessage>(this.url + '/changeRestaurant', formData,
-  //     {headers: this.dataService.getAuthHeader()});
-  // }
-
 
   changeLogo(restId: number, formData: FormData): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/restaurant/change/logo/' + restId, formData,
@@ -89,8 +78,6 @@ export class MainService {
     return this.http.get<Restaurant[]>(this.url + '/restaurants/get');
   }
 
-
-
   deleteRestaurant(id: number): Observable<TransferMessage> {
     return this.http.delete<TransferMessage>(this.url + '/restaurant/delete/' + id,
       {headers: this.dataService.getAuthHeader()});
@@ -104,11 +91,6 @@ export class MainService {
   getMenuSections(restaurantId: string): Observable<MenuSection[]> {
     return this.http.get<MenuSection[]>(this.url + '/restaurant/menu-sections/get/' + restaurantId);
   }
-
-  // getMenuSections(restaurantId: string): Observable<MenuSection[]> {
-  //   return this.http.get<MenuSection[]>(this.url + '/getMenuSections/' + restaurantId,
-  //     {headers: this.dataService.getAuthHeader()});
-  // }
 
   changeMenuSection(menuSection: MenuSection): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/restaurant/menu-section/change', menuSection,
@@ -135,11 +117,6 @@ export class MainService {
       {headers: this.dataService.getAuthHeader()});
   }
 
-  // getAllDishes(): Observable<Dish[]> {
-  //   return this.http.get<Dish[]>(this.url + '/getAllDishes',
-  //     {headers: this.dataService.getAuthHeader()});
-  // }
-
   changeDish(dish: Dish): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/restaurant/dish/change', dish,
       {headers: this.dataService.getAuthHeader()});
@@ -149,7 +126,6 @@ export class MainService {
     return this.http.delete<TransferMessage>(this.url + '/restaurant/dish/delete/' + id,
       {headers: this.dataService.getAuthHeader()});
   }
-
 
   placeOrder(order: Order, userId: string, restaurantId: string): Observable<TransferMessage> {
     return this.http.post<TransferMessage>(this.url + '/order/place/' + userId + '/' + restaurantId, order,
@@ -170,10 +146,5 @@ export class MainService {
     return this.http.post<TransferMessage>(this.url + '/order/change-status', order,
       {headers: this.dataService.getAuthHeader()});
   }
-
-  // findNameByEmail(email: string): Observable<TransferMessage> {
-  //   return this.http.post<TransferMessage>(this.url + '/findNameByEmail', new TransferMessage(email));
-  // }
-
 
 }
