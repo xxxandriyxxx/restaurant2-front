@@ -60,6 +60,7 @@ export class MainService {
   }
 
   addRestaurant(ownerId: string, formData: FormData): Observable<TransferMessage> {
+    console.log(formData);
     return this.http.post<TransferMessage>(this.url + '/restaurant/add/' + ownerId, formData,
       {headers: this.dataService.getAuthHeader()});
   }

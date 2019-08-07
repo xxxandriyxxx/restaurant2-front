@@ -60,6 +60,9 @@ export class MyRestaurantsComponent implements OnInit {
         error => {
           console.log(error);
         });
+    this.formData.delete('restaurant');
+    this.formData.delete('logo');
+
   }
 
 
@@ -69,6 +72,7 @@ export class MyRestaurantsComponent implements OnInit {
 
 
   addRestaurant() {
+    console.log(this.newRestaurant);
     const ownerId = localStorage.getItem('_userId');
     this.formData.append('restaurant', JSON.stringify(this.newRestaurant));
     this.formData.append('logo', this.logo);
