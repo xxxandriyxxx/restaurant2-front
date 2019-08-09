@@ -18,7 +18,7 @@ import {Order} from '../models/Order';
 })
 export class MainService {
 
-  url = 'http://localhost:8080';
+  url = this.dataService.url;
 
   constructor(
     private http: HttpClient,

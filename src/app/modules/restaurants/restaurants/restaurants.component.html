@@ -2,7 +2,9 @@
 
 <div class="restaurant" *ngFor="let rest of restaurants">
   <div class="grid">
-    <div class="logo-wrap"><img class="logo" src="../../../../assets/img/{{rest.logo}}" alt="logo"></div>
+
+    <div class="logo-wrap"><img class="logo" src="{{dataService.pathToResources}}/{{rest.logo}}" alt="logo"></div>
+
     <div class="details">
       <div class="name">
         <div><span class="bold-color">{{rest.name}}</span></div>

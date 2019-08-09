@@ -5,13 +5,13 @@
     <a *ngIf="userClass == 'Owner'" routerLink="myRestaurants">My restaurants</a>
     <a *ngIf="userClass !== 'AdminInMemory'" routerLink="orders/my">My orders</a>
     <a *ngIf="userClass == 'Owner'" routerLink="orders/clients">Clients' orders</a>
-    <a class="right" (click)="logout()">Log out</a>
+    <a class="right" (click)="logout()">Sign out</a>
     <a *ngIf="(userClass == 'Owner')||(userClass == 'Client')" class="right" routerLink="myAccount">My account</a>
     <a *ngIf="userClass == 'AdminInMemory'" class="right" routerLink="admin">Admin page</a>
   </div>
   <ng-template #signInUp>
-    <a class="right" routerLink="/sign-up">Sigh up</a>
-    <a class="right" routerLink="/sign-in">Sigh in</a>
+    <a class="right" routerLink="/sign-up">Sign up</a>
+    <a class="right" routerLink="/sign-in">Sign in</a>
   </ng-template>
 
   <img id="dishes-img" src="../assets/img/dishes3.png" alt="dishes">

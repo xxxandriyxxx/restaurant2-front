@@ -5,6 +5,8 @@ import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {AppComponent} from '../../../app.component';
 import {Router} from '@angular/router';
+import {PackageMetadata} from '@angular/cli/utilities/package-metadata';
+
 
 @Component({
   selector: 'app-account',
@@ -18,6 +20,7 @@ export class AccountComponent implements OnInit {
   basicData: BasicData = new BasicData();
   formerEmail = '';
   showChange = false;
+  location: Location;
 
   constructor(private mainService: MainService,
               private dataService: DataService,
@@ -27,8 +30,8 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    console.log(this.location.href);
   }
-
 
 
   loadData() {
