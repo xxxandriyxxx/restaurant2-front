@@ -6,7 +6,7 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class DataService {
 
-  // URL for of the API
+  // URL of the API
   public url = 'http://localhost:8080';
   // public url = 'http://ec2-18-219-114-136.us-east-2.compute.amazonaws.com:8080';
 
