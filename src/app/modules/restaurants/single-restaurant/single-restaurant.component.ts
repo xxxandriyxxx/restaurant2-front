@@ -19,18 +19,9 @@ export class SingleRestaurantComponent implements OnInit {
   showBuy = false;
   totalAmount = 0;
   totalCost = 0;
-  showSigInMessage = false;
   restaurantId = '';
-  showAddSection = false;
-  showChangeSect: boolean [] = [];
-  showAddDish: boolean [] = [];
   menuSections: MenuSection[] = [];
   ordDishes: Dish[] = [];
-  sectionsForChange: MenuSection [] = [];
-  newMenuSection: MenuSection = new MenuSection();
-  newSectName = '';
-  newDish: Dish = new Dish();
-  showChangeDish: boolean [] = [];
   newOrder: Order = new Order();
   private restaurantName = '';
   showSect: boolean [] = [];
@@ -150,76 +141,7 @@ export class SingleRestaurantComponent implements OnInit {
     // this.ngOnInit();
   }
 
-  // addDishToOrder(id: number) {
-  //   const item = this.ordDishes.find(i => i.id === id);
-  //   const index = this.newOrder.dishes.findIndex(x => x.id === id);
-  //
-  //   if (index === -1) {
-  //     this.newOrder.dishes.push(item);
-  //   } else {
-  //     this.newOrder.dishes[index].amount += 1;
-  //   }
-  //   // console.log(this.newOrder);
-  //
-  //   this.totalAmount += 1;
-  //   this.totalCost += item.price;
-  // }
-  //
-  //
-  // // addDishToOrder(id: number) {
-  // //   console.log(id);
-  // //   // const item = this.ordDishes.find(i => i.id === id);
-  // //   const index = this.newOrder.dishes.findIndex(x => x.id === id);
-  // //   let dish;
-  // //
-  // //   if (index === -1) {
-  // //     for (const sec of this.menuSections) {
-  // //       dish = sec.dishes.find(i => i.id === id);
-  // //       if (dish !== undefined) {
-  // //         break;
-  // //       }
-  // //       console.log(dish);
-  // //       this.totalCost = this.totalCost + dish.price;
-  // //     }
-  // //     dish.amount = 1;
-  // //     this.newOrder.dishes.push(dish);
-  // //   } else {
-  // //     this.newOrder.dishes[index].amount += 1;
-  // //     this.totalCost = this.totalCost + this.newOrder.dishes[index].price;
-  // //   }
-  // //   this.totalAmount = this.totalAmount + 1;
-  // // }
-  //
-  //
-  // increaseAmount(index: number) {
-  //   this.totalAmount += 1;
-  //   this.totalCost += this.newOrder.dishes[index].price;
-  //   this.newOrder.dishes[index].amount += 1;
-  //   // this.ngOnInit();
-  // }
-  //
-  //
-  // reduceAmount(index: number) {
-  //   if (this.newOrder.dishes[index].amount === 1) {
-  //     this.deleteDish(index);
-  //   } else {
-  //     this.totalAmount -= 1;
-  //     this.totalCost -= this.newOrder.dishes[index].price;
-  //     this.newOrder.dishes[index].amount -= 1;
-  //   }
-  //   // this.ngOnInit();
-  // }
-  //
-  //
-  // deleteDish(index: number) {
-  //   console.log(this.newOrder);
-  //   this.totalCost -= this.newOrder.dishes[index].price * this.newOrder.dishes[index].amount;
-  //   this.totalAmount -= this.newOrder.dishes[index].amount;
-  //   this.newOrder.dishes.splice(index, 1);
-  //   // console.log(this.newOrder);
-  //   console.log(this.ordDishes);
-  //   // this.ngOnInit();
-  // }
+
 
   cancel() {
     this.showMakeOrder = false;
@@ -243,6 +165,5 @@ export class SingleRestaurantComponent implements OnInit {
           console.log(error);
           this.appComponent.showModal(error);
         });
-
   }
 }

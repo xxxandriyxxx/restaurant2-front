@@ -144,7 +144,6 @@ export class OrdersComponent implements OnInit {
     this.mainService.changeOrderStatus(ord)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
-
           this.loadData();
         },
         error => {

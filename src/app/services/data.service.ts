@@ -13,6 +13,7 @@ export class DataService {
   // this resource location is set by the resource handler in the WebConfig class in the API project
   public pathToResources = this.url + '/logo';
 
+
   public passLoginRegExp = new RegExp('^[a-zA-Z0-9]{3,20}$');
   public emailRegExp = new RegExp('^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$');
   public priceRegExp = new RegExp('^\\d+(\\.\\d{1,2})?$');
