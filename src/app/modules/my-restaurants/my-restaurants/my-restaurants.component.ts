@@ -138,13 +138,7 @@ export class MyRestaurantsComponent implements OnInit {
 
 
   showChangeRestaurant(rest: Restaurant) {
-    this.restaurantForChange.id = rest.id;
-    this.restaurantForChange.name = rest.name;
-    this.restaurantForChange.address = rest.address;
-    this.restaurantForChange.phoneNumber = rest.phoneNumber;
-    this.restaurantForChange.site = rest.site;
-    this.restaurantForChange.about = rest.about;
-    this.restaurantForChange.logo = rest.logo;
+    this.restaurantForChange = rest;
     this.operationName = 'Change the restaurant';
     this.restaurantName = rest.name;
     this.notification = '';

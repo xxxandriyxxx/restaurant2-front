@@ -24,7 +24,7 @@
       <div class="sect-name">  {{sect.name}}  </div>
       <div class="actions">
         <button class="change-btn" (click)="showChangeSection(sect)">Change</button>
-        <button class="delete-btn" (click)="deleteMenuSection(sect.id)">Delete</button>
+        <button class="delete-btn" (click)="showDeleteSection(sect)">Delete</button>
         <button class="add-btn" (click)="showAddDish(sect)">Add dish</button>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div>{{dish.price}}</div>
       <div class="actions">
         <button class="change-btn" (click)="showChangeDish(dish,sect.name)">Change</button>
-        <button class="delete-btn" (click)="deleteDish(dish.id)">Delete</button>
+        <button class="delete-btn" (click)="showDeleteDish(dish)">Delete</button>
       </div>
     </div>
   </div>
@@ -197,6 +197,29 @@
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
+
+    <!----------------------------------------------------------------------confirmation of deleting a section/dish-->
+    <div *ngIf="showDeleteSect || showDeleteDsh" class="form">
+      <h2>{{operationName}}</h2>
+      <p *ngIf="showDeleteSect">{{sectionForDelete.name}}</p>
+      <p *ngIf="showDeleteDsh">{{dishForDelete.name}}</p>
+      <hr>
+      <p *ngIf="showDeleteSect">The menu section "{{sectionForDelete.name}}" will be deleted.<br>
+        Continue?</p>
+      <p *ngIf="showDeleteDsh">The dish "{{dishForDelete.name}}" will be deleted.<br>
+        Continue?</p>
+
+      <button *ngIf="showDeleteSect"
+              (click)="deleteMenuSection()"
+              class="add-btn">Delete
+      </button>
+      <button *ngIf="showDeleteDsh"
+              (click)="deleteDish()"
+              class="add-btn">Delete
+      </button>
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+    </div>
+
 
   </div>
 </div>

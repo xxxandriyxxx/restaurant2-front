@@ -20,12 +20,17 @@ export class MySingleRestaurantComponent implements OnInit {
   dishes: Dish[] = [];
   newMenuSection: MenuSection = new MenuSection();
   sectionForChange: MenuSection = new MenuSection();
+  sectionForDelete: MenuSection = new MenuSection();
   newDish: Dish = new Dish();
   dishForChange: Dish = new Dish();
+  dishForDelete: Dish = new Dish();
   showAddSect: boolean;
   showChangeSect: boolean;
   showAddDsh: boolean;
   showChangeDsh: boolean;
+  showDeleteSect: boolean;
+  showDeleteDsh: boolean;
+  operationName = '';
   restaurantName = '';
   sectionName = '';
   description = '';
@@ -57,18 +62,14 @@ export class MySingleRestaurantComponent implements OnInit {
         error => {
           console.log(error);
         });
-
-
   }
 
 
   addMenuSection() {
-    // this.closeModal();
     this.mainService.addMenuSection(this.restaurantId, this.newMenuSection)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -78,12 +79,10 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   changeMenuSection() {
-    // this.closeModal();
     this.mainService.changeMenuSection(this.sectionForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -92,11 +91,11 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  deleteMenuSection(id: number) {
-    this.mainService.deleteMenuSection(id)
+  deleteMenuSection() {
+    this.mainService.deleteMenuSection(this.sectionForDelete.id)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
-          this.loadData();
+          this.closeModal();
         },
         error => {
           this.appComponent.showModal(error);
@@ -106,13 +105,11 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   addDish() {
-    // this.closeModal();
     this.newDish.price = Number(this.newDish.price);
     this.mainService.addDish(this.restaurantId, this.sectionId, this.newDish)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -122,13 +119,11 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   changeDish() {
-    // this.closeModal();
     this.dishForChange.price = Number(this.dishForChange.price);
     this.mainService.changeDish(this.dishForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -137,11 +132,11 @@ export class MySingleRestaurantComponent implements OnInit {
   }
 
 
-  deleteDish(id: number) {
-    this.mainService.deleteDish(id)
+  deleteDish() {
+    this.mainService.deleteDish(this.dishForDelete.id)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
-          this.loadData();
+          this.closeModal();
         },
         error => {
           this.appComponent.showModal(error);
@@ -158,9 +153,7 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   showChangeSection(section: MenuSection) {
-    this.sectionForChange.id = section.id;
-    this.sectionForChange.name = section.name;
-    this.sectionForChange.dishes = section.dishes;
+    this.sectionForChange = section;
     this.description = 'The name of menu section should be unique for the same restaurant.';
     this.sectionName = section.name;
     this.showChangeSect = true;
@@ -178,16 +171,26 @@ export class MySingleRestaurantComponent implements OnInit {
 
 
   showChangeDish(dish: Dish, sectionName: string) {
-    this.dishForChange.id = dish.id;
-    this.dishForChange.name = dish.name;
-    this.dishForChange.description = dish.description;
-    this.dishForChange.price = dish.price;
+    this.dishForChange = dish;
     this.sectionName = sectionName;
     this.description = 'The name of dish should be unique for the same restaurant.';
     this.showChangeDsh = true;
     this.showModal();
   }
 
+  showDeleteSection(section: MenuSection){
+    this.sectionForDelete = section;
+    this.operationName = 'Delete the menu section';
+    this.showDeleteSect = true;
+    this.showModal();
+  }
+
+  showDeleteDish(dish: Dish){
+    this.dishForDelete = dish;
+    this.operationName = 'Delete the dish';
+    this.showDeleteDsh = true;
+    this.showModal();
+  }
 
   showModal() {
     this.modal.style.display = 'block';
@@ -200,6 +203,9 @@ export class MySingleRestaurantComponent implements OnInit {
     this.showChangeSect = false;
     this.showAddDsh = false;
     this.showChangeDsh = false;
+    this.showDeleteSect = false;
+    this.showDeleteDsh = false;
+    this.loadData();
   }
 
 }

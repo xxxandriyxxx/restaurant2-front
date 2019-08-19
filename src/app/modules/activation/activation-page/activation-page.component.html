@@ -6,7 +6,7 @@
   <p *ngIf="activated;else otherP">
     Your account has been successfully activated ! <br>
     To continue, sign in with the following link: <br>
-    <a href='http://localhost:4200/sign-in'>http://localhost:4200/sign-in</a>
+    <a routerLink="/sign-in">{{dataService.url}}/sign-in</a>
   </p>
   <ng-template #otherP>
     <p>

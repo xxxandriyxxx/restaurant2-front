@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MainService} from '../../../services/main.service';
-import {AppComponent} from '../../../app.component';
+import {DataService} from '../../../services/data.service';
 
 @Component({
   selector: 'app-activation-page',
@@ -15,12 +15,12 @@ export class ActivationPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private mainService: MainService) {
+    private mainService: MainService,
+    private dataService: DataService) {
   }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      // console.log(params.jwt);
       this.mainService.activation(params.jwt)
         .subscribe((res) => {
             console.log(res);

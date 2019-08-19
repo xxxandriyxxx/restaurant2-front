@@ -1,11 +1,10 @@
 ## Restaurants front-end
-You can open this project by link: http://ec2-52-15-125-215.us-east-2.compute.amazonaws.com:8080
 
-This is an Angular project "Restaurants".
+This is an Angular project "Restaurants". You can open this project by link: http://ec2-18-217-248-193.us-east-2.compute.amazonaws.com:8080
 
-Using this app you can browse the list of registered restaurants, sign up as client, place orders, change the status of your orders.
+Using this app you can browse the list of registered restaurants, sign up as a client, place orders, manage your orders.
 
-You can also sign up as an owner of restaurants. Then you can register your restaurants and manage them, get customer orders, change the status of customer orders. You can also place an order as a client.
+You can also sign up as an owner of restaurants. Then you can register your restaurants and manage them, manage clients orders. You can also place an order as a client.
 
 Run `ng serve` for a dev server. Navigate to http://localhost:4200.
 
