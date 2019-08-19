@@ -17,8 +17,10 @@ export class MyRestaurantsComponent implements OnInit {
   restaurants: Restaurant[] = [];
   newRestaurant: Restaurant = new Restaurant();
   restaurantForChange: Restaurant = new Restaurant();
+  restaurantForDelete: Restaurant = new Restaurant();
   showAddRest: boolean;
   showChangeRest: boolean;
+  showDeleteRest: boolean;
   operationName = '';
   notification = '';
   restaurantName = '';
@@ -27,7 +29,6 @@ export class MyRestaurantsComponent implements OnInit {
   private formData = new FormData();
   private errorLoadLogo: boolean;
   ownerName = '';
-
 
 
   constructor(private mainService: MainService,
@@ -80,7 +81,6 @@ export class MyRestaurantsComponent implements OnInit {
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -94,7 +94,6 @@ export class MyRestaurantsComponent implements OnInit {
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
-          this.loadData();
         },
         error => {
           this.appComponent.showModal(error);
@@ -107,22 +106,24 @@ export class MyRestaurantsComponent implements OnInit {
     this.mainService.changeLogo(this.restaurantForChange.id, this.formData)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
-          this.loadData();
+          this.closeModal();
         },
         error => {
           this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
 
-  deleteRestaurant(id: number) {
-    this.mainService.deleteRestaurant(id)
+  deleteRestaurant() {
+    this.mainService.deleteRestaurant(this.restaurantForDelete.id)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
-          this.loadData();
+          this.closeModal();
         },
         error => {
           this.appComponent.showModal(error);
+          this.closeModal();
         });
   }
 
@@ -151,6 +152,12 @@ export class MyRestaurantsComponent implements OnInit {
     this.showModal();
   }
 
+  showDeleteRestaurant(rest: Restaurant) {
+    this.restaurantForDelete = rest;
+    this.showDeleteRest = true;
+    this.showModal();
+  }
+
 
   showModal() {
     this.modal.style.display = 'block';
@@ -161,8 +168,9 @@ export class MyRestaurantsComponent implements OnInit {
     this.modal.style.display = 'none';
     this.showAddRest = false;
     this.showChangeRest = false;
+    this.showDeleteRest = false;
     this.errorLoadLogo = false;
-    this.ngOnInit();
+    this.loadData();
   }
 
 

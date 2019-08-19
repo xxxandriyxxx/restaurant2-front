@@ -149,12 +149,20 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-form {
+.change-form {
   background-color: #fefefe;
   margin: 10px auto 10px auto;
   padding-bottom: 20px;
   border: 1px solid #888;
   width: 60%;
+}
+
+.delete-form {
+  background-color: #fefefe;
+  margin: 10px auto 10px auto;
+  padding-bottom: 20px;
+  border: 1px solid #888;
+  width: 30%;
 }
 
 .close-modal {
@@ -254,7 +262,7 @@ hr {
   text-align: center;
 }
 
-.modal-form > button {
+.change-form > button, .delete-form > button {
   width: 40%;
   padding: 14px 20px;
   margin: 10px 30% 10px 30%;
@@ -264,7 +272,7 @@ hr {
   opacity: 0.9;
 }
 
-.modal-form > button:hover {
+.change-form > button:hover, .delete-form > button:hover {
   opacity: 1;
 }
 

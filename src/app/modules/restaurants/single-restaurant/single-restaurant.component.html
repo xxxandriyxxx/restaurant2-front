@@ -45,7 +45,7 @@
         Cost: {{totalCost | number}}
       </div>
       <div>
-        <button [disabled]="!showBuy" (click)="showMakeOrder = true">Place an order</button>
+        <button [disabled]="!showBuy" (click)="showMakeOrder = true">Edit an order</button>
       </div>
     </div>
     <div id="menu-name"><span class="bold-color-header">MENU</span></div>
@@ -58,10 +58,10 @@
     </div>
 
     <div class="grid" *ngFor="let sect of menuSections">
-      <div class="section"><span class="bold-color">{{sect.name}}</span>
-        <button *ngIf="!showSect[sect.id]" (click)="showSection(sect.id)"><span class="bold-color">&#9660;</span>
+      <div class="section" (click)="showSection(sect.id)"><span class="bold-color">{{sect.name}}</span>
+        <button *ngIf="!showSect[sect.id]"><span class="bold-color">&#9660;</span>
         </button>
-        <button *ngIf="showSect[sect.id]" (click)="hideSection(sect.id)"><span class="bold-color">&#9650;</span>
+        <button *ngIf="showSect[sect.id]"><span class="bold-color">&#9650;</span>
         </button>
       </div>
 

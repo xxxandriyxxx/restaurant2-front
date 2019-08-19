@@ -101,12 +101,11 @@ export class SingleRestaurantComponent implements OnInit {
 
 
   showSection(id: number) {
-    this.showSect[id] = true;
-  }
-
-  hideSection(id: number) {
-    this.showSect[id] = false;
-
+    if (this.showSect[id] === true) {
+      this.showSect[id] = false;
+    } else {
+      this.showSect[id] = true;
+    }
   }
 
 
