@@ -12,7 +12,7 @@ import {RestaurantsModule} from './modules/restaurants/restaurants.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

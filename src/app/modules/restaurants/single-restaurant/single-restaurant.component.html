@@ -1,61 +1,63 @@
 <body>
 
 
-<div *ngIf="showMakeOrder;else otherD">
-  <button id="cancel-btn" (click)="cancel()">Go back to the menu</button>
+<!--<div *ngIf="showMakeOrder;else otherD">-->
+  <!--<button id="cancel-btn" (click)="cancel()">Go back to the menu</button>-->
 
-  <div id="orderDetails">
-    <div id="orderDetailsName"><span class="bold-color">New order</span></div>
-    <div id="orderDetailsHeader">
-      <div>Name</div>
-      <div>Amount</div>
-      <div>Price</div>
-      <div>Cost</div>
-      <div>Actions</div>
-    </div>
-    <div id="orderDetailsSubgrid" *ngFor="let d of newOrder.dishes">
-      <div class="dish-name">{{d.name}}</div>
-      <div>{{newOrder.amount[newOrder.dishes.indexOf(d)]}}</div>
-      <div>{{d.price}}</div>
-      <div>{{newOrder.amount[newOrder.dishes.indexOf(d)] * d.price | number}}</div>
-      <div>
-        <button class="increase-btn" (click)="increaseAmount(newOrder.dishes.indexOf(d))">+</button>
-        <button class="reduce-btn" (click)="reduceAmount(newOrder.dishes.indexOf(d))">-</button>
-        <button class="delete-btn" (click)="deleteDish(newOrder.dishes.indexOf(d))">X</button>
-      </div>
-    </div>
-    <div id="totalSubgrid">
-      <div id="total">Total sum</div>
-      <div>{{totalCost | number}}</div>
-      <div>
-        <button id="confirm-btn" [disabled]="!newOrder.dishes.length" (click)="placeOrder()">Order now</button>
-      </div>
-    </div>
-  </div>
+  <!--<div id="orderDetails">-->
+    <!--<div id="orderDetailsName"><span class="bold-color">New order</span></div>-->
+    <!--<div id="orderDetailsHeader">-->
+      <!--<div>Name</div>-->
+      <!--<div>Amount</div>-->
+      <!--<div>Price</div>-->
+      <!--<div>Cost</div>-->
+      <!--<div>Actions</div>-->
+    <!--</div>-->
+    <!--<div id="orderDetailsSubgrid" *ngFor="let d of newOrder.dishes">-->
+      <!--<div class="dish-name">{{d.name}}</div>-->
+      <!--<div>{{newOrder.amount[newOrder.dishes.indexOf(d)]}}</div>-->
+      <!--<div>{{d.price}}</div>-->
+      <!--<div>{{newOrder.amount[newOrder.dishes.indexOf(d)] * d.price | number}}</div>-->
+      <!--<div>-->
+        <!--<button class="increase-btn" (click)="increaseAmount(newOrder.dishes.indexOf(d))">+</button>-->
+        <!--<button class="reduce-btn" (click)="reduceAmount(newOrder.dishes.indexOf(d))">-</button>-->
+        <!--<button class="delete-btn" (click)="deleteDish(newOrder.dishes.indexOf(d))">X</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div id="totalSubgrid">-->
+      <!--<div id="total">Total sum</div>-->
+      <!--<div>{{totalCost | number}}</div>-->
+      <!--<div>-->
+        <!--<button id="confirm-btn" [disabled]="!newOrder.dishes.length" (click)="placeOrder()">Order now</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
-</div>
+<!--</div>-->
 
-<ng-template #otherD>
+<!--<ng-template #otherD>-->
 
-  <div class="navbar">
-    <div id="order">
-      <div><span class="bold-red">Restaurant:</span> {{restaurantName}}</div>
-      <div>
-        Amount: {{totalAmount}}<br>
-        Cost: {{totalCost | number}}
-      </div>
-      <div>
-        <button [disabled]="!showBuy" (click)="showMakeOrder = true">Edit an order</button>
-      </div>
-    </div>
-    <div id="menu-name"><span class="bold-color-header">MENU</span></div>
-  </div>
+  <!--<div class="navbar">-->
+    <!--<div id="order">-->
+      <!--<div><span class="bold-red">Restaurant:</span> {{restaurantName}}</div>-->
+      <!--<div>-->
+        <!--Amount: {{totalAmount}}<br>-->
+        <!--Cost: {{totalCost | number}}-->
+      <!--</div>-->
+      <!--<div>-->
+        <!--<button [disabled]="!showBuy" (click)="showMakeOrder = true">Edit an order</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div id="menu-name"><span class="bold-color-header">MENU</span></div>-->
+  <!--</div>-->
 
-  <div class="main">
 
-    <div id="signInMessage" *ngIf="!showBuy">
-      Please, <a routerLink="/sign-in">sign in</a> to be able to make an order
-    </div>
+
+    <!--<div id="signInMessage" *ngIf="!showBuy">-->
+      <!--Please, <a routerLink="/sign-in">sign in</a> to be able to make an order-->
+    <!--</div>-->
+
+    <div id="restaurant-name" class="bold-color-header">{{restaurantName}}</div>
 
     <div class="grid" *ngFor="let sect of menuSections">
       <div class="section" (click)="showSection(sect.id)"><span class="bold-color">{{sect.name}}</span>
@@ -69,7 +71,7 @@
         <div class="subgrid" *ngFor="let dish of sect.dishes">
           <div class="dish-name"><span class="bold">{{dish.name}}</span></div>
           <div class="buy">
-            <button class="buy-btn" *ngIf="showBuy" [disabled]="!showBuy" (click)="addDishToOrder(dish.id)">buy</button>
+            <button class="buy-btn" (click)="addDishToOrder(dish.id)">buy</button>
           </div>
           <div class="dish-description">{{dish.description}}</div>
           <div><span class="bold">Price:</span>{{dish.price}}</div>
@@ -77,8 +79,8 @@
       </div>
     </div>
 
-  </div>
 
-</ng-template>
+
+<!--</ng-template>-->
 </body>
 

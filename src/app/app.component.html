@@ -1,6 +1,7 @@
 
 <div class="navbar">
   <a routerLink="/">Home</a>
+
   <div *ngIf="logged;else signInUp">
     <a *ngIf="userClass == 'Owner'" routerLink="myRestaurants">My restaurants</a>
     <a *ngIf="userClass !== 'AdminInMemory'" routerLink="orders/my">My orders</a>
@@ -13,8 +14,9 @@
     <a class="right" routerLink="/sign-up">Sign up</a>
     <a class="right" routerLink="/sign-in">Sign in</a>
   </ng-template>
+  <a class="right" routerLink="newOrder"><img id="basket-img" src="../assets/img/basket.png" alt="basket">   {{totalAmount}}</a>
 
-  <img id="dishes-img" src="../assets/img/dishes3.png" alt="dishes">
+  <img id="dishes-img" src="../assets/img/dishes5.png" alt="dishes">
 </div>
 
 
@@ -29,7 +31,7 @@
   <div class="modal-response">
     <span class="close-modal" (click)="closeModal()">&times;</span>
     <div>
-      <h3>Server response</h3>
+      <h3>Notice</h3>
       <hr>
       <p>{{responseMessage}}</p>
     </div>

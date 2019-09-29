@@ -1,4 +1,3 @@
-
 body {
   min-height: 100vh;
   background: beige;
@@ -11,94 +10,14 @@ body {
   text-align: center;
 }
 
-/*.navbar {*/
-  /*z-index: 2;*/
-  /*position: fixed;*/
-  /*top: 110px;*/
-  /*width: 100%;*/
-/*}*/
-
-.main {
-  margin-top: 120px;
-}
-
-/*#menu-name {*/
-  /*width: 100%;*/
-  /*padding-top: 15px;*/
-  /*text-align: center;*/
-  /*border-bottom: darkred solid 2px;*/
-  /*background: beige;*/
-/*}*/
-
-
-.grid {
-  display: grid;
-  grid-gap: 2px;
-  width: 60%;
-  margin: 20px 20%;
-  background: tan;
-  border: dimgrey solid 2px;
-  box-shadow: 9px 7px 10px 0 rgba(0, 0, 0, 0.26);
-
-}
-
-.header {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  grid-gap: 1px;
-  background: white;
-  border-bottom: #333 solid 2px;
-}
-
-.subgrid {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-  grid-gap: 2px;
-  border: lightgoldenrodyellow solid 1px;
-  margin: 0 20px 20px 20px;
-  background: lightgrey;
-}
-
-.header > div {
-  padding: .5em;
-  background: rosybrown;
+#signInMessage {
+  width: 100%;
+  padding-top: 10px;
   text-align: center;
+  color: crimson;
+  background: beige;
 }
 
-.subgrid > div {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  text-align: left;
-  word-break: break-word;
-}
-
-.buy {
-  Grid-row-start: 1;
-  Grid-row-end: 4;
-  Grid-column-start: 2;
-  Grid-column-end: 3;
-}
-
-.section {
-  padding: 20px 10px 20px 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.section > button {
-  background-color: tan;
-  border: none;
-  cursor: pointer;
-}
-
-.section > button:hover {
-  /*background: #ddd;*/
-  /*cursor: pointer;*/
-}
 
 .bold {
   font-weight: bold;
@@ -119,44 +38,6 @@ body {
 .bold-red {
   font-weight: bold;
   color: darkred;
-}
-
-#order {
-  top: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 50px;
-  background-color: white;
-  grid-gap: 1px;
-  border-bottom: #333 solid 6px;
-}
-
-#order > div {
-  padding-left: 10px;
-  background: #aaaaaa;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  text-align: left;
-  word-break: break-word;
-
-}
-
-
-#order button {
-  background-color: #4CAF50;
-  padding: 8px;
-  width: 50%;
-  margin-left: 25%;
-  font-weight: bold;
-  border: silver solid 1px;
-  cursor: pointer;
-}
-
-
-#order button:hover {
-  background-color: #3e8e41;
-
 }
 
 #orderDetails {
@@ -261,16 +142,7 @@ body {
   opacity: 1;
 }
 
-#cancel-btn {
-  margin: 10px 10px 10px 20%;
-  padding: 12px;
-  width: 15%;
-  background-color: indianred;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  opacity: 0.9;
-}
+
 
 #confirm-btn {
   padding: 12px;
@@ -306,17 +178,3 @@ body {
 
 
 
-.buy-btn {
-  margin: 10px 10px auto auto;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  background-color: #333;
-  color: #f2f2f2;
-}
-
-.buy-btn:hover {
-  background: whitesmoke;
-  color: black;
-  cursor: pointer;
-}

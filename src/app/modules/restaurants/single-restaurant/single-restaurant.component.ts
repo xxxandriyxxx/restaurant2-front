@@ -70,16 +70,29 @@ export class SingleRestaurantComponent implements OnInit {
   }
 
   updateData() {
-    const userClass = localStorage.getItem('_userClass');
-    if (userClass == null || userClass === 'AdminInMemory') {
-      this.showBuy = false;
-    } else {
-      this.showBuy = true;
-    }
-
+    // const userClass = localStorage.getItem('_userClass');
+    // if (userClass == null || userClass === 'AdminInMemory') {
+    //   this.showBuy = false;
+    // } else {
+    //   this.showBuy = true;
+    // }
     for (const sect of this.menuSections) {
       this.showSect.push(false);
     }
+    if (+sessionStorage.getItem('_totalAmount') !== 0) {
+      if (this.restaurantId === sessionStorage.getItem('_restaurantId')) {
+        this.newOrder = JSON.parse(sessionStorage.getItem('_newOrder'));
+        this.totalAmount = +sessionStorage.getItem('_totalAmount');
+        this.totalCost = +sessionStorage.getItem('_totalCost');
+      } else {
+        this.appComponent.showModal('You have an unconfirmed order at another restaurant. ' +
+          'If you place an order at opened restaurant, the previous one will be canceled.');
+      }
+    }
+
+    console.log(this.restaurantId);
+    console.log(sessionStorage.getItem('_restaurantId'));
+
   }
 
 
@@ -93,10 +106,16 @@ export class SingleRestaurantComponent implements OnInit {
     } else {
       this.newOrder.amount[index] += 1;
     }
-    // console.log(this.newOrder);
-
     this.totalAmount += 1;
     this.totalCost += item.price;
+
+    sessionStorage.setItem('_restaurantId', this.restaurantId);
+    sessionStorage.setItem('_restaurantName', this.restaurantName);
+    sessionStorage.setItem('_totalAmount', this.totalAmount.toString());
+    sessionStorage.setItem('_totalCost', this.totalCost.toString());
+    sessionStorage.setItem('_newOrder', JSON.stringify(this.newOrder));
+    this.appComponent.changeAmount();
+
   }
 
 
@@ -109,60 +128,59 @@ export class SingleRestaurantComponent implements OnInit {
   }
 
 
-  increaseAmount(index: number) {
-    this.totalAmount += 1;
-    this.totalCost += this.newOrder.dishes[index].price;
-    this.newOrder.amount[index] += 1;
-    // this.ngOnInit();
-  }
+  // increaseAmount(index: number) {
+  //   this.totalAmount += 1;
+  //   this.totalCost += this.newOrder.dishes[index].price;
+  //   this.newOrder.amount[index] += 1;
+  //   // this.ngOnInit();
+  // }
+  //
+  //
+  // reduceAmount(index: number) {
+  //   if (this.newOrder.amount[index] === 1) {
+  //     this.deleteDish(index);
+  //   } else {
+  //     this.totalAmount -= 1;
+  //     this.totalCost -= this.newOrder.dishes[index].price;
+  //     this.newOrder.amount[index] -= 1;
+  //   }
+  //   // this.ngOnInit();
+  // }
+  //
+  //
+  // deleteDish(index: number) {
+  //   console.log(this.newOrder);
+  //   this.totalCost -= this.newOrder.dishes[index].price * this.newOrder.amount[index];
+  //   this.totalAmount -= this.newOrder.amount[index];
+  //   this.newOrder.dishes.splice(index, 1);
+  //   this.newOrder.amount.splice(index, 1);
+  //   // console.log(this.newOrder);
+  //   console.log(this.ordDishes);
+  //   // this.ngOnInit();
+  // }
 
 
-  reduceAmount(index: number) {
-    if (this.newOrder.amount[index] === 1) {
-      this.deleteDish(index);
-    } else {
-      this.totalAmount -= 1;
-      this.totalCost -= this.newOrder.dishes[index].price;
-      this.newOrder.amount[index] -= 1;
-    }
-    // this.ngOnInit();
-  }
-
-
-  deleteDish(index: number) {
-    console.log(this.newOrder);
-    this.totalCost -= this.newOrder.dishes[index].price * this.newOrder.amount[index];
-    this.totalAmount -= this.newOrder.amount[index];
-    this.newOrder.dishes.splice(index, 1);
-    this.newOrder.amount.splice(index, 1);
-    // console.log(this.newOrder);
-    console.log(this.ordDishes);
-    // this.ngOnInit();
-  }
-
-
-
-  cancel() {
-    this.showMakeOrder = false;
-    console.log(this.newOrder);
-    this.ngOnInit();
-  }
-
-  placeOrder() {
-    this.newOrder.date = new Date();
-    this.newOrder.status = OrderStatus.ORDERED;
-    this.mainService.placeOrder(this.newOrder, localStorage.getItem('_userId'), this.restaurantId)
-      .subscribe((val) => {
-          console.log(val);
-          this.newOrder = new Order();
-          this.totalAmount = 0;
-          this.totalCost = 0;
-          this.cancel();
-          this.appComponent.showModal(val.message);
-        },
-        error => {
-          console.log(error);
-          this.appComponent.showModal(error);
-        });
-  }
+  // cancel() {
+  //   this.showMakeOrder = false;
+  //   console.log(this.newOrder);
+  //   this.ngOnInit();
+  // }
+  //
+  // placeOrder() {
+  //   this.newOrder.date = new Date();
+  //   this.newOrder.status = OrderStatus.ORDERED;
+  //   this.mainService.placeOrder(this.newOrder, localStorage.getItem('_userId'), this.restaurantId)
+  //     .subscribe((val) => {
+  //         console.log(val);
+  //         this.newOrder = new Order();
+  //         this.totalAmount = 0;
+  //         this.totalCost = 0;
+  //         this.cancel();
+  //         this.appComponent.showModal(val.message);
+  //       },
+  //       error => {
+  //         console.log(error);
+  //         this.appComponent.showModal(error);
+  //       });
+  // }
 }
