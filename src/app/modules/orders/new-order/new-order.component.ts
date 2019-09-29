@@ -15,7 +15,6 @@ export class NewOrderComponent implements OnInit {
 
   totalAmount = 0;
   totalCost = 0;
-  ordDishes: Dish[] = [];
   newOrder: Order = new Order();
   private restaurantName = '';
   logged: boolean;
@@ -26,15 +25,17 @@ export class NewOrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.restaurantName = sessionStorage.getItem('_restaurantName');
-    this.totalAmount = +sessionStorage.getItem('_totalAmount');
-    this.totalCost = +sessionStorage.getItem('_totalCost');
-    this.newOrder = JSON.parse(sessionStorage.getItem('_newOrder'));
+    if (sessionStorage.getItem('_newOrder')) {
+      this.restaurantName = sessionStorage.getItem('_restaurantName');
+      this.totalAmount = +sessionStorage.getItem('_totalAmount');
+      this.totalCost = +sessionStorage.getItem('_totalCost');
+      this.newOrder = JSON.parse(sessionStorage.getItem('_newOrder'));
+    }
     const userClass = localStorage.getItem('_userClass');
-    if (userClass == null || userClass === 'AdminInMemory') {
-      this.logged = false;
-    } else {
+    if (userClass && userClass !== 'AdminInMemory') {
       this.logged = true;
+    } else {
+      this.logged = false;
     }
 
   }

@@ -7,6 +7,7 @@ import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
 import {RestaurantsModule} from './modules/restaurants/restaurants.module';
+import {AboutModule} from './modules/about/about.module';
 
 
 
@@ -19,6 +20,7 @@ import {RestaurantsModule} from './modules/restaurants/restaurants.module';
     FormsModule,
     HttpClientModule,
     MainRoutingModule,
+    AboutModule,
     SignupModule,
     SigninModule,
     RestaurantsModule,

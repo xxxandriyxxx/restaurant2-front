@@ -1,6 +1,7 @@
 
 <div class="navbar">
   <a routerLink="/">Home</a>
+  <a routerLink="about">About</a>
 
   <div *ngIf="logged;else signInUp">
     <a *ngIf="userClass == 'Owner'" routerLink="myRestaurants">My restaurants</a>

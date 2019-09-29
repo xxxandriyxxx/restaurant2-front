@@ -6,11 +6,13 @@ import {SigninPageComponent} from './modules/signin/signin-page/signin-page.comp
 import {AppComponent} from './app.component';
 import {RestaurantsComponent} from './modules/restaurants/restaurants/restaurants.component';
 import {SingleRestaurantComponent} from './modules/restaurants/single-restaurant/single-restaurant.component';
+import {AboutComponent} from './modules/about/about/about.component';
 
 
 const routes: Routes = [
   {path: 'home', component: AppComponent},
   {path: '', component: RestaurantsComponent},
+  {path: 'about', component: AboutComponent},
   {path: 'sign-up', component: SignupPageComponent},
   {path: 'sign-in', component: SigninPageComponent},
   {path: 'restaurants/:id', component: SingleRestaurantComponent},
