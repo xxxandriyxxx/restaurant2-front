@@ -1,12 +1,8 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import {RestaurantsComponent} from './restaurants/restaurants.component';
-import {SingleRestaurantComponent} from './single-restaurant/single-restaurant.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 
-const routes: Routes = [
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [
@@ -14,4 +10,5 @@ const routes: Routes = [
     RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class RestaurantsRoutingModule { }
+export class RestaurantsRoutingModule {
+}

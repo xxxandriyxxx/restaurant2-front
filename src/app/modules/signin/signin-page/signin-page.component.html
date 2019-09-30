@@ -1,9 +1,7 @@
-
 <form #signInForm='ngForm' class="form">
   <h2>Sign in</h2>
   <p>Please, fill in this form to sign in.</p>
   <hr>
-
   <label><b>Login or email:</b></label>
   <input
     [(ngModel)]="logForm.loginEmail"
@@ -27,7 +25,7 @@
     name="password">
   <button
     [disabled]="signInForm.invalid"
-    (click)="login()"
+    (click)="signIn()"
   >Sign in
   </button>
 </form>

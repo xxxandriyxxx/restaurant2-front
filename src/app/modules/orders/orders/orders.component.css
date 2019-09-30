@@ -7,7 +7,7 @@ body{
 .navbar {
   z-index: 2;
   position: fixed;
-  top: 110px;
+  top: 74px;
   width: 100%;
 }
 
@@ -25,7 +25,6 @@ body{
   border-bottom: #333 solid 6px;
 }
 
-
 #shown > div {
   padding-left: 10px;
   background: #aaaaaa;
@@ -34,7 +33,6 @@ body{
   justify-content: left;
   word-break: break-word;
 }
-
 
 #show {
   display: flex;
@@ -56,7 +54,6 @@ body{
 
 #show > button:hover {
   background-color: #3e8e41;
-
 }
 
 .drop-btn {
@@ -95,13 +92,11 @@ body{
 
 .dropdown:hover .dropdown-content {
   display: block;
-  /*cursor: pointer;*/
 }
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
-
 
 .order {
   display: grid;

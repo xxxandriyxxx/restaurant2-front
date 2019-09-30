@@ -1,30 +1,30 @@
-
 <div class="navbar">
   <a routerLink="/">Home</a>
   <a routerLink="about">About</a>
 
   <div *ngIf="logged;else signInUp">
-    <a *ngIf="userClass == 'Owner'" routerLink="myRestaurants">My restaurants</a>
-    <a *ngIf="userClass !== 'AdminInMemory'" routerLink="orders/my">My orders</a>
-    <a *ngIf="userClass == 'Owner'" routerLink="orders/clients">Clients' orders</a>
-    <a class="right" (click)="logout()">Sign out</a>
+    <a class="right" (click)="signOut()">Sign out</a>
     <a *ngIf="(userClass == 'Owner')||(userClass == 'Client')" class="right" routerLink="myAccount">My account</a>
     <a *ngIf="userClass == 'AdminInMemory'" class="right" routerLink="admin">Admin page</a>
+    <a *ngIf="userClass == 'Owner'" class="right" routerLink="myRestaurants">My restaurants</a>
+    <a *ngIf="userClass == 'Owner'" class="right" routerLink="orders/clients">Clients' orders</a>
+    <a *ngIf="userClass !== 'AdminInMemory'" class="right" routerLink="orders/my">My orders</a>
   </div>
   <ng-template #signInUp>
     <a class="right" routerLink="/sign-up">Sign up</a>
     <a class="right" routerLink="/sign-in">Sign in</a>
   </ng-template>
-  <a class="right" routerLink="newOrder"><img id="basket-img" src="../assets/img/basket.png" alt="basket">   {{totalAmount}}</a>
+  <a class="right" *ngIf="userClass !== 'AdminInMemory'" routerLink="newOrder">
+    <img id="basket-img" src="../assets/img/basket.png" alt="basket">   {{totalAmount}}</a>
 
   <img id="dishes-img" src="../assets/img/dishes5.png" alt="dishes">
 </div>
 
 
 <div class="main">
-<router-outlet>
+  <router-outlet>
 
-</router-outlet>
+  </router-outlet>
 </div>
 
 

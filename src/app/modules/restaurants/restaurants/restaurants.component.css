@@ -1,6 +1,5 @@
 body{
   min-height: 100vh;
-  /*background: lightgoldenrodyellow;*/
   background: beige;
   padding-top: 1px;
 }
@@ -12,7 +11,6 @@ body{
   box-shadow: 9px 7px 10px 0 rgba(0,0,0,0.26);
 }
 
-
 .grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -23,7 +21,6 @@ body{
 .details > div {
   margin: 10px 20px;
   word-break: break-word;
-
 }
 
 .name{
@@ -31,7 +28,6 @@ body{
   flex-direction: row;
   justify-content: space-between;
 }
-
 
 .logo-wrap {
   height: 220px;
@@ -49,7 +45,6 @@ body{
   object-fit: contain;
   border-radius: 5px;
 }
-
 
 .bold{
   font-weight: bold;

@@ -27,7 +27,6 @@ export class SignupPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   saveUser(isClient: boolean, isOwner: boolean) {

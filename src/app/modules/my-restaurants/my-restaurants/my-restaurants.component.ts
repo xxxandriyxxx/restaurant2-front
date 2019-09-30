@@ -43,7 +43,6 @@ export class MyRestaurantsComponent implements OnInit {
 
   }
 
-
   loadData() {
     const ownerId = localStorage.getItem('_userId');
     this.mainService.getUserById(ownerId)
@@ -66,11 +65,9 @@ export class MyRestaurantsComponent implements OnInit {
 
   }
 
-
   goToRestaurant(id: number, restName: string) {
     this.router.navigate(['myRestaurants/' + id], {queryParams: {name: restName}});
   }
-
 
   addRestaurant() {
     console.log(this.newRestaurant);
@@ -89,7 +86,6 @@ export class MyRestaurantsComponent implements OnInit {
   }
 
   changeRestaurantData() {
-    // this.closeModal();
     this.mainService.changeRestaurantData(this.restaurantForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
@@ -114,7 +110,6 @@ export class MyRestaurantsComponent implements OnInit {
         });
   }
 
-
   deleteRestaurant() {
     this.mainService.deleteRestaurant(this.restaurantForDelete.id)
       .subscribe((value) => {
@@ -127,7 +122,6 @@ export class MyRestaurantsComponent implements OnInit {
         });
   }
 
-
   showAddRestaurant() {
     this.operationName = 'Add a restaurant';
     this.restaurantName = '';
@@ -135,7 +129,6 @@ export class MyRestaurantsComponent implements OnInit {
     this.showAddRest = true;
     this.showModal();
   }
-
 
   showChangeRestaurant(rest: Restaurant) {
     this.restaurantForChange = rest;
@@ -152,11 +145,9 @@ export class MyRestaurantsComponent implements OnInit {
     this.showModal();
   }
 
-
   showModal() {
     this.modal.style.display = 'block';
   }
-
 
   closeModal() {
     this.modal.style.display = 'none';
@@ -166,7 +157,6 @@ export class MyRestaurantsComponent implements OnInit {
     this.errorLoadLogo = false;
     this.loadData();
   }
-
 
   preview(files) {
     if (files.length === 0) {

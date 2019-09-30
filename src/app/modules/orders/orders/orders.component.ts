@@ -76,6 +76,7 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+
   updateData() {
     this.resetShow();
     this.restForShowId = null;
@@ -84,7 +85,6 @@ export class OrdersComponent implements OnInit {
     this.ordersForShow = this.myOrders;
     this.restForShowName = 'all';
     this.statusForShow = 'all';
-    console.log(this.myOrders);
 
     if (this.whoseOrders === 'my') {
       this.whoseOrdersHeader = 'My orders';
@@ -93,7 +93,6 @@ export class OrdersComponent implements OnInit {
     } else {
       this.whoseOrdersHeader = 'ERROR: whoseOrders = ' + this.whoseOrders;
     }
-
 
     for (const ord of this.myOrders) {
       let ordCost = 0;
@@ -175,6 +174,7 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+
   showOrdered() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -186,6 +186,7 @@ export class OrdersComponent implements OnInit {
     this.assignShow(this.ordersForShow);
     this.statusForShow = 'ordered';
   }
+
 
   showCanceledByClient() {
     this.resetShow();
@@ -211,6 +212,7 @@ export class OrdersComponent implements OnInit {
     this.statusForShow = 'canceled by restaurant';
   }
 
+
   showConfirmed() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -223,6 +225,7 @@ export class OrdersComponent implements OnInit {
     this.statusForShow = 'confirmed by restaurant';
   }
 
+
   showPaid() {
     this.resetShow();
     for (const ord of this.myOrders) {
@@ -234,6 +237,7 @@ export class OrdersComponent implements OnInit {
     this.assignShow(this.ordersForShow);
     this.statusForShow = 'paid';
   }
+
 
   assignShow(orders: Order []) {
     for (const ord of orders) {

@@ -11,19 +11,14 @@ import {DataService} from '../../../services/data.service';
 })
 export class RestaurantsComponent implements OnInit {
 
-  // showSigInMessage = false;
   restaurants: Restaurant[] = [];
 
   constructor(private mainService: MainService,
               private router: Router,
-              private dataService : DataService) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {
-
-    // if (localStorage.getItem('_userId') == null) {
-    //   this.showSigInMessage = true;
-    // }
     this.mainService.getAllRestaurants()
       .subscribe((restaurants) => {
           this.restaurants = restaurants;
@@ -34,9 +29,9 @@ export class RestaurantsComponent implements OnInit {
         });
   }
 
+
   goToRestaurant(id, restName) {
     this.router.navigate(['restaurants/' + id], {queryParams: {name: restName}});
-
   }
 
 }

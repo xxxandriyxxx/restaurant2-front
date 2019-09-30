@@ -8,6 +8,9 @@ body {
   margin: 20px 0;
   width: 100%;
   text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  color: darkred;
 }
 
 #signInMessage {
@@ -18,25 +21,9 @@ body {
   background: beige;
 }
 
-
-.bold {
-  font-weight: bold;
-}
-
 .bold-color {
   font-weight: bold;
   font-size: larger;
-  color: darkred;
-}
-
-.bold-color-header {
-  font-weight: bold;
-  font-size: x-large;
-  color: darkred;
-}
-
-.bold-red {
-  font-weight: bold;
   color: darkred;
 }
 
@@ -55,8 +42,6 @@ body {
   text-align: center;
   word-break: break-word;
   background: silver;
-
-
 }
 
 #orderDetailsHeader {
@@ -76,13 +61,11 @@ body {
   font-weight: bold;
 }
 
-
 #orderDetailsSubgrid {
   display: grid;
   grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
 }
-
 
 #orderDetailsSubgrid > div {
   padding: .5em;
@@ -94,7 +77,6 @@ body {
   word-break: break-word;
 }
 
-
 #orderDetailsSubgrid > .dish-name {
   text-align: left;
   word-break: break-word;
@@ -104,7 +86,6 @@ body {
   display: grid;
   grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
-
 }
 
 #total {
@@ -121,14 +102,7 @@ body {
   text-align: center;
   word-break: break-word;
   font-weight: bold;
-
 }
-
-
-.bold {
-  font-weight: bold;
-}
-
 
 #orderDetailsSubgrid button {
   width: 30px;
@@ -142,14 +116,14 @@ body {
   opacity: 1;
 }
 
-
-
 #confirm-btn {
   padding: 12px;
   width: 80%;
-  border: none;
   cursor: pointer;
   opacity: 0.9;
+  background-color: #4CAF50;
+  border: whitesmoke solid 1px;
+  font-weight: bold;
 }
 
 #confirm-btn:hover, #cancel-btn:hover {
@@ -158,23 +132,16 @@ body {
 
 .increase-btn {
   background-color: #4CAF50;
-
 }
 
 .reduce-btn {
   background-color: goldenrod;
-
 }
 
 .delete-btn {
   background-color: indianred;
 }
 
-#confirm-btn {
-  background-color: #4CAF50;
-  border: whitesmoke solid 1px;
-  font-weight: bold;
-}
 
 
 

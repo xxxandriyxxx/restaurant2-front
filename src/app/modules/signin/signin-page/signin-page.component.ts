@@ -28,11 +28,10 @@ export class SigninPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
 
-  login() {
+  signIn() {
     if (this.dataService.emailRegExp.test(this.logForm.loginEmail)) {
       this.basicData.email = this.logForm.loginEmail;
       this.basicData.username = '';
@@ -47,11 +46,6 @@ export class SigninPageComponent implements OnInit {
           const userClass = value.headers.get('UserClass');
           const userId = value.headers.get('UserId');
           const loginStatusCode = Number(value.headers.get('LoginStatusCode')); // +'string'
-          // console.log('token: ' + token);
-          // console.log('userClass: ' + userClass);
-          // console.log('userId: ' + userId);
-          // console.log('loginStatusCode: ' + loginStatusCode);
-          // console.log(value.body);
 
           if (loginStatusCode >= 200 && loginStatusCode < 400) {
             localStorage.setItem('_token', token);

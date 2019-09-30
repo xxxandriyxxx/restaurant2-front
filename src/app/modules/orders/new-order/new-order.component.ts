@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuSection} from '../../../models/MenuSection';
-import {Dish} from '../../../models/Dish';
 import {Order} from '../../../models/Order';
 import {AppComponent} from '../../../app.component';
 import {OrderStatus} from '../../../models/OrderStatus';
@@ -37,7 +35,6 @@ export class NewOrderComponent implements OnInit {
     } else {
       this.logged = false;
     }
-
   }
 
 
@@ -47,7 +44,6 @@ export class NewOrderComponent implements OnInit {
     this.newOrder.amount[index] += 1;
     this.changeSessionStorage(this.newOrder, this.totalAmount, this.totalCost);
     this.changeBasket();
-    // this.ngOnInit();
   }
 
 
@@ -65,7 +61,6 @@ export class NewOrderComponent implements OnInit {
       this.clearSessionStorage();
       this.restaurantName = '';
     }
-    // this.ngOnInit();
   }
 
 
@@ -81,7 +76,6 @@ export class NewOrderComponent implements OnInit {
       this.clearSessionStorage();
       this.restaurantName = '';
     }
-    // this.ngOnInit();
   }
 
 
@@ -103,14 +97,15 @@ export class NewOrderComponent implements OnInit {
           console.log(error);
           this.appComponent.showModal(error);
         });
-
   }
+
 
   changeSessionStorage(newOrder: Order, totalAmount: number, totalCost: number) {
     sessionStorage.setItem('_totalAmount', totalAmount.toString());
     sessionStorage.setItem('_totalCost', totalCost.toString());
     sessionStorage.setItem('_newOrder', JSON.stringify(newOrder));
   }
+
 
   clearSessionStorage() {
     sessionStorage.removeItem('_restaurantId');

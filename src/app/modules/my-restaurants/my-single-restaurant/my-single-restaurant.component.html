@@ -1,12 +1,10 @@
 <div class="navbar">
   <div id="shown">
     <div><span class="bold-shown">Restaurant:</span> {{restaurantName}}</div>
-
     <div>
       <button id="add-section-btn" (click)="showAddSection()">Add a menu section</button>
     </div>
   </div>
-
 
   <div class="grid">
     <div class="header">
@@ -59,13 +57,11 @@
         size="50"
         type="text"
         name="newSectName"
-        autocomplete="off"
-      >
+        autocomplete="off">
       <button
         class="add-btn"
         [disabled]="addSectionForm.invalid"
-        (click)="addMenuSection()"
-      >Add
+        (click)="addMenuSection()">Add
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
@@ -86,13 +82,11 @@
         size="50"
         type="text"
         name="changeSectName"
-        autocomplete="off"
-      >
+        autocomplete="off">
       <button
         class="change-btn"
         [disabled]="changeSectionForm.invalid"
-        (click)="changeMenuSection()"
-      >Save changes
+        (click)="changeMenuSection()">Save changes
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
@@ -141,12 +135,10 @@
       <button
         class="add-btn"
         [disabled]="addDishForm.invalid"
-        (click)="addDish()"
-      >Add
+        (click)="addDish()">Add
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
-
     <!----------------------------------------------------------------------change dish form-->
     <form *ngIf="showChangeDsh" #changeDishForm='ngForm' class="form">
       <h2>Change the dish</h2>
@@ -192,8 +184,7 @@
       <button
         class="change-btn"
         [disabled]="changeDishForm.invalid"
-        (click)="changeDish()"
-      >Save changes
+        (click)="changeDish()">Save changes
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </form>
@@ -219,7 +210,6 @@
       </button>
       <button class="cancel-btn" (click)="closeModal()">Cancel</button>
     </div>
-
 
   </div>
 </div>

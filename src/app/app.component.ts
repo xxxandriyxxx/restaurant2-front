@@ -23,9 +23,7 @@ export class AppComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private http: HttpClient,
               private router: Router) {
-
   }
-
 
   ngOnInit() {
     this.modal = document.getElementById('modalMessage');
@@ -37,9 +35,6 @@ export class AppComponent implements OnInit {
         this.token = localStorage.getItem('_token');
         this.userClass = localStorage.getItem('_userClass');
         this.userId = localStorage.getItem('_userId');
-        // console.log('this.token: ' + this.token);
-        // console.log('this.userClass: ' + this.userClass);
-        // console.log('this.userId: ' + this.userId);
 
         if (this.userClass == null) {
           this.logged = false;
@@ -49,15 +44,33 @@ export class AppComponent implements OnInit {
       }
     });
     this.totalAmount = +sessionStorage.getItem('_totalAmount');
-
   }
 
 
-  logout() {
+  signOut() {
+    this.clearLocalStorage();
+    this.clearSessionStorage();
+    this.changeAmount();
+    this.router.navigate(['/']);
+  }
+
+  clearSessionStorage() {
+    sessionStorage.removeItem('_restaurantId');
+    sessionStorage.removeItem('_restaurantName');
+    sessionStorage.removeItem('_totalAmount');
+    sessionStorage.removeItem('_totalCost');
+    sessionStorage.removeItem('_newOrder');
+  }
+
+  clearLocalStorage() {
     localStorage.removeItem('_token');
     localStorage.removeItem('_userClass');
     localStorage.removeItem('_userId');
-    this.router.navigate(['/']);
+  }
+
+
+  changeAmount() {
+    this.totalAmount = +sessionStorage.getItem('_totalAmount');
   }
 
   showModal(message: string) {
@@ -68,9 +81,4 @@ export class AppComponent implements OnInit {
   closeModal() {
     this.modal.style.display = 'none';
   }
-
-  changeAmount() {
-    this.totalAmount = +sessionStorage.getItem('_totalAmount');
-  }
-
 }

@@ -1,37 +1,18 @@
-
 body {
   min-height: 100vh;
   background: beige;
   padding-top: 1px;
 }
 
-#signInMessage {
+#restaurant-name{
+  margin: 20px 0;
   width: 100%;
-  padding-top: 10px;
   text-align: center;
-  color: crimson;
-  background: beige;
-}
-
-.navbar {
-  z-index: 2;
-  position: fixed;
-  top: 110px;
-  width: 100%;
 }
 
 .main {
   margin-top: 120px;
 }
-
-#menu-name {
-  width: 100%;
-  padding-top: 15px;
-  text-align: center;
-  border-bottom: darkred solid 2px;
-  background: beige;
-}
-
 
 .grid {
   display: grid;
@@ -41,15 +22,6 @@ body {
   background: tan;
   border: dimgrey solid 2px;
   box-shadow: 9px 7px 10px 0 rgba(0, 0, 0, 0.26);
-
-}
-
-.header {
-  display: grid;
-  grid-template-columns: 2fr 3fr 1fr;
-  grid-gap: 1px;
-  background: white;
-  border-bottom: #333 solid 2px;
 }
 
 .subgrid {
@@ -59,6 +31,14 @@ body {
   border: lightgoldenrodyellow solid 1px;
   margin: 0 20px 20px 20px;
   background: lightgrey;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  grid-gap: 1px;
+  background: white;
+  border-bottom: #333 solid 2px;
 }
 
 .header > div {
@@ -98,8 +78,6 @@ body {
 }
 
 .section > button:hover {
-  /*background: #ddd;*/
-  /*cursor: pointer;*/
 }
 
 .bold {
@@ -141,9 +119,7 @@ body {
   justify-content: left;
   text-align: left;
   word-break: break-word;
-
 }
-
 
 #order button {
   background-color: #4CAF50;
@@ -155,10 +131,8 @@ body {
   cursor: pointer;
 }
 
-
 #order button:hover {
   background-color: #3e8e41;
-
 }
 
 #orderDetails {
@@ -176,8 +150,6 @@ body {
   text-align: center;
   word-break: break-word;
   background: silver;
-
-
 }
 
 #orderDetailsHeader {
