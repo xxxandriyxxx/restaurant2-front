@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-activation-page',
@@ -15,14 +15,14 @@ export class ActivationPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private mainService: MainService,
+    private userService: UserService,
     private dataService: DataService) {
   }
 
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      this.mainService.activation(params.jwt)
+      this.userService.activation(params.jwt)
         .subscribe((res) => {
             console.log(res);
             if (res.message.indexOf('SUCCESS') > -1) {

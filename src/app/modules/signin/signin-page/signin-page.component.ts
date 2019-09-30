@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {MainService} from '../../../services/main.service';
 import {BasicData} from '../../../models/BasicData';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../../../services/data.service';
 import {AppComponent} from '../../../app.component';
+import {UserService} from '../../../services/user.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class SigninPageComponent implements OnInit {
   };
   basicData: BasicData = new BasicData();
 
-  constructor(private mainService: MainService,
+  constructor(private userService: UserService,
               private dataService: DataService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -40,7 +40,7 @@ export class SigninPageComponent implements OnInit {
       this.basicData.email = '';
     }
     this.basicData.password = this.logForm.password;
-    this.mainService.login(this.basicData)
+    this.userService.login(this.basicData)
       .subscribe((value) => {
           const token = value.headers.get('Authorization');
           const userClass = value.headers.get('UserClass');

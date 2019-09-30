@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Restaurant} from '../../../models/Restaurant';
-import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {Router} from '@angular/router';
 import {AppComponent} from '../../../app.component';
+import {UserService} from '../../../services/user.service';
+import {RestaurantService} from '../../../services/restaurant.service';
 
 @Component({
   selector: 'app-my-restaurants',
@@ -11,7 +12,6 @@ import {AppComponent} from '../../../app.component';
   styleUrls: ['./my-restaurants.component.css']
 })
 export class MyRestaurantsComponent implements OnInit {
-
 
   modal;
   restaurants: Restaurant[] = [];
@@ -30,12 +30,13 @@ export class MyRestaurantsComponent implements OnInit {
   private errorLoadLogo: boolean;
   ownerName = '';
 
-
-  constructor(private mainService: MainService,
+  constructor(private userService: UserService,
+              private restaurantService: RestaurantService,
               private dataService: DataService,
               private router: Router,
               private appComponent: AppComponent) {
   }
+
 
   ngOnInit() {
     this.loadData();
@@ -45,14 +46,14 @@ export class MyRestaurantsComponent implements OnInit {
 
   loadData() {
     const ownerId = localStorage.getItem('_userId');
-    this.mainService.getUserById(ownerId)
+    this.userService.getUserById(ownerId)
       .subscribe((user) => {
           this.ownerName = user.username;
         },
         error => {
           console.log(error);
         });
-    this.mainService.getRestaurants(ownerId)
+    this.restaurantService.getRestaurants(ownerId)
       .subscribe((restaurants) => {
           this.restaurants = restaurants;
           console.log(restaurants);
@@ -74,7 +75,7 @@ export class MyRestaurantsComponent implements OnInit {
     const ownerId = localStorage.getItem('_userId');
     this.formData.append('restaurant', JSON.stringify(this.newRestaurant));
     this.formData.append('logo', this.logo);
-    this.mainService.addRestaurant(ownerId, this.formData)
+    this.restaurantService.addRestaurant(ownerId, this.formData)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -86,7 +87,7 @@ export class MyRestaurantsComponent implements OnInit {
   }
 
   changeRestaurantData() {
-    this.mainService.changeRestaurantData(this.restaurantForChange)
+    this.restaurantService.changeRestaurantData(this.restaurantForChange)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -99,7 +100,7 @@ export class MyRestaurantsComponent implements OnInit {
 
   changeLogo() {
     this.formData.append('logo', this.logo);
-    this.mainService.changeLogo(this.restaurantForChange.id, this.formData)
+    this.restaurantService.changeLogo(this.restaurantForChange.id, this.formData)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -111,7 +112,7 @@ export class MyRestaurantsComponent implements OnInit {
   }
 
   deleteRestaurant() {
-    this.mainService.deleteRestaurant(this.restaurantForDelete.id)
+    this.restaurantService.deleteRestaurant(this.restaurantForDelete.id)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.closeModal();
@@ -173,7 +174,6 @@ export class MyRestaurantsComponent implements OnInit {
     reader.onload = (event) => {
       this.imgURL = reader.result;
     };
-    console.log(files[0]);
     this.logo = files[0];
   }
 

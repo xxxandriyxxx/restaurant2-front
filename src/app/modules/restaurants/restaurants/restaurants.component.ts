@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MainService} from '../../../services/main.service';
 import {Restaurant} from '../../../models/Restaurant';
 import {Router} from '@angular/router';
 import {DataService} from '../../../services/data.service';
+import {RestaurantService} from '../../../services/restaurant.service';
 
 @Component({
   selector: 'app-restaurants',
@@ -13,13 +13,14 @@ export class RestaurantsComponent implements OnInit {
 
   restaurants: Restaurant[] = [];
 
-  constructor(private mainService: MainService,
+  constructor(private restaurantService: RestaurantService,
               private router: Router,
               private dataService: DataService) {
   }
 
+
   ngOnInit() {
-    this.mainService.getAllRestaurants()
+    this.restaurantService.getAllRestaurants()
       .subscribe((restaurants) => {
           this.restaurants = restaurants;
           console.log(restaurants);

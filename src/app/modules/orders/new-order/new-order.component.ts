@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../models/Order';
 import {AppComponent} from '../../../app.component';
 import {OrderStatus} from '../../../models/OrderStatus';
-import {MainService} from '../../../services/main.service';
+import {OrderService} from '../../../services/order.service';
 
 @Component({
   selector: 'app-new-order',
@@ -18,7 +18,7 @@ export class NewOrderComponent implements OnInit {
   logged: boolean;
 
 
-  constructor(private mainService: MainService,
+  constructor(private orderService: OrderService,
               private appComponent: AppComponent) {
   }
 
@@ -82,7 +82,7 @@ export class NewOrderComponent implements OnInit {
   placeOrder() {
     this.newOrder.date = new Date();
     this.newOrder.status = OrderStatus.ORDERED;
-    this.mainService.placeOrder(this.newOrder, localStorage.getItem('_userId'), sessionStorage.getItem('_restaurantId'))
+    this.orderService.placeOrder(this.newOrder, localStorage.getItem('_userId'), sessionStorage.getItem('_restaurantId'))
       .subscribe((val) => {
           console.log(val);
           this.newOrder = new Order();

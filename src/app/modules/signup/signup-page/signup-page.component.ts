@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {MainService} from '../../../services/main.service';
 import {Client} from '../../../models/Client';
 import {Owner} from '../../../models/Owner';
 import {DataService} from '../../../services/data.service';
 import {AppComponent} from '../../../app.component';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -21,7 +21,7 @@ export class SignupPageComponent implements OnInit {
   owner: Owner = new Owner();
 
 
-  constructor(private mainService: MainService,
+  constructor(private userService: UserService,
               private dataService: DataService,
               private appComponent: AppComponent) {
   }
@@ -34,7 +34,7 @@ export class SignupPageComponent implements OnInit {
       this.client.username = this.regForm.username;
       this.client.password = this.regForm.password;
       this.client.email = this.regForm.email;
-      this.mainService.saveClient(this.client)
+      this.userService.saveClient(this.client)
         .subscribe((value) => {
             this.appComponent.showModal(value.message);
           },
@@ -45,7 +45,7 @@ export class SignupPageComponent implements OnInit {
       this.owner.username = this.regForm.username;
       this.owner.password = this.regForm.password;
       this.owner.email = this.regForm.email;
-      this.mainService.saveOwner(this.owner)
+      this.userService.saveOwner(this.owner)
         .subscribe((value) => {
             this.appComponent.showModal(value.message);
           },

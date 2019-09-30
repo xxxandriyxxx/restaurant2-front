@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../models/Order';
-import {MainService} from '../../../services/main.service';
 import {ActivatedRoute} from '@angular/router';
 import {OrderStatus} from '../../../models/OrderStatus';
 import {Restaurant} from '../../../models/Restaurant';
 import {AppComponent} from '../../../app.component';
+import {OrderService} from '../../../services/order.service';
 
 
 @Component({
@@ -27,11 +27,10 @@ export class OrdersComponent implements OnInit {
   restaurants: Restaurant [] = [];
   whoseOrdersHeader = '';
 
-  constructor(private mainService: MainService,
+  constructor(private orderService: OrderService,
               private activatedRoute: ActivatedRoute,
               private appComponent: AppComponent) {
   }
-
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -46,7 +45,7 @@ export class OrdersComponent implements OnInit {
 
     switch (this.whoseOrders) {
       case 'my': {
-        this.mainService.getMyOrders(localStorage.getItem('_userId'))
+        this.orderService.getMyOrders(localStorage.getItem('_userId'))
           .subscribe((val) => {
               val.reverse();
               this.myOrders = val;
@@ -58,7 +57,7 @@ export class OrdersComponent implements OnInit {
         break;
       }
       case 'clients': {
-        this.mainService.getOrdersByOwnerId(localStorage.getItem('_userId'))
+        this.orderService.getOrdersByOwnerId(localStorage.getItem('_userId'))
           .subscribe((val) => {
               val.reverse();
               this.myOrders = val;
@@ -116,7 +115,7 @@ export class OrdersComponent implements OnInit {
     } else {
       ord.status = OrderStatus.CANCELED_BY_RESTAURANT;
     }
-    this.mainService.changeOrderStatus(ord)
+    this.orderService.changeOrderStatus(ord)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.loadData();
@@ -128,7 +127,7 @@ export class OrdersComponent implements OnInit {
 
   confirmOrder(ord: Order) {
     ord.status = OrderStatus.CONFIRMED_BY_RESTAURANT;
-    this.mainService.changeOrderStatus(ord)
+    this.orderService.changeOrderStatus(ord)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.loadData();
@@ -140,7 +139,7 @@ export class OrdersComponent implements OnInit {
 
   paidOrder(ord: Order) {
     ord.status = OrderStatus.PAID;
-    this.mainService.changeOrderStatus(ord)
+    this.orderService.changeOrderStatus(ord)
       .subscribe((value) => {
           this.appComponent.showModal(value.message);
           this.loadData();
@@ -151,7 +150,6 @@ export class OrdersComponent implements OnInit {
   }
 
   showAll() {
-    // this.router.navigate(['orders/' + this.whoseOrders]);
     this.loadData();
   }
 

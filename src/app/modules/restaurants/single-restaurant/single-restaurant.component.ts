@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {MenuSection} from '../../../models/MenuSection';
 import {Dish} from '../../../models/Dish';
-import {MainService} from '../../../services/main.service';
 import {DataService} from '../../../services/data.service';
 import {Order} from '../../../models/Order';
 import {AppComponent} from '../../../app.component';
+import {RestaurantService} from '../../../services/restaurant.service';
 
 @Component({
   selector: 'app-single-restaurant',
@@ -23,7 +23,7 @@ export class SingleRestaurantComponent implements OnInit {
   private restaurantName = '';
   showSect: boolean [] = [];
 
-  constructor(private mainService: MainService,
+  constructor(private restaurantService: RestaurantService,
               private dataService: DataService,
               private activatedRoute: ActivatedRoute,
               private appComponent: AppComponent
@@ -45,7 +45,7 @@ export class SingleRestaurantComponent implements OnInit {
       this.restaurantName = params.name;
     });
 
-    this.mainService.getMenuSections(this.restaurantId)
+    this.restaurantService.getMenuSections(this.restaurantId)
       .subscribe((sections) => {
           this.menuSections = sections;
           this.ordDishes = [];

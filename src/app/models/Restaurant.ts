@@ -4,7 +4,6 @@ import {Order} from './Order';
 import {MenuSection} from './MenuSection';
 
 
-
 export class Restaurant {
   constructor(
     public id: number = null,
