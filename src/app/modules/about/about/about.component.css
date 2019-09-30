@@ -1,0 +1,17 @@
+body {
+  min-height: 100vh;
+  background: beige;
+  padding-top: 1px;
+}
+
+#header {
+  margin: 20px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  color: darkred;
+}
+
+p {
+  text-indent: 20px; /* Отступ первой строки в пикселах */
+}

@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   userId: string;
   logged: boolean;
   responseMessage = '';
+  totalAmount = 0;
 
   constructor(private dataService: DataService,
               private activatedRoute: ActivatedRoute,
@@ -47,6 +48,8 @@ export class AppComponent implements OnInit {
         }
       }
     });
+    this.totalAmount = +sessionStorage.getItem('_totalAmount');
+
   }
 
 
@@ -64,6 +67,10 @@ export class AppComponent implements OnInit {
 
   closeModal() {
     this.modal.style.display = 'none';
+  }
+
+  changeAmount() {
+    this.totalAmount = +sessionStorage.getItem('_totalAmount');
   }
 
 }

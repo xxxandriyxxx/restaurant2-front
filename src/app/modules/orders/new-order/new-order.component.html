@@ -1,0 +1,39 @@
+<body>
+
+<div id="signInMessage" *ngIf="!logged">
+  Please, <a routerLink="/sign-in">sign in</a> to be able to make an order
+</div>
+
+<div id="restaurant-name" class="bold-color-header">{{restaurantName}}</div>
+
+<div id="orderDetails">
+  <div id="orderDetailsName"><span class="bold-color">New order</span></div>
+  <div id="orderDetailsHeader">
+    <div>Name</div>
+    <div>Amount</div>
+    <div>Price</div>
+    <div>Cost</div>
+    <div>Actions</div>
+  </div>
+  <div id="orderDetailsSubgrid" *ngFor="let d of newOrder.dishes">
+    <div class="dish-name">{{d.name}}</div>
+    <div>{{newOrder.amount[newOrder.dishes.indexOf(d)]}}</div>
+    <div>{{d.price}}</div>
+    <div>{{newOrder.amount[newOrder.dishes.indexOf(d)] * d.price | number}}</div>
+    <div>
+      <button class="increase-btn" (click)="increaseAmount(newOrder.dishes.indexOf(d))">+</button>
+      <button class="reduce-btn" (click)="reduceAmount(newOrder.dishes.indexOf(d))">-</button>
+      <button class="delete-btn" (click)="deleteDish(newOrder.dishes.indexOf(d))">X</button>
+    </div>
+  </div>
+  <div id="totalSubgrid">
+    <div id="total">Total sum</div>
+    <div>{{totalCost | number}}</div>
+    <div>
+      <button id="confirm-btn" [disabled]="!newOrder.dishes.length || !logged" (click)="placeOrder()">Order now</button>
+    </div>
+  </div>
+</div>
+
+
+</body>

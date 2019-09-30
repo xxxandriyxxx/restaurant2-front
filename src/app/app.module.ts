@@ -7,18 +7,20 @@ import {SigninModule} from './modules/signin/signin.module';
 import {MainRoutingModule} from './main-routing.module';
 import {FormsModule} from '@angular/forms';
 import {RestaurantsModule} from './modules/restaurants/restaurants.module';
+import {AboutModule} from './modules/about/about.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     MainRoutingModule,
+    AboutModule,
     SignupModule,
     SigninModule,
     RestaurantsModule,
