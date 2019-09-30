@@ -19,6 +19,7 @@ export class ActivationPageComponent implements OnInit {
     private dataService: DataService) {
   }
 
+  
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
       this.mainService.activation(params.jwt)
