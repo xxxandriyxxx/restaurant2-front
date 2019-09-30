@@ -7,8 +7,8 @@ import {HttpHeaders} from '@angular/common/http';
 export class DataService {
 
   // URL of the API
-  public url = 'http://localhost:8080';
-  // public url = 'http://ec2-18-217-248-193.us-east-2.compute.amazonaws.com:8080';
+  // public url = 'http://localhost:8080';
+  public url = 'http://ec2-18-217-248-193.us-east-2.compute.amazonaws.com:8080';
 
   // this resource location is set by the resource handler in the WebConfig class in the API project
   public pathToResources = this.url + '/logo';
