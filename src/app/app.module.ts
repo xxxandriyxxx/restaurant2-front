@@ -10,7 +10,6 @@ import {RestaurantsModule} from './modules/restaurants/restaurants.module';
 import {AboutModule} from './modules/about/about.module';
 
 
-
 @NgModule({
   declarations: [
     AppComponent

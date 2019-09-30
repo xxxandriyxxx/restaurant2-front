@@ -22,7 +22,6 @@ const routes: Routes = [
   {path: 'newOrder', loadChildren: './modules/orders/orders.module#OrdersModule'},
   {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'},
   {path: 'activation/:jwt', loadChildren: './modules/activation/activation.module#ActivationModule'}
-
 ];
 
 
