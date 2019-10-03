@@ -6,6 +6,7 @@
     <a class="right" (click)="signOut()">Sign out</a>
     <a *ngIf="(userClass == 'Owner')||(userClass == 'Client')" class="right" routerLink="myAccount">My account</a>
     <a *ngIf="userClass == 'AdminInMemory'" class="right" routerLink="admin">Admin page</a>
+    <a *ngIf="userClass == 'Owner'" class="right" routerLink="statistics">Statistics</a>
     <a *ngIf="userClass == 'Owner'" class="right" routerLink="myRestaurants">My restaurants</a>
     <a *ngIf="userClass == 'Owner'" class="right" routerLink="orders/clients">Clients' orders</a>
     <a *ngIf="userClass !== 'AdminInMemory'" class="right" routerLink="orders/my">My orders</a>

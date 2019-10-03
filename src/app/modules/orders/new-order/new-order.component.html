@@ -4,7 +4,7 @@
   Please, <a routerLink="/sign-in">sign in</a> to be able to make an order
 </div>
 
-<div id="restaurant-name">{{restaurantName}}</div>
+<div id="restaurant-name" *ngIf="restaurantName">{{restaurantName}}</div>
 
 <div id="orderDetails">
   <div id="orderDetailsName"><span class="bold-color">New order</span></div>

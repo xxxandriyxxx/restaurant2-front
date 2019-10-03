@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'myRestaurants', loadChildren: './modules/my-restaurants/my-restaurants.module#MyRestaurantsModule'},
   {path: 'orders', loadChildren: './modules/orders/orders.module#OrdersModule'},
   {path: 'newOrder', loadChildren: './modules/orders/orders.module#OrdersModule'},
+  {path: 'statistics', loadChildren: './modules/statistics/statistics.module#StatisticsModule'},
   {path: 'admin', loadChildren: './modules/admin/admin.module#AdminModule'},
   {path: 'activation/:jwt', loadChildren: './modules/activation/activation.module#ActivationModule'}
 ];
