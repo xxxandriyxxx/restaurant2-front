@@ -77,9 +77,6 @@ body {
   cursor: pointer;
 }
 
-.section > button:hover {
-}
-
 .bold {
   font-weight: bold;
 }
@@ -169,13 +166,11 @@ body {
   font-weight: bold;
 }
 
-
 #orderDetailsSubgrid {
   display: grid;
   grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
 }
-
 
 #orderDetailsSubgrid > div {
   padding: .5em;
@@ -187,7 +182,6 @@ body {
   word-break: break-word;
 }
 
-
 #orderDetailsSubgrid > .dish-name {
   text-align: left;
   word-break: break-word;
@@ -197,7 +191,6 @@ body {
   display: grid;
   grid-template-columns: 4fr 1fr 1fr 1fr 2fr;
   grid-gap: 1px;
-
 }
 
 #total {
@@ -216,12 +209,6 @@ body {
   font-weight: bold;
 
 }
-
-
-.bold {
-  font-weight: bold;
-}
-
 
 #orderDetailsSubgrid button {
   width: 30px;
@@ -260,12 +247,10 @@ body {
 
 .increase-btn {
   background-color: #4CAF50;
-
 }
 
 .reduce-btn {
   background-color: goldenrod;
-
 }
 
 .delete-btn {
@@ -277,8 +262,6 @@ body {
   border: whitesmoke solid 1px;
   font-weight: bold;
 }
-
-
 
 .buy-btn {
   margin: 10px 10px auto auto;

@@ -81,6 +81,7 @@ export class NewOrderComponent implements OnInit {
 
   placeOrder() {
     this.newOrder.date = new Date();
+    console.log('date = ' + this.newOrder.date);
     this.newOrder.status = OrderStatus.ORDERED;
     this.orderService.placeOrder(this.newOrder, localStorage.getItem('_userId'), sessionStorage.getItem('_restaurantId'))
       .subscribe((val) => {

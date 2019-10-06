@@ -1,8 +1,40 @@
-sdfsdfsdf
+
+<body>
+
+  <div id="shown">
+    <div><span class="bold-shown">Restaurant:</span>  {{restaurantName}}</div>
+    <div><span class="bold-shown">Menu section:</span>  {{sectionName}}</div>
+    <div><span class="bold-shown">Dish:</span> {{dishName}}</div>
+  </div>
 
 <div id="container">
 
-  <canvas id="lineChart"></canvas>
-  <canvas id="barChart"></canvas>
-  <canvas id="pieChart"></canvas>
+  <div id="menu">
+    <button id="all-btn" (click)="setTotalStatistics()">All restaurants</button>
+    <div *ngFor="let restStat of allRestaurantsStatistics">
+      <button class="btn restaurant-btn" (click)="showRestaurant(restStat)">
+        {{restStat.restaurant.name}}</button>
+
+      <div *ngFor="let sectionStat of restStat.menuSectionStatistics">
+        <button class="btn section-btn" (click)="showMenuSection(sectionStat)">
+          {{sectionStat.menuSection.name}}</button>
+
+        <div *ngFor="let dishStat of sectionStat.dishStatistics">
+          <button class="btn dish-btn" (click)="showDish(dishStat)">
+            {{dishStat.dish.name}}</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="charts">
+    <div class="canvas">
+      <canvas id="amountChart"></canvas>
+      <canvas id="costChart"></canvas>
+    </div>
+  </div>
+
 </div>
+
+</body>
