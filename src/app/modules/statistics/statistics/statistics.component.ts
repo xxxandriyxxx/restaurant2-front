@@ -50,65 +50,6 @@ export class StatisticsComponent implements OnInit {
         });
   }
 
-
-  initChart() {
-    this.amountChart = new Chart('amountChart', {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Number of orders sold in months',
-          data: this.totalAmountByMonths,
-          fill: false,
-          lineTension: 0.2,
-          borderColor: 'blue',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: 'Total number of orders',
-          display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-
-    this.costChart = new Chart('costChart', {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Total cost of orders sold in months',
-          data: this.totalCostByMonths,
-          fill: false,
-          lineTension: 0.2,
-          borderColor: 'red',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        title: {
-          text: 'Total cost',
-          display: true
-        },
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
   showRestaurant(restaurantStatistics: RestaurantStatistics) {
     this.restaurantName = restaurantStatistics.restaurant.name;
     this.sectionName = 'all';
@@ -170,5 +111,64 @@ export class StatisticsComponent implements OnInit {
       this.totalCostByMonths[i] = 0;
     }
   }
+
+  initChart() {
+    this.amountChart = new Chart('amountChart', {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Total number',
+          data: this.totalAmountByMonths,
+          fill: false,
+          lineTension: 0.2,
+          borderColor: 'blue',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        title: {
+          text: 'Total number of orders sold in months',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+    this.costChart = new Chart('costChart', {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Total cost',
+          data: this.totalCostByMonths,
+          fill: false,
+          lineTension: 0.2,
+          borderColor: 'red',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        title: {
+          text: 'Total cost of orders sold in months',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
+
+
 }
 
